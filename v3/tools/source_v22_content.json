@@ -1,0 +1,3808 @@
+{
+ "meta": {
+  "version": "2.2",
+  "helpEmail": "it.support@alsafy.net",
+  "webUrl": "https://www.hitshcm.net"
+ },
+ "i18n": {
+  "en": {
+   "appName": "HITS Made Simple",
+   "homeLabel": "HITS Made Simple — all tasks",
+   "searchPlaceholder": "Search tasks and terms",
+   "roleLabel": "Show tasks for",
+   "roleEmployee": "Employee",
+   "roleManager": "Manager / Approver",
+   "langLabel": "Language",
+   "progress": "{done} of {total} tasks done",
+   "heroLine": "What do you need to do?",
+   "inProduction": "Coming soon",
+   "done": "Done",
+   "results": "Results for “{q}”",
+   "noResults": "No tasks or terms match your search.",
+   "glossary": "Plain-language glossary",
+   "whereToGo": "Where to go",
+   "platformApp": "On your phone (App)",
+   "platformWeb": "On HITS Web",
+   "platformLabel": "Platform",
+   "stepOf": "Step {n} of {total}",
+   "back": "Back",
+   "next": "Next",
+   "finish": "Finish",
+   "stepsLabel": "Steps",
+   "goToStep": "Go to step {n}",
+   "stepViewer": "Step-by-step guide",
+   "showAllSteps": "Show all steps",
+   "stepByStep": "Step by step",
+   "allSteps": "All steps",
+   "goodToKnow": "Good to know",
+   "quickCheck": "Quick check",
+   "correct": "Correct.",
+   "notQuite": "Not quite.",
+   "markDone": "Mark as done",
+   "unmarkDone": "Remove from my checklist",
+   "needHelp": "Need help?",
+   "myChecklist": "My checklist",
+   "checklistLine": "Each task you tick here is saved on this device only.",
+   "completed": "Done",
+   "stillToDo": "Still to do",
+   "clearChecklist": "Clear my checklist",
+   "allTasks": "All tasks",
+   "stubLine": "This guide is not available yet.",
+   "sourceValidation": "SOURCE VALIDATION REQUIRED — steps not yet documented",
+   "screenAlt": "Screen placeholder {id}",
+   "reviewOn": "Review mode: on",
+   "reviewOff": "Review mode: off",
+   "st_verified": "Verified",
+   "st_confirm": "Confirm",
+   "st_hold": "Hold",
+   "st_source-validation-required": "Source validation required",
+   "screensConfirm": "Screens: confirm",
+   "tapToEnlarge": "Tap to enlarge",
+   "closeImage": "Close",
+   "swipeHint": "Swipe for the next step",
+   "startTask": "Start",
+   "menu": "Menu",
+   "search": "Search",
+   "helpCardTitle": [
+    "Office 365",
+    "password issue?"
+   ],
+   "helpCardLine": "Email IT Support:",
+   "openWeb": "Open HITS Web",
+   "onWebOnly": "This guide is for HITS Web.",
+   "textStep": "Follow this step on your screen.",
+   "addHome": "Add to Home Screen for quick access",
+   "dontMatch": "Screen looks different? Stop and contact IT Support rather than guessing.",
+   "refScope": "These options apply to leave, time-permission and missing-time requests on HITS Web."
+  },
+  "ar": {
+   "appName": "HITS ببساطة",
+   "homeLabel": "HITS ببساطة — كل المهام",
+   "searchPlaceholder": "ابحث عن مهمة أو مصطلح",
+   "roleLabel": "عرض مهام",
+   "roleEmployee": "الموظف",
+   "roleManager": "المدير / المعتمِد",
+   "langLabel": "اللغة",
+   "progress": "المُنجَز: {done} من {total}",
+   "heroLine": "ماذا تريد أن تفعل؟",
+   "inProduction": "قريبًا",
+   "done": "تمّت",
+   "results": "نتائج البحث عن «{q}»",
+   "noResults": "لا توجد مهام أو مصطلحات تطابق بحثك.",
+   "glossary": "قاموس المصطلحات المبسّط",
+   "whereToGo": "أين تجدها",
+   "platformApp": "على هاتفك (التطبيق)",
+   "platformWeb": "على HITS Web",
+   "platformLabel": "المنصّة",
+   "stepOf": "الخطوة {n} من {total}",
+   "back": "السابق",
+   "next": "التالي",
+   "finish": "إنهاء",
+   "stepsLabel": "الخطوات",
+   "goToStep": "انتقل إلى الخطوة {n}",
+   "stepViewer": "دليل خطوة بخطوة",
+   "showAllSteps": "عرض كل الخطوات",
+   "stepByStep": "خطوة بخطوة",
+   "allSteps": "كل الخطوات",
+   "goodToKnow": "من المفيد أن تعرف",
+   "quickCheck": "تحقّق سريع",
+   "correct": "إجابة صحيحة.",
+   "notQuite": "ليس تمامًا.",
+   "markDone": "أنجزتُ هذه المهمة",
+   "unmarkDone": "إزالة من قائمتي",
+   "needHelp": "تحتاج مساعدة؟",
+   "myChecklist": "قائمتي",
+   "checklistLine": "تُحفَظ المهام التي تحدّدها هنا على هذا الجهاز فقط.",
+   "completed": "مُنجَزة",
+   "stillToDo": "متبقّية",
+   "clearChecklist": "مسح قائمتي",
+   "allTasks": "كل المهام",
+   "stubLine": "هذا الدليل غير متاح بعد.",
+   "sourceValidation": "يلزم التحقق من المصدر — الخطوات غير موثّقة بعد",
+   "screenAlt": "موضع لقطة الشاشة {id}",
+   "reviewOn": "وضع المراجعة: مفعّل",
+   "reviewOff": "وضع المراجعة: متوقّف",
+   "st_verified": "موثّق",
+   "st_confirm": "بانتظار التأكيد",
+   "st_hold": "معلّق",
+   "st_source-validation-required": "يلزم التحقق من المصدر",
+   "screensConfirm": "الشاشات: بانتظار التأكيد",
+   "tapToEnlarge": "اضغط للتكبير",
+   "closeImage": "إغلاق",
+   "swipeHint": "اسحب للانتقال إلى الخطوة التالية",
+   "startTask": "ابدأ",
+   "menu": "القائمة",
+   "search": "بحث",
+   "helpCardTitle": [
+    "مشكلة في كلمة مرور",
+    "Office 365؟"
+   ],
+   "helpCardLine": "راسِل الدعم الفني على:",
+   "openWeb": "افتح HITS Web",
+   "onWebOnly": "هذا الدليل خاص بـ HITS Web.",
+   "textStep": "نفّذ هذه الخطوة على شاشتك.",
+   "addHome": "أضِفه إلى الشاشة الرئيسية للوصول السريع",
+   "dontMatch": "الشاشة مختلفة؟ توقّف وتواصل مع الدعم الفني بدلًا من التخمين.",
+   "refScope": "تنطبق هذه الخيارات على طلبات الإجازة والاستئذان واستكمال الحضور على HITS Web."
+  }
+ },
+ "chapters": [
+  {
+   "id": "A",
+   "title": {
+    "en": "Get started",
+    "ar": "البداية"
+   },
+   "audience": "all"
+  },
+  {
+   "id": "B",
+   "title": {
+    "en": "Time off",
+    "ar": "الإجازات"
+   },
+   "audience": "employee"
+  },
+  {
+   "id": "C",
+   "title": {
+    "en": "Time & attendance",
+    "ar": "الوقت والحضور"
+   },
+   "audience": "employee"
+  },
+  {
+   "id": "D",
+   "title": {
+    "en": "Pay & profile",
+    "ar": "الراتب والملف الشخصي"
+   },
+   "audience": "employee"
+  },
+  {
+   "id": "E",
+   "title": {
+    "en": "My requests",
+    "ar": "طلباتي"
+   },
+   "audience": "employee"
+  },
+  {
+   "id": "F",
+   "title": {
+    "en": "Manager / Approver",
+    "ar": "المدير / المعتمِد"
+   },
+   "audience": "manager"
+  },
+  {
+   "id": "G",
+   "title": {
+    "en": "Help",
+    "ar": "المساعدة"
+   },
+   "audience": "all"
+  }
+ ],
+ "tasks": [
+  {
+   "id": "get-app",
+   "chapter": "A",
+   "audience": "employee",
+   "active": false,
+   "name": {
+    "en": "Get the HITS Easy Go app",
+    "ar": "تحميل تطبيق HITS Easy Go"
+   }
+  },
+  {
+   "id": "signin-app",
+   "chapter": "A",
+   "audience": "employee",
+   "status": "verified",
+   "screensStatus": "verified",
+   "active": true,
+   "icon": "log-in",
+   "name": {
+    "en": "Sign in with your Work ID",
+    "ar": "تسجيل الدخول بالرقم الوظيفي"
+   },
+   "situation": {
+    "en": "I don't have a work email",
+    "ar": "ليس لدي بريد إلكتروني للعمل"
+   },
+   "title": {
+    "en": [
+     "Sign in",
+     "to HITS."
+    ],
+    "ar": [
+     "سجّل الدخول",
+     "إلى HITS."
+    ]
+   },
+   "purpose": {
+    "en": "Opens HITS Easy Go with your Work ID and password, for employees without a work email.",
+    "ar": "يفتح HITS Easy Go بالرقم الوظيفي وكلمة المرور، للموظفين الذين ليس لديهم بريد إلكتروني للعمل."
+   },
+   "path": null,
+   "platforms": [
+    {
+     "id": "app",
+     "frame": "phone",
+     "status": "verified",
+     "path": null,
+     "steps": [
+      {
+       "id": "signin-app-01",
+       "screen": {
+        "src": "[embedded screenshot]",
+        "alt": {
+         "en": "HITS Easy Go login screen",
+         "ar": "شاشة الدخول في HITS Easy Go"
+        }
+       },
+       "hotspot": null,
+       "headline": {
+        "en": [
+         "Open",
+         "HITS Easy Go."
+        ],
+        "ar": [
+         "افتح",
+         "تطبيق HITS Easy Go."
+        ]
+       },
+       "text": {
+        "en": "Open the HITS Easy Go app.",
+        "ar": "افتح تطبيق HITS Easy Go على هاتفك."
+       },
+       "helper": null,
+       "status": "verified"
+      },
+      {
+       "id": "signin-app-02",
+       "screen": {
+        "src": "[embedded screenshot]",
+        "alt": {
+         "en": "Login screen with the Username field highlighted",
+         "ar": "شاشة الدخول مع تمييز خانة Username"
+        }
+       },
+       "hotspot": {
+        "x": 4.5,
+        "y": 54.6,
+        "w": 90.6,
+        "h": 7.1
+       },
+       "headline": {
+        "en": [
+         "Enter your",
+         "Work ID."
+        ],
+        "ar": [
+         "أدخِل",
+         "رقمك الوظيفي."
+        ]
+       },
+       "text": {
+        "en": "Enter your Work ID in the Username field.",
+        "ar": "أدخِل رقمك الوظيفي في خانة Username."
+       },
+       "helper": {
+        "en": "Your Work ID and password are provided by your direct manager.",
+        "ar": "يسلّمك مديرك المباشر الرقم الوظيفي وكلمة المرور."
+       },
+       "status": "verified"
+      },
+      {
+       "id": "signin-app-03",
+       "screen": {
+        "src": "[embedded screenshot]",
+        "alt": {
+         "en": "Login screen with the Password field highlighted",
+         "ar": "شاشة الدخول مع تمييز خانة Password"
+        }
+       },
+       "hotspot": {
+        "x": 4.5,
+        "y": 64.4,
+        "w": 90.6,
+        "h": 7.1
+       },
+       "headline": {
+        "en": [
+         "Then your",
+         "password."
+        ],
+        "ar": [
+         "ثم",
+         "كلمة المرور."
+        ]
+       },
+       "text": {
+        "en": "Enter your password in the Password field.",
+        "ar": "أدخِل كلمة المرور في خانة Password."
+       },
+       "helper": null,
+       "status": "verified"
+      },
+      {
+       "id": "signin-app-04",
+       "screen": {
+        "src": "[embedded screenshot]",
+        "alt": {
+         "en": "Login screen with details entered and the Login button highlighted",
+         "ar": "شاشة الدخول بعد إدخال البيانات مع تمييز زر Login"
+        }
+       },
+       "hotspot": {
+        "x": 3.8,
+        "y": 64.1,
+        "w": 45,
+        "h": 5.7
+       },
+       "headline": {
+        "en": [
+         "Tap",
+         "Login."
+        ],
+        "ar": [
+         "اضغط",
+         "Login."
+        ]
+       },
+       "text": {
+        "en": "Tap Login.",
+        "ar": "اضغط زر Login."
+       },
+       "helper": {
+        "en": "Have a work email? Use OFFICE 365 instead of Login.",
+        "ar": "لديك بريد إلكتروني للعمل؟ استخدم OFFICE 365 بدلًا من Login."
+       },
+       "status": "verified"
+      },
+      {
+       "id": "signin-app-05",
+       "screen": {
+        "src": "[embedded screenshot]",
+        "alt": {
+         "en": "HITS home page with service tiles",
+         "ar": "الصفحة الرئيسية في HITS وعليها أيقونات الخدمات"
+        }
+       },
+       "hotspot": null,
+       "headline": {
+        "en": [
+         "You're",
+         "in."
+        ],
+        "ar": [
+         "تمّ",
+         "الدخول."
+        ]
+       },
+       "text": {
+        "en": "You're in. Your HITS services are on the home page.",
+        "ar": "تمّ الدخول. ستجد خدمات HITS في الصفحة الرئيسية."
+       },
+       "helper": null,
+       "status": "verified"
+      }
+     ]
+    }
+   ],
+   "goodToKnow": [
+    {
+     "text": {
+      "en": "The same Work ID and password work on HITS Web.",
+      "ar": "الرقم الوظيفي وكلمة المرور نفسهما يعملان على HITS Web."
+     },
+     "link": null,
+     "status": "verified"
+    },
+    {
+     "text": {
+      "en": "Have a work email? Tap OFFICE 365, then enter your work email and its password.",
+      "ar": "لديك بريد إلكتروني للعمل؟ اضغط OFFICE 365، ثم أدخِل بريد العمل وكلمة مروره."
+     },
+     "link": null,
+     "status": "verified"
+    },
+    {
+     "text": {
+      "en": "Forgot your password? Tap Forgot my password? on the login screen.",
+      "ar": "نسيت كلمة المرور؟ اضغط Forgot my password? في شاشة الدخول."
+     },
+     "link": "forgot-password",
+     "status": "confirm"
+    },
+    {
+     "text": {
+      "en": "Your app may look light instead of dark. Tap the gear icon on the login screen and choose a Theme. The steps stay the same.",
+      "ar": "قد يظهر التطبيق بلون فاتح بدلًا من الداكن. اضغط أيقونة الترس في شاشة الدخول واختر Theme. الخطوات لا تتغير."
+     },
+     "link": null,
+     "status": "verified"
+    },
+    {
+     "text": {
+      "en": "This guide shows the app in English. If your app is set to Arabic or French, switch Language to English in the same Settings to match what you see here.",
+      "ar": "يعرض هذا الدليل التطبيق باللغة الإنجليزية. إذا كانت لغة تطبيقك العربية أو الفرنسية، فاختر English من Language في الإعدادات نفسها ليطابق ما تراه هنا."
+     },
+     "link": null,
+     "status": "verified"
+    },
+    {
+     "text": {
+      "en": "Never share your password, including in screenshots or support messages.",
+      "ar": "لا تشارك كلمة المرور مع أحد، ولا تُظهرها في لقطات الشاشة أو رسائل الدعم."
+     },
+     "link": null,
+     "status": "verified"
+    }
+   ],
+   "helpCard": true,
+   "check": {
+    "q": {
+     "en": "You have no work email. How do you sign in?",
+     "ar": "ليس لديك بريد إلكتروني للعمل. كيف تسجّل الدخول؟"
+    },
+    "options": [
+     {
+      "text": {
+       "en": "Work ID and password, then Login",
+       "ar": "الرقم الوظيفي وكلمة المرور، ثم Login"
+      },
+      "correct": true,
+      "why": {
+       "en": "Employees without a work email sign in with their Work ID.",
+       "ar": "الموظفون الذين ليس لديهم بريد عمل يدخلون بالرقم الوظيفي."
+      }
+     },
+     {
+      "text": {
+       "en": "OFFICE 365",
+       "ar": "OFFICE 365"
+      },
+      "correct": false,
+      "why": {
+       "en": "Office 365 is for employees with a work email.",
+       "ar": "Office 365 مخصّص للموظفين الذين لديهم بريد عمل."
+      }
+     },
+     {
+      "text": {
+       "en": "Register/Reactivate User",
+       "ar": "Register/Reactivate User"
+      },
+      "correct": false,
+      "why": {
+       "en": "That link is not for everyday sign-in.",
+       "ar": "هذا الرابط ليس للدخول اليومي."
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": "signin-o365",
+   "chapter": "A",
+   "audience": "employee",
+   "status": "verified",
+   "active": false,
+   "icon": "log-in",
+   "name": {
+    "en": "Sign in with Office 365",
+    "ar": "تسجيل الدخول عبر Office 365"
+   },
+   "situation": {
+    "en": "I have a work email",
+    "ar": "لدي بريد إلكتروني للعمل"
+   },
+   "title": {
+    "en": [
+     "Sign in with",
+     "Office 365."
+    ],
+    "ar": [
+     "ادخل عبر",
+     "Office 365."
+    ]
+   },
+   "purpose": {
+    "en": "Opens HITS Easy Go with your work email and password.",
+    "ar": "يفتح HITS Easy Go ببريد العمل وكلمة مروره."
+   },
+   "path": null,
+   "platforms": [
+    {
+     "id": "app",
+     "frame": "phone",
+     "status": "source-validation-required",
+     "path": null,
+     "steps": [
+      {
+       "id": "o365-app-01",
+       "screen": {
+        "src": "[embedded screenshot]",
+        "alt": {
+         "en": "HITS Easy Go login screen",
+         "ar": "شاشة الدخول في HITS Easy Go"
+        }
+       },
+       "hotspot": null,
+       "headline": {
+        "en": [
+         "Open",
+         "HITS Easy Go."
+        ],
+        "ar": [
+         "افتح",
+         "تطبيق HITS Easy Go."
+        ]
+       },
+       "text": {
+        "en": "Open the HITS Easy Go app.",
+        "ar": "افتح تطبيق HITS Easy Go."
+       },
+       "helper": null,
+       "status": "verified"
+      },
+      {
+       "id": "o365-app-02",
+       "screen": {
+        "src": "[embedded screenshot]",
+        "alt": {
+         "en": "Login screen with OFFICE 365 highlighted",
+         "ar": "شاشة الدخول مع تمييز OFFICE 365"
+        }
+       },
+       "hotspot": {
+        "x": 51.2,
+        "y": 74.2,
+        "w": 44.2,
+        "h": 5.6
+       },
+       "headline": {
+        "en": [
+         "Tap",
+         "OFFICE 365."
+        ],
+        "ar": [
+         "اضغط",
+         "OFFICE 365."
+        ]
+       },
+       "text": {
+        "en": "Tap OFFICE 365.",
+        "ar": "اضغط OFFICE 365."
+       },
+       "helper": null,
+       "status": "verified"
+      },
+      {
+       "id": "o365-app-03",
+       "screen": {
+        "src": null,
+        "alt": {
+         "en": "",
+         "ar": ""
+        }
+       },
+       "hotspot": null,
+       "headline": {
+        "en": [
+         "Enter your",
+         "company email."
+        ],
+        "ar": [
+         "أدخِل",
+         "بريد الشركة."
+        ]
+       },
+       "text": {
+        "en": "Enter your company email, then tap Next.",
+        "ar": "أدخِل بريد الشركة الإلكتروني، ثم اضغط Next."
+       },
+       "helper": null,
+       "status": "verified"
+      },
+      {
+       "id": "o365-app-04",
+       "screen": {
+        "src": null,
+        "alt": {
+         "en": "",
+         "ar": ""
+        }
+       },
+       "hotspot": null,
+       "headline": {
+        "en": [
+         "Enter your",
+         "email password."
+        ],
+        "ar": [
+         "أدخِل",
+         "كلمة مرور البريد."
+        ]
+       },
+       "text": {
+        "en": "Enter your company email password, then tap Sign in.",
+        "ar": "أدخِل كلمة مرور بريد الشركة، ثم اضغط Sign in."
+       },
+       "helper": null,
+       "status": "verified"
+      },
+      {
+       "id": "o365-app-05",
+       "screen": {
+        "src": null,
+        "alt": {
+         "en": "",
+         "ar": ""
+        }
+       },
+       "hotspot": null,
+       "headline": {
+        "en": [
+         "Approve in",
+         "Authenticator."
+        ],
+        "ar": [
+         "وافِق عبر",
+         "Authenticator."
+        ]
+       },
+       "text": {
+        "en": "Complete Microsoft Authenticator verification when asked.",
+        "ar": "أكمِل التحقق عبر Microsoft Authenticator عند طلبه."
+       },
+       "helper": null,
+       "status": "verified"
+      }
+     ],
+     "_hiddenReason": "awaiting screenshots"
+    }
+   ],
+   "goodToKnow": [
+    {
+     "text": {
+      "en": "Microsoft Authenticator must be installed on your phone to use this sign-in method.",
+      "ar": "يجب تثبيت تطبيق Microsoft Authenticator على هاتفك لاستخدام طريقة الدخول هذه."
+     },
+     "link": null,
+     "status": "verified"
+    },
+    {
+     "text": {
+      "en": "Office 365 and Login are separate sign-in methods. Use the one assigned to you.",
+      "ar": "Office 365 وLogin طريقتان منفصلتان للدخول. استخدم الطريقة المخصّصة لك."
+     },
+     "link": null,
+     "status": "verified"
+    },
+    {
+     "text": {
+      "en": "The same method works on HITS Web.",
+      "ar": "الطريقة نفسها تعمل على HITS Web."
+     },
+     "link": null,
+     "status": "verified"
+    }
+   ],
+   "helpCard": true,
+   "check": {
+    "q": {
+     "en": "Your company email password is not working. Who do you contact?",
+     "ar": "كلمة مرور بريد الشركة لا تعمل. بمن تتواصل؟"
+    },
+    "options": [
+     {
+      "text": {
+       "en": "IT Support",
+       "ar": "الدعم الفني"
+      },
+      "correct": true,
+      "why": {
+       "en": "IT Support handles company email (Office 365) passwords.",
+       "ar": "الدعم الفني مسؤول عن كلمات مرور بريد الشركة (Office 365)."
+      }
+     },
+     {
+      "text": {
+       "en": "Forgot my password? in HITS",
+       "ar": "Forgot my password? في HITS"
+      },
+      "correct": false,
+      "why": {
+       "en": "That recovers your HITS password, not your company email password.",
+       "ar": "هذا الخيار لاسترجاع كلمة مرور HITS، لا كلمة مرور بريد الشركة."
+      }
+     },
+     {
+      "text": {
+       "en": "Your direct manager",
+       "ar": "مديرك المباشر"
+      },
+      "correct": false,
+      "why": {
+       "en": "Your manager provides HITS usernames, not company email passwords.",
+       "ar": "مديرك يسلّمك اسم مستخدم HITS، لا كلمة مرور بريد الشركة."
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": "use-web",
+   "chapter": "A",
+   "audience": "employee",
+   "status": "verified",
+   "active": false,
+   "icon": "monitor",
+   "url": "https://www.hitshcm.net",
+   "name": {
+    "en": "Use HITS Web",
+    "ar": "استخدام HITS Web"
+   },
+   "situation": {
+    "en": "I want to use HITS on a computer",
+    "ar": "أريد استخدام HITS على الكمبيوتر"
+   },
+   "title": {
+    "en": [
+     "Use HITS",
+     "on the web."
+    ],
+    "ar": [
+     "استخدم HITS",
+     "على الويب."
+    ]
+   },
+   "purpose": {
+    "en": "Opens HITS in your browser with the same sign-in details as the app.",
+    "ar": "يفتح HITS في المتصفح ببيانات الدخول نفسها المستخدمة في التطبيق."
+   },
+   "path": null,
+   "platforms": [
+    {
+     "id": "web",
+     "frame": "browser",
+     "status": "source-validation-required",
+     "path": "www.hitshcm.net",
+     "steps": [
+      {
+       "id": "web-01",
+       "screen": {
+        "src": null,
+        "alt": {
+         "en": "",
+         "ar": ""
+        }
+       },
+       "hotspot": null,
+       "headline": {
+        "en": [
+         "Open",
+         "HITS Web."
+        ],
+        "ar": [
+         "افتح",
+         "HITS Web."
+        ]
+       },
+       "text": {
+        "en": "Open www.hitshcm.net in your browser.",
+        "ar": "افتح www.hitshcm.net في المتصفح."
+       },
+       "helper": null,
+       "status": "verified"
+      },
+      {
+       "id": "web-02",
+       "screen": {
+        "src": null,
+        "alt": {
+         "en": "",
+         "ar": ""
+        }
+       },
+       "hotspot": null,
+       "headline": {
+        "en": [
+         "Sign in the",
+         "same way."
+        ],
+        "ar": [
+         "ادخل",
+         "بالطريقة نفسها."
+        ]
+       },
+       "text": {
+        "en": "Sign in with the method you use in the app: your username and password, or Office 365.",
+        "ar": "سجّل الدخول بالطريقة التي تستخدمها في التطبيق: اسم المستخدم وكلمة المرور، أو Office 365."
+       },
+       "helper": null,
+       "status": "verified"
+      }
+     ],
+     "_hiddenReason": "awaiting screenshots"
+    }
+   ],
+   "goodToKnow": [
+    {
+     "text": {
+      "en": "The HITS Web guides in this playbook start from the My HR menu.",
+      "ar": "تبدأ أدلة HITS Web في هذا الدليل من قائمة My HR."
+     },
+     "link": null,
+     "status": "verified"
+    }
+   ],
+   "check": {
+    "q": {
+     "en": "Can you use your app sign-in details on HITS Web?",
+     "ar": "هل تستطيع استخدام بيانات دخول التطبيق على HITS Web؟"
+    },
+    "options": [
+     {
+      "text": {
+       "en": "Yes, the same details work",
+       "ar": "نعم، البيانات نفسها تعمل"
+      },
+      "correct": true,
+      "why": {
+       "en": "The same sign-in steps work on HITS Web.",
+       "ar": "خطوات الدخول نفسها تعمل على HITS Web."
+      }
+     },
+     {
+      "text": {
+       "en": "No, HITS Web needs new details",
+       "ar": "لا، HITS Web يحتاج بيانات جديدة"
+      },
+      "correct": false,
+      "why": {
+       "en": "You use the same sign-in method on both.",
+       "ar": "تستخدم طريقة الدخول نفسها في الاثنين."
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": "forgot-password",
+   "chapter": "A",
+   "audience": "employee",
+   "status": "confirm",
+   "screensStatus": "verified",
+   "active": true,
+   "icon": "lock",
+   "name": {
+    "en": "Forgot your password?",
+    "ar": "نسيت كلمة المرور؟"
+   },
+   "situation": {
+    "en": "I forgot my password",
+    "ar": "نسيت كلمة المرور"
+   },
+   "title": {
+    "en": [
+     "Forgot your",
+     "password?"
+    ],
+    "ar": [
+     "نسيت",
+     "كلمة المرور؟"
+    ]
+   },
+   "purpose": {
+    "en": "Starts password recovery from the HITS Easy Go login screen.",
+    "ar": "يبدأ استرجاع كلمة المرور من شاشة الدخول في HITS Easy Go."
+   },
+   "path": null,
+   "platforms": [
+    {
+     "id": "app",
+     "frame": "phone",
+     "status": "confirm",
+     "path": null,
+     "steps": [
+      {
+       "id": "forgot-app-01",
+       "screen": {
+        "src": "[embedded screenshot]",
+        "alt": {
+         "en": "Login screen with Forgot my password? highlighted",
+         "ar": "شاشة الدخول مع تمييز Forgot my password?"
+        }
+       },
+       "hotspot": {
+        "x": 60.2,
+        "y": 80.7,
+        "w": 36.8,
+        "h": 3.2
+       },
+       "headline": {
+        "en": [
+         "Tap",
+         "Forgot my password?"
+        ],
+        "ar": [
+         "اضغط",
+         "Forgot my password?"
+        ]
+       },
+       "text": {
+        "en": "On the login screen, tap Forgot my password?",
+        "ar": "في شاشة الدخول، اضغط Forgot my password?"
+       },
+       "helper": null,
+       "status": "verified"
+      },
+      {
+       "id": "forgot-app-02",
+       "screen": {
+        "src": "[embedded screenshot]",
+        "alt": {
+         "en": "Forgot your password? screen with Username and Company Email fields",
+         "ar": "شاشة Forgot your password? وفيها خانتا Username وCompany Email"
+        }
+       },
+       "hotspot": {
+        "x": 13.5,
+        "y": 38.7,
+        "w": 78.5,
+        "h": 18.4
+       },
+       "headline": {
+        "en": [
+         "Enter your",
+         "details."
+        ],
+        "ar": [
+         "أدخِل",
+         "بياناتك."
+        ]
+       },
+       "text": {
+        "en": "Enter your Username and your Company Email.",
+        "ar": "أدخِل اسم المستخدم في Username، وبريد الشركة الإلكتروني في Company Email."
+       },
+       "helper": null,
+       "status": "verified"
+      },
+      {
+       "id": "forgot-app-03",
+       "screen": {
+        "src": "[embedded screenshot]",
+        "alt": {
+         "en": "Forgot your password? screen with SEND highlighted",
+         "ar": "شاشة Forgot your password? مع تمييز زر SEND"
+        }
+       },
+       "hotspot": {
+        "x": 13.2,
+        "y": 61.3,
+        "w": 79.5,
+        "h": 5.6
+       },
+       "headline": {
+        "en": [
+         "Tap",
+         "SEND."
+        ],
+        "ar": [
+         "اضغط",
+         "SEND."
+        ]
+       },
+       "text": {
+        "en": "Tap SEND, then follow the instructions you receive.",
+        "ar": "اضغط SEND، ثم اتبع التعليمات التي تصلك."
+       },
+       "helper": {
+        "en": "Signing in with Office 365? For your company email password, contact IT Support.",
+        "ar": "تدخل عبر Office 365؟ لكلمة مرور بريد الشركة، تواصل مع الدعم الفني."
+       },
+       "status": "confirm"
+      }
+     ]
+    }
+   ],
+   "goodToKnow": [
+    {
+     "text": {
+      "en": "Your direct manager provides your HITS username and password.",
+      "ar": "يسلّمك مديرك المباشر اسم المستخدم وكلمة المرور لـ HITS."
+     },
+     "link": null,
+     "status": "verified"
+    },
+    {
+     "text": {
+      "en": "Never share your password, including in screenshots or support messages.",
+      "ar": "لا تشارك كلمة المرور مع أحد، ولا تُظهرها في لقطات الشاشة أو رسائل الدعم."
+     },
+     "link": null,
+     "status": "verified"
+    }
+   ],
+   "helpCard": true,
+   "check": {
+    "q": {
+     "en": "Which two details does the Forgot your password? screen ask for?",
+     "ar": "ما البيانات التي تطلبها شاشة Forgot your password؟"
+    },
+    "options": [
+     {
+      "text": {
+       "en": "Username and Company Email",
+       "ar": "اسم المستخدم وبريد الشركة الإلكتروني"
+      },
+      "correct": true,
+      "why": {
+       "en": "The screen asks for your Username and Company Email, then you tap SEND.",
+       "ar": "تطلب الشاشة اسم المستخدم وبريد الشركة الإلكتروني، ثم تضغط SEND."
+      }
+     },
+     {
+      "text": {
+       "en": "Password and Company Email",
+       "ar": "كلمة المرور وبريد الشركة الإلكتروني"
+      },
+      "correct": false,
+      "why": {
+       "en": "You don't enter a password here. That's what you are recovering.",
+       "ar": "لا تُدخل كلمة مرور هنا، فهي ما تحاول استرجاعه."
+      }
+     },
+     {
+      "text": {
+       "en": "Employee ID and phone number",
+       "ar": "الرقم الوظيفي ورقم الهاتف"
+      },
+      "correct": false,
+      "why": {
+       "en": "The screen doesn't ask for these.",
+       "ar": "الشاشة لا تطلب هذه البيانات."
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": "register",
+   "chapter": "A",
+   "audience": "employee",
+   "active": false,
+   "name": {
+    "en": "Register / Reactivate your user",
+    "ar": "التسجيل أو إعادة تفعيل المستخدم"
+   }
+  },
+  {
+   "id": "app-settings",
+   "chapter": "A",
+   "audience": "employee",
+   "status": "confirm",
+   "active": true,
+   "icon": "info",
+   "name": {
+    "en": "Change the app's theme or language",
+    "ar": "تغيير مظهر التطبيق أو لغته"
+   },
+   "situation": {
+    "en": "The app looks different from this guide",
+    "ar": "التطبيق يبدو مختلفًا عن هذا الدليل"
+   },
+   "title": {
+    "en": [
+     "Theme and",
+     "language."
+    ],
+    "ar": [
+     "المظهر",
+     "واللغة."
+    ]
+   },
+   "purpose": {
+    "en": "Changes how HITS Easy Go looks and which language it uses.",
+    "ar": "يغيّر مظهر HITS Easy Go واللغة التي يستخدمها."
+   },
+   "path": null,
+   "platforms": [
+    {
+     "id": "app",
+     "frame": "phone",
+     "status": "confirm",
+     "path": null,
+     "steps": [
+      {
+       "id": "settings-app-01",
+       "screen": {
+        "src": "[embedded screenshot]",
+        "alt": {
+         "en": "Login screen with the gear icon highlighted",
+         "ar": "شاشة الدخول مع تمييز أيقونة الترس"
+        }
+       },
+       "hotspot": {
+        "x": 83,
+        "y": 1.2,
+        "w": 12,
+        "h": 5.5
+       },
+       "headline": {
+        "en": [
+         "Tap the",
+         "gear icon."
+        ],
+        "ar": [
+         "اضغط",
+         "أيقونة الترس."
+        ]
+       },
+       "text": {
+        "en": "On the login screen, tap the gear icon at the top.",
+        "ar": "في شاشة الدخول، اضغط أيقونة الترس في الأعلى."
+       },
+       "helper": null,
+       "status": "confirm"
+      },
+      {
+       "id": "settings-app-02",
+       "screen": {
+        "src": "[embedded screenshot]",
+        "alt": {
+         "en": "Settings screen with Theme highlighted",
+         "ar": "شاشة Settings مع تمييز Theme"
+        }
+       },
+       "hotspot": {
+        "x": 7.6,
+        "y": 31.3,
+        "w": 85.1,
+        "h": 19.2
+       },
+       "headline": {
+        "en": [
+         "Choose a",
+         "Theme."
+        ],
+        "ar": [
+         "اختر",
+         "Theme."
+        ]
+       },
+       "text": {
+        "en": "Under Theme, choose Auto, Light or Dark.",
+        "ar": "من Theme، اختر Auto أو Light أو Dark."
+       },
+       "helper": null,
+       "status": "verified"
+      },
+      {
+       "id": "settings-app-03",
+       "screen": {
+        "src": "[embedded screenshot]",
+        "alt": {
+         "en": "Settings screen with Language highlighted",
+         "ar": "شاشة Settings مع تمييز Language"
+        }
+       },
+       "hotspot": {
+        "x": 7.6,
+        "y": 21.5,
+        "w": 85.1,
+        "h": 8.1
+       },
+       "headline": {
+        "en": [
+         "Choose a",
+         "Language."
+        ],
+        "ar": [
+         "اختر",
+         "Language."
+        ]
+       },
+       "text": {
+        "en": "Under Language, choose English to match this guide.",
+        "ar": "من Language، اختر English ليطابق هذا الدليل."
+       },
+       "helper": {
+        "en": "The app also offers Arabic and French.",
+        "ar": "يتيح التطبيق أيضًا العربية والفرنسية."
+       },
+       "status": "verified"
+      }
+     ]
+    }
+   ],
+   "goodToKnow": [
+    {
+     "text": {
+      "en": "Leave Tenant ID as it is.",
+      "ar": "اترك Tenant ID كما هو."
+     },
+     "link": null,
+     "status": "confirm"
+    }
+   ],
+   "check": {
+    "q": {
+     "en": "Your app shows different button names from this guide. What do you change?",
+     "ar": "أسماء الأزرار في تطبيقك تختلف عن هذا الدليل. ماذا تغيّر؟"
+    },
+    "options": [
+     {
+      "text": {
+       "en": "Language, in Settings",
+       "ar": "Language من الإعدادات"
+      },
+      "correct": true,
+      "why": {
+       "en": "This guide shows the app in English. Set Language to English.",
+       "ar": "يعرض هذا الدليل التطبيق بالإنجليزية. اختر English من Language."
+      }
+     },
+     {
+      "text": {
+       "en": "Theme",
+       "ar": "Theme"
+      },
+      "correct": false,
+      "why": {
+       "en": "Theme only changes light or dark colours.",
+       "ar": "Theme يغيّر الألوان الفاتحة أو الداكنة فقط."
+      }
+     },
+     {
+      "text": {
+       "en": "Tenant ID",
+       "ar": "Tenant ID"
+      },
+      "correct": false,
+      "why": {
+       "en": "Leave Tenant ID as it is.",
+       "ar": "اترك Tenant ID كما هو."
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": "leave-balance",
+   "chapter": "B",
+   "audience": "employee",
+   "status": "verified",
+   "active": true,
+   "icon": "calendar-days",
+   "name": {
+    "en": "Check your leave balance",
+    "ar": "معرفة رصيد إجازاتك"
+   },
+   "situation": {
+    "en": "How many leave days do I have left?",
+    "ar": "كم يومًا تبقّى من إجازاتي؟"
+   },
+   "title": {
+    "en": [
+     "Check your",
+     "leave balance."
+    ],
+    "ar": [
+     "اعرف",
+     "رصيد إجازاتك."
+    ]
+   },
+   "purpose": {
+    "en": "Shows the days you have and the days you have taken.",
+    "ar": "يعرض أيامك المتاحة والأيام التي استخدمتها."
+   },
+   "path": null,
+   "platforms": [
+    {
+     "id": "app",
+     "frame": "phone",
+     "status": "verified",
+     "path": "Home › My Leaves",
+     "steps": [
+      {
+       "id": "balance-app-01",
+       "screen": {
+        "src": "[embedded screenshot]",
+        "alt": {
+         "en": "HITS home page with My Leaves highlighted",
+         "ar": "الصفحة الرئيسية مع تمييز My Leaves"
+        }
+       },
+       "hotspot": {
+        "x": 52,
+        "y": 22.5,
+        "w": 20.1,
+        "h": 14.3
+       },
+       "headline": {
+        "en": [
+         "Tap",
+         "My Leaves."
+        ],
+        "ar": [
+         "اضغط",
+         "My Leaves."
+        ]
+       },
+       "text": {
+        "en": "On the home page, tap My Leaves.",
+        "ar": "من الصفحة الرئيسية، اضغط My Leaves."
+       },
+       "helper": null,
+       "status": "verified"
+      },
+      {
+       "id": "balance-app-02",
+       "screen": {
+        "src": "[embedded screenshot]",
+        "alt": {
+         "en": "My Leaves screen with Leaves Balance highlighted",
+         "ar": "شاشة My Leaves مع تمييز Leaves Balance"
+        }
+       },
+       "hotspot": {
+        "x": 0.5,
+        "y": 7.9,
+        "w": 98,
+        "h": 45
+       },
+       "headline": {
+        "en": [
+         "Read your",
+         "balance."
+        ],
+        "ar": [
+         "اقرأ",
+         "رصيدك."
+        ]
+       },
+       "text": {
+        "en": "Leaves Balance shows your Annual, Holiday and Day Off balance, and what you have taken.",
+        "ar": "يعرض قسم Leaves Balance رصيدك من Annual وHoliday وDay Off، وما استخدمته منها."
+       },
+       "helper": null,
+       "status": "verified"
+      }
+     ]
+    }
+   ],
+   "goodToKnow": [
+    {
+     "text": {
+      "en": "You can also check it from Balance in the Leaves Request menu.",
+      "ar": "يمكنك أيضًا معرفته من Balance في قائمة Leaves Request."
+     },
+     "link": "leave-request",
+     "status": "confirm"
+    }
+   ],
+   "check": {
+    "q": {
+     "en": "Where do you check how many annual leave days you have left?",
+     "ar": "أين تعرف عدد أيام إجازتك السنوية المتبقية؟"
+    },
+    "options": [
+     {
+      "text": {
+       "en": "My Leaves",
+       "ar": "My Leaves"
+      },
+      "correct": true,
+      "why": {
+       "en": "My Leaves shows your balance and the days you have taken.",
+       "ar": "يعرض My Leaves رصيدك والأيام التي استخدمتها."
+      }
+     },
+     {
+      "text": {
+       "en": "Leaves Approvals",
+       "ar": "Leaves Approvals"
+      },
+      "correct": false,
+      "why": {
+       "en": "Leaves Approvals is for approving other people's requests.",
+       "ar": "Leaves Approvals لاعتماد طلبات الآخرين."
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": "leave-request",
+   "chapter": "B",
+   "audience": "employee",
+   "status": "confirm",
+   "active": true,
+   "icon": "calendar-days",
+   "name": {
+    "en": "Submit a leave request",
+    "ar": "تقديم طلب إجازة"
+   },
+   "situation": {
+    "en": "I want to take a day off",
+    "ar": "أريد أخذ يوم إجازة"
+   },
+   "title": {
+    "en": [
+     "Submit a",
+     "leave request."
+    ],
+    "ar": [
+     "قدِّم",
+     "طلب إجازة."
+    ]
+   },
+   "purpose": {
+    "en": "Sends your leave request to your approver through HITS.",
+    "ar": "يُرسل طلب إجازتك إلى المعتمِد عبر HITS."
+   },
+   "path": null,
+   "platforms": [
+    {
+     "id": "app",
+     "frame": "phone",
+     "status": "confirm",
+     "path": "Home › Leaves Request",
+     "steps": [
+      {
+       "id": "leave-app-01",
+       "screen": {
+        "src": "[embedded screenshot]",
+        "alt": {
+         "en": "HITS home page with Leaves Request highlighted",
+         "ar": "الصفحة الرئيسية مع تمييز Leaves Request"
+        }
+       },
+       "hotspot": {
+        "x": 76.1,
+        "y": 22.4,
+        "w": 20.8,
+        "h": 14.1
+       },
+       "headline": {
+        "en": [
+         "Tap",
+         "Leaves Request."
+        ],
+        "ar": [
+         "اضغط",
+         "Leaves Request."
+        ]
+       },
+       "text": {
+        "en": "On the home page, tap Leaves Request.",
+        "ar": "من الصفحة الرئيسية، اضغط Leaves Request."
+       },
+       "helper": null,
+       "status": "verified"
+      },
+      {
+       "id": "leave-app-02",
+       "screen": {
+        "src": "[embedded screenshot]",
+        "alt": {
+         "en": "Leaves Request screen with the + button highlighted",
+         "ar": "شاشة Leaves Request مع تمييز زر +"
+        }
+       },
+       "hotspot": {
+        "x": 62.9,
+        "y": 86.8,
+        "w": 14.7,
+        "h": 6.6
+       },
+       "headline": {
+        "en": [
+         "Start a",
+         "new request."
+        ],
+        "ar": [
+         "ابدأ",
+         "طلبًا جديدًا."
+        ]
+       },
+       "text": {
+        "en": "Tap + at the bottom of the screen.",
+        "ar": "اضغط + أسفل الشاشة."
+       },
+       "helper": {
+        "en": "Current shows requests waiting for a decision; History shows past requests.",
+        "ar": "تعرض Current الطلبات التي تنتظر قرارًا، وتعرض History طلباتك السابقة."
+       },
+       "status": "verified"
+      },
+      {
+       "id": "leave-app-03",
+       "screen": {
+        "src": "[embedded screenshot]",
+        "alt": {
+         "en": "Leave request form with the Leave field highlighted",
+         "ar": "نموذج طلب الإجازة مع تمييز خانة Leave"
+        }
+       },
+       "hotspot": {
+        "x": 3.3,
+        "y": 14.5,
+        "w": 82.5,
+        "h": 4.5
+       },
+       "headline": {
+        "en": [
+         "Open the",
+         "Leave list."
+        ],
+        "ar": [
+         "افتح قائمة",
+         "Leave."
+        ]
+       },
+       "text": {
+        "en": "Tap Leave and choose your leave type.",
+        "ar": "اضغط خانة Leave لاختيار نوع الإجازة."
+       },
+       "helper": null,
+       "status": "verified"
+      },
+      {
+       "id": "leave-app-04",
+       "screen": {
+        "src": "[embedded screenshot]",
+        "alt": {
+         "en": "List of leave types",
+         "ar": "قائمة أنواع الإجازات"
+        }
+       },
+       "hotspot": null,
+       "headline": {
+        "en": [
+         "Choose your",
+         "leave type."
+        ],
+        "ar": [
+         "اختر",
+         "نوع الإجازة."
+        ]
+       },
+       "text": {
+        "en": "Choose the type that matches your request — for example Annual Leave or Annual 1/2 Day.",
+        "ar": "اختر النوع المناسب لطلبك، مثل Annual Leave أو Annual 1/2 Day."
+       },
+       "helper": null,
+       "status": "verified"
+      },
+      {
+       "id": "leave-app-05",
+       "screen": {
+        "src": "[embedded screenshot]",
+        "alt": {
+         "en": "Leave request form with the From and To dates highlighted",
+         "ar": "نموذج الإجازة مع تمييز تاريخَي From وTo"
+        }
+       },
+       "hotspot": {
+        "x": 3.3,
+        "y": 20.2,
+        "w": 61.1,
+        "h": 10
+       },
+       "headline": {
+        "en": [
+         "Set your",
+         "dates."
+        ],
+        "ar": [
+         "حدِّد",
+         "التواريخ."
+        ]
+       },
+       "text": {
+        "en": "Set the From and To dates.",
+        "ar": "حدِّد تاريخ البداية في From وتاريخ النهاية في To."
+       },
+       "helper": null,
+       "status": "verified"
+      },
+      {
+       "id": "leave-app-06",
+       "screen": {
+        "src": "[embedded screenshot]",
+        "alt": {
+         "en": "Other Information section of the leave form",
+         "ar": "قسم Other Information في نموذج الإجازة"
+        }
+       },
+       "hotspot": {
+        "x": 1.7,
+        "y": 35.1,
+        "w": 96.5,
+        "h": 49.8
+       },
+       "headline": {
+        "en": [
+         "Add any",
+         "other details."
+        ],
+        "ar": [
+         "أكمِل",
+         "باقي البيانات."
+        ]
+       },
+       "text": {
+        "en": "Complete any other details you're asked for.",
+        "ar": "أكمِل أي بيانات أخرى مطلوبة منك."
+       },
+       "helper": {
+        "en": "The Other Information section holds your contact details while you're away.",
+        "ar": "قسم Other Information مخصّص لبيانات التواصل معك أثناء غيابك."
+       },
+       "status": "confirm"
+      },
+      {
+       "id": "leave-app-07",
+       "screen": {
+        "src": "[embedded screenshot]",
+        "alt": {
+         "en": "Leave request form with the send button highlighted",
+         "ar": "نموذج الإجازة مع تمييز زر الإرسال"
+        }
+       },
+       "hotspot": {
+        "x": 62.9,
+        "y": 87,
+        "w": 15.2,
+        "h": 6.6
+       },
+       "headline": {
+        "en": [
+         "Tap",
+         "send."
+        ],
+        "ar": [
+         "اضغط",
+         "زر الإرسال."
+        ]
+       },
+       "text": {
+        "en": "Tap the send button to submit your request for approval.",
+        "ar": "اضغط زر الإرسال لتقديم طلبك للاعتماد."
+       },
+       "helper": {
+        "en": "In the ⋮ menu next to it, the same action is called Submit.",
+        "ar": "في قائمة ⋮ المجاورة، يظهر الإجراء نفسه باسم Submit."
+       },
+       "status": "verified"
+      }
+     ]
+    },
+    {
+     "id": "web",
+     "frame": "browser",
+     "status": "source-validation-required",
+     "path": "My HR › Self Service › Vacations / Out of Office Request",
+     "steps": [
+      {
+       "id": "leave-web-01",
+       "screen": {
+        "src": null,
+        "alt": {
+         "en": "HITS Web Self Service page",
+         "ar": "صفحة Self Service على HITS Web"
+        }
+       },
+       "hotspot": null,
+       "headline": {
+        "en": [
+         "Open your",
+         "leave page."
+        ],
+        "ar": [
+         "افتح",
+         "صفحة الإجازات."
+        ]
+       },
+       "text": {
+        "en": "Go to My HR › Self Service › Vacations / Out of Office Request.",
+        "ar": "انتقل إلى My HR › Self Service › Vacations / Out of Office Request."
+       },
+       "helper": null,
+       "status": "verified"
+      },
+      {
+       "id": "leave-web-02",
+       "screen": {
+        "src": null,
+        "alt": {
+         "en": "Requests page with New Request",
+         "ar": "صفحة الطلبات وعليها New Request"
+        }
+       },
+       "hotspot": null,
+       "headline": {
+        "en": [
+         "Select",
+         "New Request."
+        ],
+        "ar": [
+         "اختر",
+         "New Request."
+        ]
+       },
+       "text": {
+        "en": "Select New Request.",
+        "ar": "اختر New Request."
+       },
+       "helper": null,
+       "status": "verified"
+      },
+      {
+       "id": "leave-web-03",
+       "screen": {
+        "src": null,
+        "alt": {
+         "en": "Request form with Vacation Type",
+         "ar": "نموذج الطلب وفيه Vacation Type"
+        }
+       },
+       "hotspot": null,
+       "headline": {
+        "en": [
+         "Choose the",
+         "Vacation Type."
+        ],
+        "ar": [
+         "اختر",
+         "Vacation Type."
+        ]
+       },
+       "text": {
+        "en": "Select the Vacation Type.",
+        "ar": "اختر نوع الإجازة من Vacation Type."
+       },
+       "helper": null,
+       "status": "verified"
+      },
+      {
+       "id": "leave-web-04",
+       "screen": {
+        "src": null,
+        "alt": {
+         "en": "Request form with the leave dates",
+         "ar": "نموذج الطلب وفيه تواريخ الإجازة"
+        }
+       },
+       "hotspot": null,
+       "headline": {
+        "en": [
+         "Set the",
+         "dates."
+        ],
+        "ar": [
+         "حدِّد",
+         "التاريخ."
+        ]
+       },
+       "text": {
+        "en": "Select the date or leave period shown on the screen.",
+        "ar": "حدِّد التاريخ أو فترة الإجازة الظاهرة على الشاشة."
+       },
+       "helper": null,
+       "status": "verified"
+      },
+      {
+       "id": "leave-web-05",
+       "screen": {
+        "src": null,
+        "alt": {
+         "en": "Request form details",
+         "ar": "تفاصيل نموذج الطلب"
+        }
+       },
+       "hotspot": null,
+       "headline": {
+        "en": [
+         "Complete the",
+         "details."
+        ],
+        "ar": [
+         "أكمِل",
+         "البيانات المطلوبة."
+        ]
+       },
+       "text": {
+        "en": "Complete any required request details.",
+        "ar": "أكمِل أي بيانات مطلوبة في الطلب."
+       },
+       "helper": null,
+       "status": "verified"
+      },
+      {
+       "id": "leave-web-06",
+       "screen": {
+        "src": null,
+        "alt": {
+         "en": "Request form with the Submit button",
+         "ar": "نموذج الطلب وعليه زر Submit"
+        }
+       },
+       "hotspot": null,
+       "headline": {
+        "en": [
+         "Select",
+         "Submit."
+        ],
+        "ar": [
+         "اختر",
+         "Submit."
+        ]
+       },
+       "text": {
+        "en": "Select Submit to send the request for approval.",
+        "ar": "اختر Submit لإرسال الطلب للاعتماد."
+       },
+       "helper": null,
+       "status": "verified"
+      }
+     ],
+     "_hiddenReason": "awaiting screenshots"
+    }
+   ],
+   "goodToKnow": [
+    {
+     "text": {
+      "en": "Want to check how many days you have left? Use Balance in the Leaves Request menu.",
+      "ar": "تريد معرفة رصيد إجازاتك؟ استخدم Balance في قائمة Leaves Request."
+     },
+     "link": "leave-balance",
+     "status": "confirm"
+    },
+    {
+     "text": {
+      "en": "If a list of names appears when you open Leaves Request, tap your own name first.",
+      "ar": "إذا ظهرت قائمة أسماء عند فتح Leaves Request، فاضغط اسمك أولًا."
+     },
+     "link": null,
+     "status": "confirm"
+    },
+    {
+     "text": {
+      "en": "You can change a request while no approver has acted on it.",
+      "ar": "يمكنك تعديل الطلب ما دام لم يتّخذ أي معتمِد إجراءً عليه."
+     },
+     "link": "managing-requests",
+     "status": "confirm"
+    },
+    {
+     "text": {
+      "en": "History keeps a record of your past requests.",
+      "ar": "تحتفظ History بسجلّ طلباتك السابقة."
+     },
+     "link": null,
+     "status": "verified"
+    }
+   ],
+   "helpCard": false,
+   "check": {
+    "q": {
+     "en": "You want half a day of annual leave. Where do you choose that?",
+     "ar": "تريد نصف يوم من إجازتك السنوية. أين تختار ذلك؟"
+    },
+    "options": [
+     {
+      "text": {
+       "en": "In the Leave field — select Annual 1/2 Day.",
+       "ar": "في خانة Leave، باختيار Annual 1/2 Day."
+      },
+      "correct": true,
+      "why": {
+       "en": "The Leave field lists every leave type, including half and quarter days.",
+       "ar": "تعرض خانة Leave كل أنواع الإجازات، ومنها نصف اليوم وربع اليوم."
+      }
+     },
+     {
+      "text": {
+       "en": "In the To date.",
+       "ar": "في تاريخ To."
+      },
+      "correct": false,
+      "why": {
+       "en": "Dates set when, not what kind of leave.",
+       "ar": "التواريخ تحدّد موعد الإجازة، لا نوعها."
+      }
+     },
+     {
+      "text": {
+       "en": "In Other info.",
+       "ar": "في خانة Other info."
+      },
+      "correct": false,
+      "why": {
+       "en": "Other info is for extra details, not the leave type.",
+       "ar": "خانة Other info للتفاصيل الإضافية، لا لنوع الإجازة."
+      }
+     }
+    ]
+   },
+   "screensStatus": "verified"
+  },
+  {
+   "id": "time-permission",
+   "chapter": "C",
+   "audience": "employee",
+   "status": "verified",
+   "active": false,
+   "icon": "calendar-days",
+   "name": {
+    "en": "Request a time permission",
+    "ar": "طلب استئذان"
+   },
+   "situation": {
+    "en": "I need a short permission during the working day",
+    "ar": "أحتاج إذنًا قصيرًا خلال يوم العمل"
+   },
+   "title": {
+    "en": [
+     "Request a",
+     "time permission."
+    ],
+    "ar": [
+     "اطلب",
+     "استئذانًا."
+    ]
+   },
+   "purpose": {
+    "en": "Sends a time-permission request to your approver.",
+    "ar": "يرسل طلب استئذان إلى المعتمِد."
+   },
+   "path": null,
+   "platforms": [
+    {
+     "id": "web",
+     "frame": "browser",
+     "status": "source-validation-required",
+     "path": "My HR › Self Services › Time Management › Time Permissions Request",
+     "steps": [
+      {
+       "id": "tp-web-01",
+       "screen": {
+        "src": null,
+        "alt": {
+         "en": "",
+         "ar": ""
+        }
+       },
+       "hotspot": null,
+       "headline": {
+        "en": [
+         "Open",
+         "Time Permissions Request."
+        ],
+        "ar": [
+         "افتح",
+         "Time Permissions Request."
+        ]
+       },
+       "text": {
+        "en": "Go to My HR › Self Services › Time Management › Time Permissions Request.",
+        "ar": "انتقل إلى My HR › Self Services › Time Management › Time Permissions Request."
+       },
+       "helper": null,
+       "status": "verified"
+      },
+      {
+       "id": "tp-web-02",
+       "screen": {
+        "src": null,
+        "alt": {
+         "en": "",
+         "ar": ""
+        }
+       },
+       "hotspot": null,
+       "headline": {
+        "en": [
+         "Select",
+         "New Request."
+        ],
+        "ar": [
+         "اختر",
+         "New Request."
+        ]
+       },
+       "text": {
+        "en": "Select New Request.",
+        "ar": "اختر New Request."
+       },
+       "helper": null,
+       "status": "verified"
+      },
+      {
+       "id": "tp-web-03",
+       "screen": {
+        "src": null,
+        "alt": {
+         "en": "",
+         "ar": ""
+        }
+       },
+       "hotspot": null,
+       "headline": {
+        "en": [
+         "Choose the",
+         "permission."
+        ],
+        "ar": [
+         "اختر",
+         "نوع الإذن."
+        ]
+       },
+       "text": {
+        "en": "Select the required Permission.",
+        "ar": "اختر الإذن المطلوب من Permission."
+       },
+       "helper": null,
+       "status": "verified"
+      },
+      {
+       "id": "tp-web-04",
+       "screen": {
+        "src": null,
+        "alt": {
+         "en": "",
+         "ar": ""
+        }
+       },
+       "hotspot": null,
+       "headline": {
+        "en": [
+         "Set the",
+         "date and time."
+        ],
+        "ar": [
+         "حدِّد",
+         "التاريخ والوقت."
+        ]
+       },
+       "text": {
+        "en": "Select the Date and, where the screen asks, the permission time.",
+        "ar": "حدِّد Date، ووقت الإذن إذا طلبته الشاشة."
+       },
+       "helper": null,
+       "status": "verified"
+      },
+      {
+       "id": "tp-web-05",
+       "screen": {
+        "src": null,
+        "alt": {
+         "en": "",
+         "ar": ""
+        }
+       },
+       "hotspot": null,
+       "headline": {
+        "en": [
+         "Select",
+         "Submit."
+        ],
+        "ar": [
+         "اختر",
+         "Submit."
+        ]
+       },
+       "text": {
+        "en": "Select Submit to send the request for approval.",
+        "ar": "اختر Submit لإرسال الطلب للاعتماد."
+       },
+       "helper": null,
+       "status": "verified"
+      }
+     ],
+     "_hiddenReason": "awaiting screenshots"
+    }
+   ],
+   "goodToKnow": [
+    {
+     "text": {
+      "en": "Before submitting, you can also Save or Cancel the request.",
+      "ar": "قبل الإرسال، يمكنك أيضًا اختيار Save أو Cancel."
+     },
+     "link": null,
+     "status": "verified"
+    },
+    {
+     "text": {
+      "en": "You can change a request while no approver has acted on it.",
+      "ar": "يمكنك تعديل الطلب ما دام لم يتّخذ أي معتمِد إجراءً عليه."
+     },
+     "link": "managing-requests",
+     "status": "verified"
+    },
+    {
+     "text": {
+      "en": "Check the hours you have used in My Permissions on the app.",
+      "ar": "راجِع الساعات التي استخدمتها من My Permissions في التطبيق."
+     },
+     "link": "my-permissions",
+     "status": "verified"
+    }
+   ],
+   "check": {
+    "q": {
+     "en": "Your manager has not acted on your permission request yet. Can you still change it?",
+     "ar": "لم يتّخذ مديرك إجراءً على طلب الاستئذان بعد. هل يمكنك تعديله؟"
+    },
+    "options": [
+     {
+      "text": {
+       "en": "Yes, while no approver has acted",
+       "ar": "نعم، ما دام لم يتّخذ أي معتمِد إجراءً"
+      },
+      "correct": true,
+      "why": {
+       "en": "Change is available until an approver acts.",
+       "ar": "التعديل متاح حتى يتّخذ المعتمِد إجراءً."
+      }
+     },
+     {
+      "text": {
+       "en": "No, it is locked once sent",
+       "ar": "لا، يُقفل بمجرد إرساله"
+      },
+      "correct": false,
+      "why": {
+       "en": "You can still change it until an approver acts.",
+       "ar": "يمكنك تعديله حتى يتّخذ المعتمِد إجراءً."
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": "my-permissions",
+   "chapter": "C",
+   "audience": "employee",
+   "status": "verified",
+   "active": true,
+   "icon": "calendar-days",
+   "name": {
+    "en": "Check your permission hours",
+    "ar": "معرفة ساعات الاستئذان"
+   },
+   "situation": {
+    "en": "How many permission hours have I used?",
+    "ar": "كم ساعة استئذان استخدمت؟"
+   },
+   "title": {
+    "en": [
+     "Check your",
+     "permission hours."
+    ],
+    "ar": [
+     "اعرف",
+     "ساعات الاستئذان."
+    ]
+   },
+   "purpose": {
+    "en": "Shows the permission hours and the number of permissions you have used.",
+    "ar": "يعرض ساعات الاستئذان وعدد مرات الاستئذان التي استخدمتها."
+   },
+   "path": null,
+   "platforms": [
+    {
+     "id": "app",
+     "frame": "phone",
+     "status": "verified",
+     "path": "Home › My Permissions",
+     "steps": [
+      {
+       "id": "myperm-app-01",
+       "screen": {
+        "src": "[embedded screenshot]",
+        "alt": {
+         "en": "HITS home page with My Permissions highlighted",
+         "ar": "الصفحة الرئيسية مع تمييز My Permissions"
+        }
+       },
+       "hotspot": {
+        "x": 27.7,
+        "y": 38,
+        "w": 20.5,
+        "h": 13.9
+       },
+       "headline": {
+        "en": [
+         "Tap",
+         "My Permissions."
+        ],
+        "ar": [
+         "اضغط",
+         "My Permissions."
+        ]
+       },
+       "text": {
+        "en": "On the home page, tap My Permissions.",
+        "ar": "من الصفحة الرئيسية، اضغط My Permissions."
+       },
+       "helper": null,
+       "status": "verified"
+      },
+      {
+       "id": "myperm-app-02",
+       "screen": {
+        "src": "[embedded screenshot]",
+        "alt": {
+         "en": "My Permissions screen with Permission Hours highlighted",
+         "ar": "شاشة My Permissions مع تمييز Permission Hours"
+        }
+       },
+       "hotspot": {
+        "x": 1,
+        "y": 7.5,
+        "w": 98,
+        "h": 60
+       },
+       "headline": {
+        "en": [
+         "Read your",
+         "hours."
+        ],
+        "ar": [
+         "اقرأ",
+         "ساعاتك."
+        ]
+       },
+       "text": {
+        "en": "Permission Hours and Permission Count show what you have used in the selected Period.",
+        "ar": "يعرض قسما Permission Hours وPermission Count ما استخدمته خلال الفترة المحددة في Period."
+       },
+       "helper": null,
+       "status": "verified"
+      }
+     ]
+    }
+   ],
+   "goodToKnow": [
+    {
+     "text": {
+      "en": "To ask for a new permission, see Request a time permission.",
+      "ar": "لطلب إذن جديد، راجِع دليل طلب استئذان."
+     },
+     "link": null,
+     "status": "verified"
+    }
+   ]
+  },
+  {
+   "id": "missing-time",
+   "chapter": "C",
+   "audience": "employee",
+   "status": "verified",
+   "active": false,
+   "icon": "calendar-days",
+   "name": {
+    "en": "Fix a missing time-in or time-out",
+    "ar": "استكمال حضور أو انصراف غير مسجَّل"
+   },
+   "situation": {
+    "en": "I forgot to clock in or out",
+    "ar": "نسيت تسجيل الحضور أو الانصراف"
+   },
+   "title": {
+    "en": [
+     "Fix a missing",
+     "time record."
+    ],
+    "ar": [
+     "استكمِل",
+     "تسجيل الوقت."
+    ]
+   },
+   "purpose": {
+    "en": "Sends an Incomplete TK request to add a missing time-in or time-out.",
+    "ar": "يرسل طلب Incomplete TK لإضافة وقت حضور أو انصراف غير مسجَّل."
+   },
+   "path": null,
+   "platforms": [
+    {
+     "id": "web",
+     "frame": "browser",
+     "status": "source-validation-required",
+     "path": "My HR › Self Services › Time Management › Incomplete TK Request",
+     "steps": [
+      {
+       "id": "tk-web-01",
+       "screen": {
+        "src": null,
+        "alt": {
+         "en": "",
+         "ar": ""
+        }
+       },
+       "hotspot": null,
+       "headline": {
+        "en": [
+         "Open",
+         "Incomplete TK Request."
+        ],
+        "ar": [
+         "افتح",
+         "Incomplete TK Request."
+        ]
+       },
+       "text": {
+        "en": "Go to My HR › Self Services › Time Management › Incomplete TK Request.",
+        "ar": "انتقل إلى My HR › Self Services › Time Management › Incomplete TK Request."
+       },
+       "helper": null,
+       "status": "verified"
+      },
+      {
+       "id": "tk-web-02",
+       "screen": {
+        "src": null,
+        "alt": {
+         "en": "",
+         "ar": ""
+        }
+       },
+       "hotspot": null,
+       "headline": {
+        "en": [
+         "Select",
+         "New Request."
+        ],
+        "ar": [
+         "اختر",
+         "New Request."
+        ]
+       },
+       "text": {
+        "en": "Select New Request.",
+        "ar": "اختر New Request."
+       },
+       "helper": null,
+       "status": "verified"
+      },
+      {
+       "id": "tk-web-03",
+       "screen": {
+        "src": null,
+        "alt": {
+         "en": "",
+         "ar": ""
+        }
+       },
+       "hotspot": null,
+       "headline": {
+        "en": [
+         "Choose the",
+         "Entry Date."
+        ],
+        "ar": [
+         "اختر",
+         "Entry Date."
+        ]
+       },
+       "text": {
+        "en": "Select the Entry Date from the incomplete records shown.",
+        "ar": "اختر Entry Date من السجلات غير المكتملة الظاهرة."
+       },
+       "helper": null,
+       "status": "verified"
+      },
+      {
+       "id": "tk-web-04",
+       "screen": {
+        "src": null,
+        "alt": {
+         "en": "",
+         "ar": ""
+        }
+       },
+       "hotspot": null,
+       "headline": {
+        "en": [
+         "Add the",
+         "missing time."
+        ],
+        "ar": [
+         "أضِف",
+         "الوقت الناقص."
+        ]
+       },
+       "text": {
+        "en": "Add the missing Time in or Time out.",
+        "ar": "أضِف وقت الحضور Time in أو الانصراف Time out الناقص."
+       },
+       "helper": null,
+       "status": "verified"
+      },
+      {
+       "id": "tk-web-05",
+       "screen": {
+        "src": null,
+        "alt": {
+         "en": "",
+         "ar": ""
+        }
+       },
+       "hotspot": null,
+       "headline": {
+        "en": [
+         "Select",
+         "Save."
+        ],
+        "ar": [
+         "اختر",
+         "Save."
+        ]
+       },
+       "text": {
+        "en": "Select Save.",
+        "ar": "اختر Save."
+       },
+       "helper": null,
+       "status": "verified"
+      },
+      {
+       "id": "tk-web-06",
+       "screen": {
+        "src": null,
+        "alt": {
+         "en": "",
+         "ar": ""
+        }
+       },
+       "hotspot": null,
+       "headline": {
+        "en": [
+         "Attach",
+         "if needed."
+        ],
+        "ar": [
+         "أرفِق",
+         "عند الحاجة."
+        ]
+       },
+       "text": {
+        "en": "If a supporting document is needed, select Attachments, add the file, then select Insert.",
+        "ar": "إذا لزم مستند داعم، اختر Attachments وأضِف الملف، ثم اختر Insert."
+       },
+       "helper": null,
+       "status": "verified"
+      },
+      {
+       "id": "tk-web-07",
+       "screen": {
+        "src": null,
+        "alt": {
+         "en": "",
+         "ar": ""
+        }
+       },
+       "hotspot": null,
+       "headline": {
+        "en": [
+         "Check before",
+         "you submit."
+        ],
+        "ar": [
+         "راجِع",
+         "قبل الإرسال."
+        ]
+       },
+       "text": {
+        "en": "To correct the saved request, select Change, fix the time, then select Update.",
+        "ar": "لتصحيح الطلب المحفوظ، اختر Change وعدّل الوقت، ثم اختر Update."
+       },
+       "helper": null,
+       "status": "verified"
+      },
+      {
+       "id": "tk-web-08",
+       "screen": {
+        "src": null,
+        "alt": {
+         "en": "",
+         "ar": ""
+        }
+       },
+       "hotspot": null,
+       "headline": {
+        "en": [
+         "Select",
+         "Submit."
+        ],
+        "ar": [
+         "اختر",
+         "Submit."
+        ]
+       },
+       "text": {
+        "en": "Select Submit to send the request for approval.",
+        "ar": "اختر Submit لإرسال الطلب للاعتماد."
+       },
+       "helper": null,
+       "status": "verified"
+      }
+     ],
+     "_hiddenReason": "awaiting screenshots"
+    }
+   ],
+   "goodToKnow": [
+    {
+     "text": {
+      "en": "Attach a document only when your process requires one.",
+      "ar": "أرفِق مستندًا فقط إذا تطلّبت إجراءاتك ذلك."
+     },
+     "link": null,
+     "status": "verified"
+    },
+    {
+     "text": {
+      "en": "Follow your request under current requests until it is decided.",
+      "ar": "تابِع طلبك ضمن الطلبات الحالية حتى يُتّخذ القرار."
+     },
+     "link": "managing-requests",
+     "status": "verified"
+    }
+   ],
+   "check": {
+    "q": {
+     "en": "You saved the request and then noticed the wrong time. What do you do?",
+     "ar": "حفظت الطلب ثم لاحظت خطأً في الوقت. ماذا تفعل؟"
+    },
+    "options": [
+     {
+      "text": {
+       "en": "Select Change, fix it, then Update",
+       "ar": "اختر Change وصحّحه، ثم Update"
+      },
+      "correct": true,
+      "why": {
+       "en": "Change lets you correct the saved request before you submit.",
+       "ar": "يتيح Change تصحيح الطلب المحفوظ قبل الإرسال."
+      }
+     },
+     {
+      "text": {
+       "en": "Create a second request",
+       "ar": "أنشئ طلبًا ثانيًا"
+      },
+      "correct": false,
+      "why": {
+       "en": "That creates a duplicate. Correct the saved one instead.",
+       "ar": "هذا ينشئ طلبًا مكرّرًا. صحّح الطلب المحفوظ بدلًا من ذلك."
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": "my-attendance",
+   "chapter": "C",
+   "audience": "employee",
+   "active": false,
+   "name": {
+    "en": "Check your attendance",
+    "ar": "معرفة سجل حضورك"
+   }
+  },
+  {
+   "id": "geo-attendance",
+   "chapter": "C",
+   "audience": "employee",
+   "active": false,
+   "name": {
+    "en": "Record GEO attendance",
+    "ar": "تسجيل الحضور بالموقع (GEO Attendance)"
+   }
+  },
+  {
+   "id": "payslip",
+   "chapter": "D",
+   "audience": "employee",
+   "active": false,
+   "name": {
+    "en": "View your monthly payslip",
+    "ar": "عرض قسيمة الراتب الشهرية"
+   }
+  },
+  {
+   "id": "changes-request",
+   "chapter": "D",
+   "audience": "employee",
+   "active": false,
+   "name": {
+    "en": "Submit a changes request",
+    "ar": "تقديم طلب تغيير (Changes Request)"
+   }
+  },
+  {
+   "id": "change-password",
+   "chapter": "D",
+   "audience": "employee",
+   "active": false,
+   "name": {
+    "en": "Change your password",
+    "ar": "تغيير كلمة المرور"
+   }
+  },
+  {
+   "id": "delegate",
+   "chapter": "D",
+   "audience": "employee",
+   "status": "verified",
+   "active": false,
+   "icon": "user",
+   "name": {
+    "en": "Delegate your workflow approvals",
+    "ar": "تفويض صلاحيات الاعتماد"
+   },
+   "situation": {
+    "en": "I'll be away and someone must approve for me",
+    "ar": "سأغيب وأحتاج من يعتمد بدلًا مني"
+   },
+   "title": {
+    "en": [
+     "Delegate your",
+     "approvals."
+    ],
+    "ar": [
+     "فوِّض",
+     "اعتماداتك."
+    ]
+   },
+   "purpose": {
+    "en": "Lets another person act on your workflow approvals for a set period.",
+    "ar": "يتيح لشخص آخر اتخاذ إجراءات الاعتماد بدلًا منك لفترة محددة."
+   },
+   "path": null,
+   "platforms": [
+    {
+     "id": "web",
+     "frame": "browser",
+     "status": "source-validation-required",
+     "path": "My HR › Self Services › Profile › Workflow Delegation",
+     "steps": [
+      {
+       "id": "dg-web-01",
+       "screen": {
+        "src": null,
+        "alt": {
+         "en": "",
+         "ar": ""
+        }
+       },
+       "hotspot": null,
+       "headline": {
+        "en": [
+         "Open",
+         "Workflow Delegation."
+        ],
+        "ar": [
+         "افتح",
+         "Workflow Delegation."
+        ]
+       },
+       "text": {
+        "en": "Go to My HR › Self Services › Profile › Workflow Delegation.",
+        "ar": "انتقل إلى My HR › Self Services › Profile › Workflow Delegation."
+       },
+       "helper": null,
+       "status": "verified"
+      },
+      {
+       "id": "dg-web-02",
+       "screen": {
+        "src": null,
+        "alt": {
+         "en": "",
+         "ar": ""
+        }
+       },
+       "hotspot": null,
+       "headline": {
+        "en": [
+         "Select",
+         "New Request."
+        ],
+        "ar": [
+         "اختر",
+         "New Request."
+        ]
+       },
+       "text": {
+        "en": "Select New Request.",
+        "ar": "اختر New Request."
+       },
+       "helper": null,
+       "status": "verified"
+      },
+      {
+       "id": "dg-web-03",
+       "screen": {
+        "src": null,
+        "alt": {
+         "en": "",
+         "ar": ""
+        }
+       },
+       "hotspot": null,
+       "headline": {
+        "en": [
+         "Choose the",
+         "workflow."
+        ],
+        "ar": [
+         "اختر",
+         "مسار الاعتماد."
+        ]
+       },
+       "text": {
+        "en": "Select the Work Flow Doc. to delegate.",
+        "ar": "اختر Work Flow Doc. المراد تفويضه."
+       },
+       "helper": null,
+       "status": "verified"
+      },
+      {
+       "id": "dg-web-04",
+       "screen": {
+        "src": null,
+        "alt": {
+         "en": "",
+         "ar": ""
+        }
+       },
+       "hotspot": null,
+       "headline": {
+        "en": [
+         "Choose the",
+         "role."
+        ],
+        "ar": [
+         "اختر",
+         "الدور."
+        ]
+       },
+       "text": {
+        "en": "Select the Role to delegate.",
+        "ar": "اختر Role المراد تفويضه."
+       },
+       "helper": null,
+       "status": "verified"
+      },
+      {
+       "id": "dg-web-05",
+       "screen": {
+        "src": null,
+        "alt": {
+         "en": "",
+         "ar": ""
+        }
+       },
+       "hotspot": null,
+       "headline": {
+        "en": [
+         "Choose the",
+         "delegate."
+        ],
+        "ar": [
+         "اختر",
+         "المفوَّض."
+        ]
+       },
+       "text": {
+        "en": "Select the Delegate Name.",
+        "ar": "اختر الشخص المفوَّض من Delegate Name."
+       },
+       "helper": null,
+       "status": "verified"
+      },
+      {
+       "id": "dg-web-06",
+       "screen": {
+        "src": null,
+        "alt": {
+         "en": "",
+         "ar": ""
+        }
+       },
+       "hotspot": null,
+       "headline": {
+        "en": [
+         "Set the",
+         "period."
+        ],
+        "ar": [
+         "حدِّد",
+         "الفترة."
+        ]
+       },
+       "text": {
+        "en": "Specify the Delegation Period.",
+        "ar": "حدِّد فترة التفويض في Delegation Period."
+       },
+       "helper": null,
+       "status": "verified"
+      },
+      {
+       "id": "dg-web-07",
+       "screen": {
+        "src": null,
+        "alt": {
+         "en": "",
+         "ar": ""
+        }
+       },
+       "hotspot": null,
+       "headline": {
+        "en": [
+         "Select",
+         "Submit."
+        ],
+        "ar": [
+         "اختر",
+         "Submit."
+        ]
+       },
+       "text": {
+        "en": "Select Submit to send the request for approval.",
+        "ar": "اختر Submit لإرسال الطلب للاعتماد."
+       },
+       "helper": null,
+       "status": "verified"
+      }
+     ],
+     "_hiddenReason": "awaiting screenshots"
+    }
+   ],
+   "goodToKnow": [
+    {
+     "text": {
+      "en": "Choosing All workflow documents and All roles creates one delegation request for each role in each document.",
+      "ar": "اختيار كل مسارات الاعتماد وكل الأدوار ينشئ طلب تفويض لكل دور في كل مسار."
+     },
+     "link": null,
+     "status": "verified"
+    },
+    {
+     "text": {
+      "en": "You can edit a delegation while the delegate has not acted: open Workflow Delegation, select Change, edit it, then select Update.",
+      "ar": "يمكنك تعديل التفويض ما دام المفوَّض لم يتّخذ إجراءً: افتح Workflow Delegation واختر Change، ثم عدّل واختر Update."
+     },
+     "link": null,
+     "status": "verified"
+    },
+    {
+     "text": {
+      "en": "When the period ends, unanswered requests stay with you only.",
+      "ar": "عند انتهاء الفترة، تبقى الطلبات التي لم يُتّخذ فيها إجراء لديك فقط."
+     },
+     "link": null,
+     "status": "verified"
+    }
+   ],
+   "check": {
+    "q": {
+     "en": "Your delegate has not acted yet, and you need different dates. What do you do?",
+     "ar": "لم يتّخذ المفوَّض إجراءً بعد، وتحتاج تغيير التواريخ. ماذا تفعل؟"
+    },
+    "options": [
+     {
+      "text": {
+       "en": "Select Change, edit, then Update",
+       "ar": "اختر Change وعدّل، ثم Update"
+      },
+      "correct": true,
+      "why": {
+       "en": "You can edit a delegation until the delegate acts.",
+       "ar": "يمكنك تعديل التفويض حتى يتّخذ المفوَّض إجراءً."
+      }
+     },
+     {
+      "text": {
+       "en": "Create a new delegation",
+       "ar": "أنشئ تفويضًا جديدًا"
+      },
+      "correct": false,
+      "why": {
+       "en": "Edit the existing one instead, to avoid duplicates.",
+       "ar": "عدّل التفويض الحالي بدلًا من ذلك لتجنّب التكرار."
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": "managing-requests",
+   "chapter": "E",
+   "audience": "employee",
+   "active": true,
+   "reference": true,
+   "page": "requests",
+   "name": {
+    "en": "Managing my requests",
+    "ar": "إدارة طلباتي"
+   },
+   "situation": {
+    "en": "What can I do after I send a request?",
+    "ar": "ماذا أستطيع أن أفعل بعد إرسال الطلب؟"
+   }
+  },
+  {
+   "id": "approve-leave",
+   "chapter": "F",
+   "audience": "manager",
+   "status": "verified",
+   "active": false,
+   "icon": "circle-check",
+   "name": {
+    "en": "Approve or reject a leave request",
+    "ar": "اعتماد طلب إجازة أو رفضه"
+   },
+   "situation": {
+    "en": "A team member asked for leave",
+    "ar": "أحد أعضاء فريقي طلب إجازة"
+   },
+   "title": {
+    "en": [
+     "Approve a",
+     "leave request."
+    ],
+    "ar": [
+     "اعتمِد",
+     "طلب إجازة."
+    ]
+   },
+   "purpose": {
+    "en": "Records your decision on a leave request.",
+    "ar": "يسجّل قرارك على طلب الإجازة."
+   },
+   "path": null,
+   "platforms": [
+    {
+     "id": "web",
+     "frame": "browser",
+     "status": "source-validation-required",
+     "path": "My HR › Self Services › Vacation › Vacations Approvals",
+     "steps": [
+      {
+       "id": "al-web-01",
+       "screen": {
+        "src": null,
+        "alt": {
+         "en": "",
+         "ar": ""
+        }
+       },
+       "hotspot": null,
+       "headline": {
+        "en": [
+         "Open",
+         "Vacations Approvals."
+        ],
+        "ar": [
+         "افتح",
+         "Vacations Approvals."
+        ]
+       },
+       "text": {
+        "en": "Go to My HR › Self Services › Vacation › Vacations Approvals.",
+        "ar": "انتقل إلى My HR › Self Services › Vacation › Vacations Approvals."
+       },
+       "helper": null,
+       "status": "verified"
+      },
+      {
+       "id": "al-web-02",
+       "screen": {
+        "src": null,
+        "alt": {
+         "en": "",
+         "ar": ""
+        }
+       },
+       "hotspot": null,
+       "headline": {
+        "en": [
+         "Approve or",
+         "reject."
+        ],
+        "ar": [
+         "اعتمِد",
+         "أو ارفض."
+        ]
+       },
+       "text": {
+        "en": "Select Approve or Reject for the request.",
+        "ar": "اختر Approve أو Reject للطلب."
+       },
+       "helper": null,
+       "status": "verified"
+      },
+      {
+       "id": "al-web-03",
+       "screen": {
+        "src": null,
+        "alt": {
+         "en": "",
+         "ar": ""
+        }
+       },
+       "hotspot": null,
+       "headline": {
+        "en": [
+         "Select",
+         "Save Action."
+        ],
+        "ar": [
+         "اختر",
+         "Save Action."
+        ]
+       },
+       "text": {
+        "en": "Select Save Action to confirm your decisions.",
+        "ar": "اختر Save Action لتأكيد قراراتك."
+       },
+       "helper": null,
+       "status": "verified"
+      }
+     ],
+     "_hiddenReason": "awaiting screenshots"
+    }
+   ],
+   "goodToKnow": [
+    {
+     "text": {
+      "en": "On the app, Leaves Approvals shows Current, Monitoring and History tabs.",
+      "ar": "في التطبيق، تعرض Leaves Approvals تبويبات Current وMonitoring وHistory."
+     },
+     "link": null,
+     "status": "verified"
+    }
+   ]
+  },
+  {
+   "id": "approve-permission",
+   "chapter": "F",
+   "audience": "manager",
+   "status": "verified",
+   "active": false,
+   "icon": "circle-check",
+   "name": {
+    "en": "Approve or reject a time permission",
+    "ar": "اعتماد طلب استئذان أو رفضه"
+   },
+   "situation": {
+    "en": "A team member asked for a time permission",
+    "ar": "أحد أعضاء فريقي طلب استئذانًا"
+   },
+   "title": {
+    "en": [
+     "Approve a",
+     "time permission."
+    ],
+    "ar": [
+     "اعتمِد",
+     "طلب استئذان."
+    ]
+   },
+   "purpose": {
+    "en": "Records your decision on time-permission requests.",
+    "ar": "يسجّل قرارك على طلبات الاستئذان."
+   },
+   "path": null,
+   "platforms": [
+    {
+     "id": "web",
+     "frame": "browser",
+     "status": "source-validation-required",
+     "path": "My HR › Self Services › Time Management › Time Permissions Approvals",
+     "steps": [
+      {
+       "id": "ap-web-01",
+       "screen": {
+        "src": null,
+        "alt": {
+         "en": "",
+         "ar": ""
+        }
+       },
+       "hotspot": null,
+       "headline": {
+        "en": [
+         "Open",
+         "Time Permissions Approvals."
+        ],
+        "ar": [
+         "افتح",
+         "Time Permissions Approvals."
+        ]
+       },
+       "text": {
+        "en": "Go to My HR › Self Services › Time Management › Time Permissions Approvals.",
+        "ar": "انتقل إلى My HR › Self Services › Time Management › Time Permissions Approvals."
+       },
+       "helper": null,
+       "status": "verified"
+      },
+      {
+       "id": "ap-web-02",
+       "screen": {
+        "src": null,
+        "alt": {
+         "en": "",
+         "ar": ""
+        }
+       },
+       "hotspot": null,
+       "headline": {
+        "en": [
+         "Filter",
+         "if needed."
+        ],
+        "ar": [
+         "صفِّ",
+         "عند الحاجة."
+        ]
+       },
+       "text": {
+        "en": "Use the permission and date filters if needed, then select Load Action.",
+        "ar": "استخدم فلاتر الإذن والتاريخ عند الحاجة، ثم اختر Load Action."
+       },
+       "helper": null,
+       "status": "verified"
+      },
+      {
+       "id": "ap-web-03",
+       "screen": {
+        "src": null,
+        "alt": {
+         "en": "",
+         "ar": ""
+        }
+       },
+       "hotspot": null,
+       "headline": {
+        "en": [
+         "Approve or",
+         "reject."
+        ],
+        "ar": [
+         "اعتمِد",
+         "أو ارفض."
+        ]
+       },
+       "text": {
+        "en": "Select Approve or Reject for each request.",
+        "ar": "اختر Approve أو Reject لكل طلب."
+       },
+       "helper": null,
+       "status": "verified"
+      },
+      {
+       "id": "ap-web-04",
+       "screen": {
+        "src": null,
+        "alt": {
+         "en": "",
+         "ar": ""
+        }
+       },
+       "hotspot": null,
+       "headline": {
+        "en": [
+         "Select",
+         "Save Action."
+        ],
+        "ar": [
+         "اختر",
+         "Save Action."
+        ]
+       },
+       "text": {
+        "en": "Select Save Action to confirm your decisions.",
+        "ar": "اختر Save Action لتأكيد قراراتك."
+       },
+       "helper": null,
+       "status": "verified"
+      }
+     ],
+     "_hiddenReason": "awaiting screenshots"
+    }
+   ],
+   "goodToKnow": []
+  },
+  {
+   "id": "approve-missing",
+   "chapter": "F",
+   "audience": "manager",
+   "status": "verified",
+   "active": false,
+   "icon": "circle-check",
+   "name": {
+    "en": "Approve or reject a missing-time request",
+    "ar": "اعتماد طلب استكمال حضور أو رفضه"
+   },
+   "situation": {
+    "en": "A team member fixed a missing time record",
+    "ar": "أحد أعضاء فريقي طلب استكمال تسجيل وقت"
+   },
+   "title": {
+    "en": [
+     "Approve a",
+     "missing-time request."
+    ],
+    "ar": [
+     "اعتمِد",
+     "طلب استكمال الوقت."
+    ]
+   },
+   "purpose": {
+    "en": "Records your decision on Incomplete TK requests.",
+    "ar": "يسجّل قرارك على طلبات Incomplete TK."
+   },
+   "path": null,
+   "platforms": [
+    {
+     "id": "web",
+     "frame": "browser",
+     "status": "source-validation-required",
+     "path": "My HR › Self Services › Time Management › Incomplete TK Approvals",
+     "steps": [
+      {
+       "id": "am-web-01",
+       "screen": {
+        "src": null,
+        "alt": {
+         "en": "",
+         "ar": ""
+        }
+       },
+       "hotspot": null,
+       "headline": {
+        "en": [
+         "Open",
+         "Incomplete TK Approvals."
+        ],
+        "ar": [
+         "افتح",
+         "Incomplete TK Approvals."
+        ]
+       },
+       "text": {
+        "en": "Go to My HR › Self Services › Time Management › Incomplete TK Approvals.",
+        "ar": "انتقل إلى My HR › Self Services › Time Management › Incomplete TK Approvals."
+       },
+       "helper": null,
+       "status": "verified"
+      },
+      {
+       "id": "am-web-02",
+       "screen": {
+        "src": null,
+        "alt": {
+         "en": "",
+         "ar": ""
+        }
+       },
+       "hotspot": null,
+       "headline": {
+        "en": [
+         "Load the",
+         "requests."
+        ],
+        "ar": [
+         "اعرض",
+         "الطلبات."
+        ]
+       },
+       "text": {
+        "en": "Set Attend Time Between, then select Load Action.",
+        "ar": "حدِّد Attend Time Between، ثم اختر Load Action."
+       },
+       "helper": null,
+       "status": "verified"
+      },
+      {
+       "id": "am-web-03",
+       "screen": {
+        "src": null,
+        "alt": {
+         "en": "",
+         "ar": ""
+        }
+       },
+       "hotspot": null,
+       "headline": {
+        "en": [
+         "Approve or",
+         "reject."
+        ],
+        "ar": [
+         "اعتمِد",
+         "أو ارفض."
+        ]
+       },
+       "text": {
+        "en": "Mark Approve or Reject for each request.",
+        "ar": "حدِّد Approve أو Reject لكل طلب."
+       },
+       "helper": null,
+       "status": "verified"
+      },
+      {
+       "id": "am-web-04",
+       "screen": {
+        "src": null,
+        "alt": {
+         "en": "",
+         "ar": ""
+        }
+       },
+       "hotspot": null,
+       "headline": {
+        "en": [
+         "Select",
+         "Save Action."
+        ],
+        "ar": [
+         "اختر",
+         "Save Action."
+        ]
+       },
+       "text": {
+        "en": "Select Save Action to confirm your decisions.",
+        "ar": "اختر Save Action لتأكيد قراراتك."
+       },
+       "helper": null,
+       "status": "verified"
+      }
+     ],
+     "_hiddenReason": "awaiting screenshots"
+    }
+   ],
+   "goodToKnow": [
+    {
+     "text": {
+      "en": "Approve All or Reject All applies one decision to every request shown. Use it only when that is right for all of them.",
+      "ar": "Approve All أو Reject All يطبّق قرارًا واحدًا على كل الطلبات الظاهرة. استخدمه فقط إذا كان مناسبًا لها جميعًا."
+     },
+     "link": null,
+     "status": "verified"
+    }
+   ]
+  },
+  {
+   "id": "approve-delegation",
+   "chapter": "F",
+   "audience": "manager",
+   "status": "verified",
+   "active": false,
+   "icon": "circle-check",
+   "name": {
+    "en": "Approve or reject a delegation request",
+    "ar": "اعتماد طلب تفويض أو رفضه"
+   },
+   "situation": {
+    "en": "Someone wants to delegate approvals to me",
+    "ar": "شخص يريد تفويض اعتماداته إليّ"
+   },
+   "title": {
+    "en": [
+     "Approve a",
+     "delegation."
+    ],
+    "ar": [
+     "اعتمِد",
+     "التفويض."
+    ]
+   },
+   "purpose": {
+    "en": "Accepts or declines approvals delegated to you.",
+    "ar": "يقبل أو يرفض الاعتمادات المفوَّضة إليك."
+   },
+   "path": null,
+   "platforms": [
+    {
+     "id": "web",
+     "frame": "browser",
+     "status": "source-validation-required",
+     "path": "My HR › Self Services › Delegation Approvals",
+     "steps": [
+      {
+       "id": "ad-web-01",
+       "screen": {
+        "src": null,
+        "alt": {
+         "en": "",
+         "ar": ""
+        }
+       },
+       "hotspot": null,
+       "headline": {
+        "en": [
+         "Open",
+         "Delegation Approvals."
+        ],
+        "ar": [
+         "افتح",
+         "Delegation Approvals."
+        ]
+       },
+       "text": {
+        "en": "Go to My HR › Self Services › Delegation Approvals.",
+        "ar": "انتقل إلى My HR › Self Services › Delegation Approvals."
+       },
+       "helper": null,
+       "status": "verified"
+      },
+      {
+       "id": "ad-web-02",
+       "screen": {
+        "src": null,
+        "alt": {
+         "en": "",
+         "ar": ""
+        }
+       },
+       "hotspot": null,
+       "headline": {
+        "en": [
+         "Approve or",
+         "reject."
+        ],
+        "ar": [
+         "اعتمِد",
+         "أو ارفض."
+        ]
+       },
+       "text": {
+        "en": "Select Approve or Reject for the delegation requests.",
+        "ar": "اختر Approve أو Reject لطلبات التفويض."
+       },
+       "helper": null,
+       "status": "verified"
+      },
+      {
+       "id": "ad-web-03",
+       "screen": {
+        "src": null,
+        "alt": {
+         "en": "",
+         "ar": ""
+        }
+       },
+       "hotspot": null,
+       "headline": {
+        "en": [
+         "Select",
+         "Save Action."
+        ],
+        "ar": [
+         "اختر",
+         "Save Action."
+        ]
+       },
+       "text": {
+        "en": "Select Save Action to confirm your decisions.",
+        "ar": "اختر Save Action لتأكيد قراراتك."
+       },
+       "helper": null,
+       "status": "verified"
+      }
+     ],
+     "_hiddenReason": "awaiting screenshots"
+    }
+   ],
+   "goodToKnow": [
+    {
+     "text": {
+      "en": "Delegated items show a Delegated checkbox on your approval page.",
+      "ar": "تظهر العناصر المفوَّضة بعلامة Delegated في صفحة الاعتمادات."
+     },
+     "link": null,
+     "status": "verified"
+    },
+    {
+     "text": {
+      "en": "When either you or the delegator acts on a request, it leaves the other person’s list.",
+      "ar": "عندما يتّخذ أحدكما إجراءً على طلب، يختفي من قائمة الآخر."
+     },
+     "link": null,
+     "status": "verified"
+    }
+   ]
+  },
+  {
+   "id": "attendance-tracking",
+   "chapter": "F",
+   "audience": "manager",
+   "active": false,
+   "name": {
+    "en": "Track team attendance",
+    "ar": "متابعة حضور الفريق"
+   }
+  },
+  {
+   "id": "default-shifts",
+   "chapter": "F",
+   "audience": "manager",
+   "active": false,
+   "name": {
+    "en": "Load default shifts",
+    "ar": "تحميل الورديات الافتراضية"
+   }
+  },
+  {
+   "id": "help",
+   "chapter": "G",
+   "audience": "all",
+   "active": true,
+   "reference": true,
+   "page": "help",
+   "name": {
+    "en": "Help, support and glossary",
+    "ar": "المساعدة والدعم والمصطلحات"
+   },
+   "situation": {
+    "en": "I need help or a term explained",
+    "ar": "أحتاج مساعدة أو شرح مصطلح"
+   }
+  }
+ ],
+ "pages": {
+  "requests": {
+   "chapter": "E",
+   "title": {
+    "en": [
+     "Managing",
+     "my requests."
+    ],
+    "ar": [
+     "إدارة",
+     "طلباتي."
+    ]
+   },
+   "items": [
+    {
+     "term": {
+      "en": "Current requests",
+      "ar": "الطلبات الحالية"
+     },
+     "meaning": {
+      "en": "Requests still waiting for action in the approval workflow. On the app this is the Current tab.",
+      "ar": "طلبات ما زالت تنتظر إجراءً في مسار الاعتماد. في التطبيق هي تبويب Current."
+     }
+    },
+    {
+     "term": {
+      "en": "Previous requests",
+      "ar": "الطلبات السابقة"
+     },
+     "meaning": {
+      "en": "Requests that were already approved or rejected. On the app this is the History tab.",
+      "ar": "طلبات سبق اعتمادها أو رفضها. في التطبيق هي تبويب History."
+     }
+    },
+    {
+     "term": {
+      "en": "Change",
+      "ar": "Change"
+     },
+     "meaning": {
+      "en": "Edit a request while no approver has acted on it.",
+      "ar": "تعديل الطلب ما دام لم يتّخذ أي معتمِد إجراءً عليه."
+     }
+    },
+    {
+     "term": {
+      "en": "Attachments",
+      "ar": "Attachments"
+     },
+     "meaning": {
+      "en": "Add supporting files where the process allows it.",
+      "ar": "إضافة مستندات داعمة إذا كانت الإجراءات تسمح بذلك."
+     }
+    },
+    {
+     "term": {
+      "en": "Delete",
+      "ar": "Delete"
+     },
+     "meaning": {
+      "en": "Remove a request before an approver acts on it.",
+      "ar": "حذف الطلب قبل أن يتّخذ المعتمِد إجراءً عليه."
+     }
+    },
+    {
+     "term": {
+      "en": "Details",
+      "ar": "Details"
+     },
+     "meaning": {
+      "en": "Show the information in the request.",
+      "ar": "عرض بيانات الطلب."
+     }
+    },
+    {
+     "term": {
+      "en": "Workflow",
+      "ar": "Workflow"
+     },
+     "meaning": {
+      "en": "Show who will act on the request. On the app, Flow Order in the ⋮ menu.",
+      "ar": "عرض من سيتّخذ إجراءً على الطلب. في التطبيق: Flow Order في قائمة ⋮."
+     }
+    }
+   ]
+  },
+  "help": {
+   "chapter": "G",
+   "title": {
+    "en": [
+     "Help",
+     "and glossary."
+    ],
+    "ar": [
+     "المساعدة",
+     "والمصطلحات."
+    ]
+   },
+   "support": [
+    {
+     "en": "Office 365 or company email password issues: email IT Support.",
+     "ar": "مشكلات Office 365 أو كلمة مرور بريد الشركة: راسِل الدعم الفني."
+    },
+    {
+     "en": "Your direct manager provides your HITS username and password.",
+     "ar": "يسلّمك مديرك المباشر اسم المستخدم وكلمة المرور لـ HITS."
+    },
+    {
+     "en": "Never share your password, including in screenshots or support messages.",
+     "ar": "لا تشارك كلمة المرور مع أحد، ولا تُظهرها في لقطات الشاشة أو رسائل الدعم."
+    },
+    {
+     "en": "If a screen looks different from this guide, stop and contact IT Support rather than guessing.",
+     "ar": "إذا بدت الشاشة مختلفة عن هذا الدليل، توقّف وتواصل مع الدعم الفني بدلًا من التخمين."
+    }
+   ]
+  },
+  "checklist": {
+   "title": {
+    "en": [
+     "My",
+     "checklist."
+    ],
+    "ar": [
+     "قائمة",
+     "مهامي."
+    ]
+   }
+  }
+ },
+ "glossary": [
+  {
+   "id": "application-mode",
+   "term": {
+    "en": "Application Mode",
+    "ar": "وضع التطبيق (Application Mode)"
+   },
+   "meaning": {
+    "en": "Signing in with your Work ID and HITS password (for employees without a work email).",
+    "ar": "الدخول بالرقم الوظيفي وكلمة مرور HITS (للموظفين الذين ليس لديهم بريد عمل)."
+   }
+  },
+  {
+   "id": "office-365",
+   "term": {
+    "en": "Office 365 login",
+    "ar": "الدخول عبر Office 365"
+   },
+   "meaning": {
+    "en": "Signing in with your work email and its password.",
+    "ar": "الدخول ببريد العمل وكلمة مروره."
+   }
+  },
+  {
+   "id": "current",
+   "term": {
+    "en": "Current request",
+    "ar": "طلب حالي"
+   },
+   "meaning": {
+    "en": "A request still moving through approval.",
+    "ar": "طلب ما زال في مسار الاعتماد."
+   }
+  },
+  {
+   "id": "previous",
+   "term": {
+    "en": "Previous request",
+    "ar": "طلب سابق"
+   },
+   "meaning": {
+    "en": "A request that already has a decision.",
+    "ar": "طلب صدر فيه قرار."
+   }
+  },
+  {
+   "id": "workflow",
+   "term": {
+    "en": "Workflow",
+    "ar": "مسار الاعتماد (Workflow)"
+   },
+   "meaning": {
+    "en": "The approval route and the people who act on your request.",
+    "ar": "خط سير الاعتماد، والأشخاص الذين يتّخذون إجراءً على طلبك."
+   }
+  },
+  {
+   "id": "incomplete-tk",
+   "term": {
+    "en": "Incomplete TK",
+    "ar": "Incomplete TK"
+   },
+   "meaning": {
+    "en": "A missing time-in or time-out in your attendance record.",
+    "ar": "وقت حضور أو انصراف غير مسجَّل في سجل حضورك."
+   }
+  },
+  {
+   "id": "delegation",
+   "term": {
+    "en": "Delegation",
+    "ar": "التفويض"
+   },
+   "meaning": {
+    "en": "Letting another person act on your approvals for a set period.",
+    "ar": "السماح لشخص آخر باتخاذ إجراءات الاعتماد بدلًا منك لفترة محددة."
+   }
+  },
+  {
+   "id": "run-no",
+   "term": {
+    "en": "Run No.",
+    "ar": "Run No."
+   },
+   "meaning": {
+    "en": "A payroll run number used when viewing a payslip on HITS Web.",
+    "ar": "رقم دورة الرواتب المستخدم عند عرض قسيمة الراتب على HITS Web."
+   }
+  }
+ ]
+}
