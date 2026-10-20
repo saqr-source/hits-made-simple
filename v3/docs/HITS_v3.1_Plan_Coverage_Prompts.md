@@ -95,3 +95,9 @@ Form questions (Short answer): Event, Role, Language, Task, Score, Session, Work
 5. Leaves Request: ⋮ opens Filter / Balance / New.
 6. Permissions Request: + starts a new request.
 7. Name lists: tapping a team member opens their record.
+
+## 7. v3.2 — Arabic app screens (20 Oct 2026)
+- 35 real Arabic-language screens (employee and manager views) added and masked: names, IDs, job titles, photos, balances, counts, address, attendance times.
+- In Arabic, every stop now shows the Arabic app screen and names the Arabic button (e.g. طلب الإجازات, موافقة الإذونات). English keeps the English screens.
+- Arabic-only stops (English screens still needed to make them bilingual): اطلب إذنًا (perm-request), متابعة الحضور والانصراف (attendance-tracking), اطلب تغيير بياناتك (changes-request), اعتمِد طلبات التغيير (changes-approvals). Leave approvals in Arabic now include موافقة الكل → confirmation dialog (closes audit H1 for leaves).
+- Steps still on English screens in Arabic (no Arabic screen with data): permission request details and approval, request history list for permissions, GEO filter, team name list. Each says so in its helper.

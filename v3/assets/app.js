@@ -89,14 +89,32 @@
   function ic(n) { return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" overflow="visible">' + (P[n] || P.info) + '</svg>'; }
 
   /* ---------- progress & points ---------- */
+  // Language view: Arabic uses the Arabic app screens where they exist; Arabic-only stops are hidden in English
+  function avail(id) { var t = D.tasks[id]; return !!t && (!t.only || t.only === S.lang); }
+  function ML() { return D.missions.map(function (m) { var c = {}; for (var k in m) c[k] = m[k]; c.tasks = m.tasks.filter(avail); return c; }).filter(function (m) { return m.tasks.length; }); }
+  function loc(t) {
+    var c = {}; for (var k in t) c[k] = t[k];
+    c.steps = t.steps.filter(function (s) { return !s.only || s.only === S.lang; }).map(function (s) {
+      if (S.lang !== 'ar' || !s.ar) return s;
+      var a = s.ar, o = {}; for (var k in s) o[k] = s[k];
+      if ('screen' in a) { o.screen = a.screen; o.type = null; }
+      if ('hotspot' in a) o.hotspot = a.hotspot;
+      if (a.headline) o.headline = { en: s.headline.en, ar: a.headline };
+      if (a.text) o.text = { en: s.text.en, ar: a.text };
+      if ('helper' in a) o.helper = a.helper ? { en: '', ar: a.helper } : null;
+      return o;
+    });
+    if (S.lang === 'ar' && t.path_ar) c.path = t.path_ar;
+    return c;
+  }
   function points() { var n = 0; for (var k in S.prog) n += S.prog[k].pts || 0; return n; }
   function isDone(id) { return !!(S.prog[id] && S.prog[id].done); }
-  function missionsFor(role) { return D.missions.filter(function (m) { return m.roles.indexOf(role) > -1; }).sort(function (a, b) { return role === 'manager' ? (a.id === 'approvals' ? -1 : b.id === 'approvals' ? 1 : 0) : 0; }); }
+  function missionsFor(role) { return ML().filter(function (m) { return m.roles.indexOf(role) > -1; }).sort(function (a, b) { return role === 'manager' ? (a.id === 'approvals' ? -1 : b.id === 'approvals' ? 1 : 0) : 0; }); }
   function mStats(m) { var d = m.tasks.filter(isDone).length; return { done: d, total: m.tasks.length, pct: Math.round(100 * d / m.tasks.length) }; }
   function missionOf(tid) {
-    var ms = missionsFor(S.role).concat(D.missions);
+    var ms = missionsFor(S.role).concat(ML());
     for (var i = 0; i < ms.length; i++) if (ms[i].tasks.indexOf(tid) > -1) return ms[i];
-    return D.missions[0];
+    return ML()[0];
   }
   function nextTask(m, cur) {
     var i = m.tasks.indexOf(cur), n = m.tasks.length;
@@ -149,8 +167,8 @@
     var q = $('#q'); q.focus();
     var run = function () {
       var v = q.value.trim().toLowerCase(), out = '';
-      Object.keys(D.tasks).forEach(function (id) {
-        var t = D.tasks[id], hay = (tx(t.name) + ' ' + tx(t.situation) + ' ' + tx(t.purpose) + ' ' + t.name.en + ' ' + (t.path || '')).toLowerCase();
+      Object.keys(D.tasks).filter(avail).forEach(function (id) {
+        var t = loc(D.tasks[id]), hay = (tx(t.name) + ' ' + tx(t.situation) + ' ' + tx(t.purpose) + ' ' + t.name.en + ' ' + (t.path || '')).toLowerCase();
         if (!v || hay.indexOf(v) > -1) out += taskRow(id, 0);
       });
       $('#qres').innerHTML = out || '<li class="muted">' + esc(U('noResults')) + '</li>';
@@ -216,8 +234,9 @@
   /* ---------- task player ---------- */
   var V = null; // current view state
   function startTask(id) {
-    var t = D.tasks[id]; if (!t) { location.hash = '#/'; return; }
-    var m = (S.curM && D.missions.filter(function (x) { return x.id === S.curM && x.tasks.indexOf(id) > -1; })[0]) || missionOf(id);
+    if (!avail(id)) { location.hash = '#/'; return; }
+    var t = loc(D.tasks[id]);
+    var m = (S.curM && ML().filter(function (x) { return x.id === S.curM && x.tasks.indexOf(id) > -1; })[0]) || missionOf(id);
     V = { id: id, t: t, m: m, phase: 'intro', i: 0, answered: null, order: shuffle(t.check.options.length), prevHot: null, prevScreen: null };
     taskView();
   }
@@ -261,7 +280,7 @@
       ph.innerHTML = '<div class="panel intro"><a class="tbtn back" href="#/">' + ic(S.lang === 'ar' ? 'arrow' : 'back') + esc(U('allMissions')) + '</a>' +
         two(t.title, 'h1') + '<div class="rule"></div>' +
         (t.outcome ? '<p class="purpose">' + h(tx(t.outcome)) + '</p>' : '') +
-        '<div class="meta">' + (t.path ? '<span class="pathchip">' + esc(t.path) + '</span>' : '') + '<span class="mchip">' + esc(fmt(U('stepsMeta'), { n: t.steps.length, m: mins })) + '</span></div>' +
+        '<div class="meta">' + (t.path ? '<span class="pathchip" dir="' + (S.lang === 'ar' && /[\u0600-\u06FF]/.test(t.path) ? 'rtl' : 'ltr') + '">' + h(t.path) + '</span>' : '') + '<span class="mchip">' + esc(fmt(U('stepsMeta'), { n: t.steps.length, m: mins })) + '</span></div>' +
         '<button class="btn btn-p startbtn" id="startbtn"><span>' + esc(U('startTask')) + '</span>' + ic(S.lang === 'ar' ? 'back' : 'arrow') + '</button>' +
         (desk ? '' : '<div class="preview" id="sbox">' + stageHtml() + '</div>') +
         (t.helpCard ? supportCard() : '') + '</div>';
@@ -560,7 +579,7 @@
     var hs = location.hash || '#/';
     if (hs.indexOf('#/task/') === 0) {
       var id = hs.slice(7);
-      if (keepV && V.id === id) { V.desk = innerWidth >= 900; taskView(); } else { startTask(id); if (V) V.desk = innerWidth >= 900; }
+      if (keepV && V.id === id && avail(id)) { V.desk = innerWidth >= 900; V.t = loc(D.tasks[id]); V.m = missionOf(id); V.i = Math.min(V.i, V.t.steps.length - 1); V.prevHot = null; taskView(); } else { startTask(id); if (V) V.desk = innerWidth >= 900; }
       document.body.classList.add('in-task');
     } else {
       V = null; document.body.classList.remove('in-task');
