@@ -733,7 +733,7 @@ NEWAR('attendance-tracking', 'pin', 'متابعة الحضور والانصرا�
     ('غياب', False, 'الغياب لا يظهر هنا، بل في تفاصيل الحضور والإنصراف.')])
 NEWAR('changes-request', 'list', 'طلب تغيير بيانات', 'أريد تسجيل تغيير في بياناتي', 'اطلب', 'تغيير بياناتك.',
     'يُرسل طلب تغيير، مثل شهادات ميلاد الأبناء، إلى المعتمِد.', 'تستطيع إرسال طلب تغيير للاعتماد.', 'الرئيسية › طلب تغيرات الحالة › +', [
-    SA('cr-01', 'ar_home_emp', EH['chgReq'], 'اضغط', 'طلب تغيرات الحالة.', 'من الصفحة الرئيسية، اضغط طلب تغيرات الحالة.'),
+    SA('cr-01', 'ar_home_mgr', P(300,340,420,505), 'اضغط', 'طلب تغيرات الحالة.', 'من الصفحة الرئيسية، اضغط طلب تغيرات الحالة.'),
     SA('cr-02', 'ar_chg_list', FAB_PLUS, 'ابدأ', 'طلبًا جديدًا.', 'اضغط + أسفل الشاشة.', 'تعرض الحالية طلباتك المفتوحة، والسابقة طلباتك القديمة.'),
     SA('cr-03', 'ar_chg_form', P(85,225,560,292), 'اختر', 'حركه التغيير.', 'اضغط خانة حركه التغيير لاختيار نوع الطلب.'),
     SA('cr-04', 'ar_chg_pick', P(4,945,585,1255), 'اختر', 'نوع الطلب.', 'اختر من القائمة، مثل شهادات ميلاد ابناء العاملين، ثم اضغط ✓.'),
@@ -875,7 +875,94 @@ for g in V22.get('glossary') or []:
 for x in V22['pages']['help'].get('support', []): x['ar'] = x['ar'].replace('Office 365', 'أوفيس 365')
 UI['ar']['helpCardTitle'] = ['مشكلة في كلمة مرور', 'بريد الشركة؟']
 
-data = {'version': '3.4', 'helpEmail': V22['meta']['helpEmail'], 'ui': UI, 'missions': MISSIONS, 'tasks': TASKS,
+# ================= v3.5: rewritten questions, new dark home, routes =================
+def QQ(tid, q, opts):
+    TASKS[tid]['check'] = {'q': {'en': q[0], 'ar': q[1]}, 'options': [{'text': {'en': o[0], 'ar': o[1]}, 'correct': o[2], 'why': {'en': o[3], 'ar': o[4]}} for o in opts]}
+QQ('signin-app', ('A new colleague has no work email. How does she sign in?', 'زميلة جديدة ليس لديها بريد عمل. كيف تسجّل الدخول؟'), [
+ ('Work ID in Username, her password, then LOGIN', 'رقمها الوظيفي في اسم المستخدم، ثم كلمة المرور، ثم زر الدخول', True, 'Without a work email, you sign in with your Work ID.', 'من ليس لديه بريد عمل يدخل برقمه الوظيفي.'),
+ ('Tap OFFICE 365 and type her Work ID', 'تضغط أوفيس 365 وتكتب رقمها الوظيفي', False, 'OFFICE 365 needs a work email and its password.', 'أوفيس 365 يحتاج بريد عمل وكلمة مروره.'),
+ ('Tap Register/Reactivate User', 'تضغط رابط التسجيل وإعادة التفعيل', False, 'That link is not for everyday sign-in.', 'هذا الرابط ليس للدخول اليومي.')])
+QQ('forgot-password', ('You forgot your HITS password. What does the Forgot password screen ask for?', 'نسيت كلمة مرور HITS. ماذا تطلب منك شاشة نسيت كلمة المرور؟'), [
+ ('Your username and company email, then SEND', 'اسم المستخدم وبريد الشركة، ثم زر الإرسال', True, 'Those two details start the recovery.', 'هاتان المعلومتان تبدآن الاسترجاع.'),
+ ('Your old password and a new one', 'كلمة المرور القديمة وكلمة جديدة', False, "You don't type a password here — that's what you are recovering.", 'لا تكتب كلمة مرور هنا، فهي ما تحاول استرجاعه.'),
+ ('Your phone number', 'رقم هاتفك', False, "The screen doesn't ask for it.", 'الشاشة لا تطلب رقم الهاتف.')])
+QQ('app-settings', ("Your app's buttons don't match the language of this guide. What do you change?", 'أزرار تطبيقك بلغة غير لغة هذا الدليل. ماذا تغيّر؟'), [
+ ('Language, in Settings', 'اللغة، من الإعدادات', True, 'Choose the same language as the guide you are following.', 'اختر لغة الدليل الذي تتابعه نفسها.'),
+ ('Theme', 'المظهر', False, 'Theme only changes light or dark colours.', 'المظهر يغيّر الألوان الفاتحة أو الداكنة فقط.'),
+ ('Tenant ID', 'رقم الجهة', False, 'Leave Tenant ID as it is.', 'اترك رقم الجهة كما هو.')])
+QQ('leave-balance', ('You want to know how many annual leave days you have left this year. Where do you look?', 'تريد معرفة أيام إجازتك السنوية المتبقية هذا العام. أين تبحث؟'), [
+ ('My Leaves › Leaves Balance', 'تفاصيل الإجازات › رصيد الأجازات', True, 'Leaves Balance shows what you have and what you have taken.', 'يعرض رصيد الأجازات ما لديك وما أخذته.'),
+ ('Leaves Request › History', 'طلب الإجازات › السابقة', False, 'History lists past requests, not your balance.', 'تعرض السابقة طلباتك القديمة، لا رصيدك.'),
+ ('My Permissions', 'بيانات الإذونات', False, 'My Permissions shows permission hours, not leave days.', 'بيانات الإذونات تعرض ساعات الإذن، لا أيام الإجازة.')])
+QQ('leave-menu', ("You're in Leaves Request, about to apply. How do you check your balance first?", 'أنت في طلب الإجازات وستقدّم طلبًا. كيف تعرف رصيدك أولًا؟'), [
+ ('Tap ⋮, then Balance', 'تضغط ⋮ ثم رصيد الاجازات', True, 'Balance in the ⋮ menu shows your balance for each period.', 'رصيد الاجازات في قائمة ⋮ يعرض رصيدك لكل فترة.'),
+ ('Tap +, then Leave', 'تضغط + ثم الأجازة', False, '+ starts a new request; it does not show your balance.', '+ يبدأ طلبًا جديدًا، ولا يعرض الرصيد.'),
+ ('Open History', 'تفتح السابقة', False, 'History lists past requests, not your balance.', 'تعرض السابقة طلباتك القديمة، لا رصيدك.')])
+QQ('leave-request', ('You need half a day off next Sunday. What do you choose in the Leave field?', 'تحتاج نصف يوم إجازة الأحد القادم. ماذا تختار في خانة الأجازة؟'), [
+ ('Annual 1/2 Day', '1/2 يوم سنوي', True, 'The half-day type takes half a day from your annual balance.', 'نوع نصف اليوم يخصم نصف يوم من رصيدك السنوي.'),
+ ('Annual Leave, with the same From and To date', 'اجازة سنوي بتاريخ واحد في من وإلى', False, 'That books a full day, not half.', 'هذا يحجز يومًا كاملًا، لا نصف يوم.'),
+ ('Annual Leave, and write "half day" in Other info', 'اجازة سنوي مع كتابة نصف يوم في بيانات اخرى', False, 'Other info does not change the leave type.', 'بيانات اخرى لا تغيّر نوع الإجازة.')])
+QQ('leave-history', ("You sent a leave request yesterday and your manager hasn't replied. Where is it?", 'قدّمت طلب إجازة أمس ولم يردّ مديرك بعد. أين تجده؟'), [
+ ('Leaves Request › Current', 'طلب الإجازات › الحالية', True, 'Current shows requests still waiting for a decision.', 'تعرض الحالية الطلبات التي ما زالت تنتظر قرارًا.'),
+ ('Leaves Request › History', 'طلب الإجازات › السابقة', False, 'A request moves to History after a decision.', 'ينتقل الطلب إلى السابقة بعد اتخاذ القرار.'),
+ ('My Leaves', 'تفاصيل الإجازات', False, 'My Leaves shows your balance, not your requests.', 'تفاصيل الإجازات تعرض رصيدك، لا طلباتك.')])
+QQ('my-permissions', ('Do you still have personal permission hours left this month? Where do you check?', 'هل بقيت لك ساعات إذن هذا الشهر؟ أين تتحقق؟'), [
+ ('My Permissions › Permission Hours', 'بيانات الإذونات › ساعات الإذن', True, 'Permission Hours shows the hours you have used this period.', 'يعرض قسم ساعات الإذن ما استخدمته خلال الفترة.'),
+ ('Permissions Request › History', 'طلب إذونات › السابقة', False, 'History lists requests, not your total hours.', 'تعرض السابقة الطلبات، لا إجمالي ساعاتك.'),
+ ('My Attendance', 'تفاصيل الحضور والإنصراف', False, 'My Attendance shows your attendance, not permission hours.', 'تعرض تفاصيل الحضور حضورك، لا ساعات الإذن.')])
+QQ('permission-history', ('Your manager approved your permission request. Where do you find it now?', 'وافق مديرك على طلب الإذن. أين تجده الآن؟'), [
+ ('Permissions Request › History', 'طلب إذونات › السابقة', True, 'Decided requests move to History.', 'تنتقل الطلبات المحسومة إلى السابقة.'),
+ ('Permissions Request › Current', 'طلب إذونات › الحالية', False, 'Current only shows requests still waiting.', 'تعرض الحالية الطلبات المنتظِرة فقط.'),
+ ('My Permissions', 'بيانات الإذونات', False, 'My Permissions shows hours used, not your requests.', 'بيانات الإذونات تعرض الساعات، لا الطلبات.')])
+QQ('my-attendance', ('HR says you were short on hours last month. How do you check?', 'أخبرتك الموارد البشرية أن ساعاتك نقصت الشهر الماضي. كيف تتحقق؟'), [
+ ('Open My Attendance and change the Period', 'تفتح تفاصيل الحضور والإنصراف وتغيّر الفترة', True, 'Over/Short Hours shows the gap for the Period you choose.', 'يعرض قسم ساعات أضافية / تأخير الفرق للفترة التي تختارها.'),
+ ('Open GEO Attendance', 'تفتح تسجيل الحضور والإنصراف', False, 'GEO Attendance records your arrival and departure; it does not total your hours.', 'هذه الشاشة لتسجيل الدخول والخروج، لا لحساب الساعات.'),
+ ('Open My Permissions', 'تفتح بيانات الإذونات', False, 'That shows permission hours only.', 'تعرض ساعات الإذن فقط.')])
+QQ('geo-attendance', ('You arrive at a client site and must record your attendance from your phone. What do you tap?', 'وصلت إلى موقع عميل وعليك تسجيل حضورك من هاتفك. ماذا تضغط؟'), [
+ ('GEO Attendance › In', 'تسجيل الحضور والإنصراف › دخول', True, 'In records your arrival with your location.', 'يسجّل دخول وقت وصولك مع موقعك.'),
+ ('GEO Attendance › Out', 'تسجيل الحضور والإنصراف › خروج', False, 'Out is for when you leave.', 'خروج يُستخدم عند المغادرة.'),
+ ('My Attendance', 'تفاصيل الحضور والإنصراف', False, 'My Attendance shows your record; it does not record attendance.', 'تعرض هذه الشاشة سجلّك، ولا تسجّل الحضور.')])
+QQ('notifications', ('The bell shows a Vacation request waiting your approval. Where do you decide on it?', 'يظهر في الجرس طلب إجازة بانتظار موافقتك. أين تتخذ القرار؟'), [
+ ('Leaves Approvals', 'موافقة الإجازات', True, 'Leave requests are decided in Leaves Approvals.', 'تُحسم طلبات الإجازة من موافقة الإجازات.'),
+ ('Permissions Approvals', 'موافقة الإذونات', False, 'That page is for time permissions.', 'هذه الصفحة لطلبات الإذن.'),
+ ('Leaves Request', 'طلب الإجازات', False, 'Leaves Request is for your own leave.', 'طلب الإجازات لإجازاتك أنت.')])
+QQ('approve-permissions', ('You marked three permission requests as approved, then closed the page without saving. What happens?', 'حدّدت الموافقة على ثلاثة طلبات إذن ثم أغلقت الصفحة دون حفظ. ماذا يحدث؟'), [
+ ('The requests stay waiting', 'تبقى الطلبات منتظِرة', True, 'Nothing is applied until you save.', 'لا يُطبَّق أي قرار قبل الحفظ.'),
+ ('The requests are approved', 'تُعتمد الطلبات', False, 'Without saving, nothing is applied.', 'دون حفظ لا يُطبَّق شيء.'),
+ ('The requests are rejected', 'تُرفض الطلبات', False, 'They are neither approved nor rejected.', 'لا تُعتمد ولا تُرفض.')])
+QQ('leave-approvals', ("A team member's request is still with their first approver before it reaches you. Which tab shows it?", 'طلب أحد أفراد فريقك ما زال لدى معتمِده الأول قبل أن يصل إليك. في أي تبويب يظهر؟'), [
+ ('Monitoring', 'القادمة', True, 'It shows requests waiting for an earlier approver.', 'يعرض الطلبات التي تنتظر معتمِدًا قبلك.'),
+ ('Current', 'الحالية', False, 'Current shows requests waiting for you.', 'تعرض الحالية ما ينتظرك أنت.'),
+ ('History', 'السابقة', False, 'History shows requests you have decided.', 'تعرض السابقة ما اتخذت فيه قرارًا.')])
+QQ('tk-approvals', ('An employee forgot to clock out on 5 October and sent a request. How do you find it?', 'نسي موظف تسجيل انصرافه يوم ٥ أكتوبر وقدّم طلبًا. كيف تجده؟'), [
+ ('Incomplete TK Approvals: set dates that include 5 Oct, then OK', 'موافقة القراءات الغير مكتملة: تواريخ تشمل ٥ أكتوبر، ثم موافق', True, 'The dates decide which requests load.', 'التواريخ تحدّد الطلبات التي تظهر.'),
+ ('Permissions Approvals', 'موافقة الإذونات', False, 'Missing clock-ins and outs are not permissions.', 'القراءات الناقصة ليست إذنًا.'),
+ ('Incomplete TK Request', 'طلب القراءات الغير مكتملة', False, 'That page is for your own missing times.', 'هذه الصفحة لقراءاتك أنت.')])
+QQ('find-permissions', ("You need last month's permission decisions only. What do you change?", 'تحتاج قرارات الإذن للشهر الماضي فقط. ماذا تغيّر؟'), [
+ ('The dates in the History filter', 'التواريخ في تصفية السابقة', True, 'The filter dates decide which requests show.', 'تواريخ التصفية تحدّد الطلبات الظاهرة.'),
+ ('The Current tab', 'تبويب الحالية', False, 'Current shows requests still waiting.', 'تعرض الحالية ما زال ينتظر.'),
+ ('Cancel', 'إلغاء', False, 'Cancel closes the filter without changes.', 'إلغاء يغلق التصفية دون تغيير.')])
+QQ('team-records', ("You want to see a team member's leave record. What do you do?", 'تريد الاطلاع على سجلّ إجازات أحد أفراد فريقك. ماذا تفعل؟'), [
+ ('Open My Leaves and tap their name', 'تفتح تفاصيل الإجازات وتضغط اسمه', True, 'Managers see their team in the list; your own name is first.', 'يرى المدير فريقه في القائمة، واسمه هو الأول.'),
+ ('Open Leaves Approvals › History', 'تفتح موافقة الإجازات › السابقة', False, 'That only lists requests you have decided.', 'تعرض الطلبات التي حسمتها فقط.'),
+ ('Open Leaves Request', 'تفتح طلب الإجازات', False, 'Leaves Request is for your own leave.', 'طلب الإجازات لإجازاتك أنت.')])
+
+# new English dark home (clean screenshot, 12 tiles)
+def T(c, r): return hs([5.5, 28.5, 51.5, 74.5][c], [26.5, 42.0, 57.5][r], 20, 14.5)
+HOME = {'changes': T(0,0), 'myLeaves': T(1,0), 'leavesRequest': T(2,0), 'leavesApprovals': T(3,0), 'myPermissions': T(0,1),
+        'permissionsRequest': T(1,1), 'permissionsApprovals': T(2,1), 'tkRequest': T(3,1), 'tkApprovals': T(0,2),
+        'myAttendance': T(1,2), 'attTracking': T(2,2), 'geo': T(3,2)}
+SETHOT = {'balance-app-01': 'myLeaves', 'leave-app-01': 'leavesRequest', 'lh-01': 'leavesRequest', 'myperm-app-01': 'myPermissions',
+          'ph-01': 'permissionsRequest', 'ma-01': 'myAttendance', 'ap-01': 'permissionsApprovals'}
+for t in TASKS.values():
+    for s in t['steps']:
+        if s['screen'] == 'home_dark' and s['id'] in SETHOT: s['hotspot'] = HOME[SETHOT[s['id']]]
+
+# routes: data change requests belong to the manager view
+MISSIONS[:] = [m for m in MISSIONS if m['id'] != 'mydata']
+MISSIONS[-1]['tasks'] = ['find-permissions', 'changes-request', 'changes-approvals', 'team-records']
+
+data = {'version': '3.5', 'helpEmail': V22['meta']['helpEmail'], 'ui': UI, 'missions': MISSIONS, 'tasks': TASKS,
         'glossary': V22.get('glossary'), 'help': V22['pages'].get('help')}
 # sanity: every check has exactly one correct option; every step has a screen
 for k, t in TASKS.items():
