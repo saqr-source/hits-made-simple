@@ -799,7 +799,61 @@ for t in TASKS.values():
     for st in t['steps']:
         assert st.get('ar', {}).get('screen', st['screen']), st['id']
 
-data = {'version': '3.2', 'helpEmail': V22['meta']['helpEmail'], 'ui': UI, 'missions': MISSIONS, 'tasks': TASKS,
+# ================= v3.3: Arabic copy fully in Arabic (20 Oct) =================
+def stepar(tid, sid, **kw):
+    st = next(s for s in TASKS[tid]['steps'] if s['id'] == sid); st.setdefault('ar', {}).update(kw)
+def H2(a, b): return [a, b]
+# steps that still show an English screen: Arabic wording first, the on-screen English label in brackets
+stepar('signin-app', 'signin-app-01', headline=H2('افتح', 'تطبيق HITS.'), text='افتح تطبيق HITS على هاتفك.')
+stepar('signin-app', 'signin-app-o365', headline=H2('لديك بريد عمل؟', 'اضغط أوفيس 365.'), text='إذا كان لديك بريد إلكتروني للعمل، فاضغط زر أوفيس 365 (OFFICE 365)، ثم ادخل ببريد العمل وكلمة مروره.')
+stepar('signin-app', 'signin-app-02', text='أدخِل رقمك الوظيفي في خانة اسم المستخدم (Username).')
+stepar('signin-app', 'signin-app-03', text='أدخِل كلمة المرور في خانة كلمة المرور (Password).')
+stepar('signin-app', 'signin-app-04', headline=H2('اضغط', 'زر الدخول.'), text='اضغط زر الدخول (LOGIN).')
+stepar('forgot-password', 'forgot-app-01', headline=H2('اضغط', 'نسيت كلمة المرور؟'), text='في شاشة الدخول، اضغط رابط نسيت كلمة المرور (Forgot my password?).')
+stepar('forgot-password', 'forgot-app-02', text='أدخِل اسم المستخدم (Username) وبريد الشركة الإلكتروني (Company Email).')
+stepar('forgot-password', 'forgot-app-03', headline=H2('اضغط', 'إرسال.'), text='اضغط إرسال (SEND)، ثم اتبع التعليمات التي تصلك.', helper='تدخل ببريد الشركة؟ لكلمة مرور البريد، تواصل مع الدعم الفني.')
+stepar('app-settings', 'settings-app-02', headline=H2('اختر', 'المظهر.'), text='من المظهر (Theme)، اختر تلقائي أو فاتح أو داكن.')
+stepar('app-settings', 'settings-app-03', headline=H2('اختر', 'اللغة.'), text='من اللغة (Language)، اختر العربية ليطابق تطبيقك هذا الدليل.', helper='يتيح التطبيق أيضًا الإنجليزية والفرنسية.')
+stepar('approve-permissions', 'ap-03', text='يعرض كل طلب الموظف، ونوع الإذن، ووقتَي البداية والنهاية، وعدد الساعات. اضغطه لعرض التفاصيل.')
+stepar('approve-permissions', 'ap-04', text='تعرض أقسام تفاصيل الإذن والوردية والحضور الطلبَ مع الوردية وأوقات الحضور الفعلية.')
+stepar('notifications', 'nt-02', text='تعرض كل بطاقة نوع الطلب والموظف والتواريخ، مع عبارة «بانتظار موافقتك».')
+stepar('leave-approvals', 'la-ar3', text='يطلب التطبيق التأكيد. اكتب السبب إن احتجت، ثم اضغط موافق.')
+for s in TASKS['permission-history']['steps']:
+    if s['id'] == 'ph-03': s['only'] = 'en'
+for s in TASKS['geo-attendance']['steps']:
+    if s['id'] == 'geo-05': s['only'] = 'en'
+for tp in TASKS['permission-history']['tips']: tp['after'] = 'ph-02'
+# titles, purposes, tips
+setar(TASKS['signin-app']['purpose'], 'يفتح تطبيق HITS بالرقم الوظيفي وكلمة المرور، للموظفين الذين ليس لديهم بريد إلكتروني للعمل.')
+setar(TASKS['signin-app']['outcome'], 'تستطيع تسجيل الدخول إلى تطبيق HITS.')
+setar(TASKS['forgot-password']['purpose'], 'يبدأ استرجاع كلمة المرور من شاشة الدخول في تطبيق HITS.')
+setar(TASKS['app-settings']['purpose'], 'يغيّر مظهر تطبيق HITS واللغة التي يستخدمها.')
+setar(TASKS['leave-request']['purpose'], 'يُرسل طلب إجازتك إلى المعتمِد عبر التطبيق.')
+setar(TASKS['geo-attendance']['purpose'], 'يسجّل حضورك وانصرافك من هاتفك عبر تسجيل الحضور والإنصراف.')
+setar(TASKS['geo-attendance']['outcome'], 'تستطيع تسجيل الحضور والانصراف من هاتفك.')
+setar(TASKS['leave-menu']['outcome'], 'تستطيع معرفة رصيدك من طلب الإجازات في ثوانٍ.')
+for t in TASKS.values():
+    for tp in t['tips']:
+        tp['text']['ar'] = (tp['text']['ar'].replace('يعملان على HITS Web', 'يعملان على موقع HITS')
+            .replace('لـ HITS', 'للتطبيق').replace('اترك Tenant ID كما هو.', 'اترك رقم الجهة (Tenant ID) كما هو.')
+            .replace(' (دليل استخدام تطبيق HITS)', '').replace('يرفض HITS الطلب', 'يرفض التطبيق الطلب'))
+# questions: all Arabic
+qar('signin-app', ['الرقم الوظيفي وكلمة المرور، ثم زر الدخول', 'زر أوفيس 365', 'رابط التسجيل وإعادة التفعيل'],
+    ['الموظفون الذين ليس لديهم بريد عمل يدخلون بالرقم الوظيفي.', 'أوفيس 365 مخصّص للموظفين الذين لديهم بريد عمل.', 'هذا الرابط ليس للدخول اليومي.'])
+qar('forgot-password', ['اسم المستخدم وبريد الشركة الإلكتروني'], ['تطلب الشاشة اسم المستخدم وبريد الشركة، ثم تضغط إرسال.'],
+    'ما البيانات التي تطلبها شاشة نسيت كلمة المرور؟')
+qar('app-settings', ['اللغة، من الإعدادات', 'المظهر', 'رقم الجهة (Tenant ID)'],
+    ['اختر العربية من اللغة ليطابق تطبيقك هذا الدليل.', 'المظهر يغيّر الألوان الفاتحة أو الداكنة فقط.', 'اترك رقم الجهة كما هو.'])
+qar('my-attendance', ['الفترة', 'المظهر', 'اللغة'], ['تحدّد الفترة المدة لكل قسم.', 'المظهر يغيّر ألوان التطبيق فقط.', 'اللغة تغيّر لغة التطبيق، لا التواريخ.'])
+qar('notifications', ['موافقة الإجازات', 'موافقة الإذونات', 'طلب الإجازات'], None, 'وصلك إشعار إجازة بانتظار موافقتك. أين تتخذ القرار؟')
+qar('team-records', ['الاسم الأول في الأعلى', 'آخر اسم في القائمة', 'في موافقة الإجازات'], ['اسمك يأتي دائمًا أولًا.', 'اسمك في الأعلى، لا في الأسفل.', 'موافقة الإجازات لاتخاذ القرار في الطلبات.'])
+import re as _re
+for k, t in TASKS.items():
+    for o in [t['check']['q']] + [x['text'] for x in t['check']['options']] + [x['why'] for x in t['check']['options']]:
+        left = _re.sub(r'\([^)]*\)', '', o['ar'])
+        assert not _re.search(r'[A-Za-z]', left), (k, o['ar'])
+
+data = {'version': '3.3', 'helpEmail': V22['meta']['helpEmail'], 'ui': UI, 'missions': MISSIONS, 'tasks': TASKS,
         'glossary': V22.get('glossary'), 'help': V22['pages'].get('help')}
 # sanity: every check has exactly one correct option; every step has a screen
 for k, t in TASKS.items():
