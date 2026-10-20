@@ -573,6 +573,7 @@
 
   /* ---------- router ---------- */
   function render(keep) {
+    [].forEach.call(document.querySelectorAll('.tipsheet, .zoom'), function (e) { e.remove(); });
     setLangAttrs();
     var keepV = keep && V && location.hash.indexOf('#/task/') === 0;
     app.innerHTML = header(); bindHeader();

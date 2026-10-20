@@ -618,7 +618,7 @@ UI['en'].update({'searchPlaceholder': 'Search stops', 'noResults': 'No stops mat
 UI['ar'].update({'searchPlaceholder': 'ابحث عن محطة', 'noResults': 'لا توجد محطات تطابق بحثك.',
   'privacy': 'يُحفظ تقدّمك على هذا الجهاز فقط. إذا فُعِّلت المتابعة، نحصي الزيارات والمحطات المكتملة لتحسين الدليل.',
   'replay': 'أعِد المحطة', 'reviewMission': 'راجِع المشوار', 'praise': ['أحسنت!', 'في محلّها!', 'عمل رائع!'],
-  'points': '{n#نقطة}', 'tasksDone': '{done} من {total#محطة}', 'earned': '+{n#نقطة}', 'stepsMeta': '{n#خطوة} · حوالي {m#دقيقة}', 'correct': 'صحيح!'})
+  'questionWorth': 'أجب إجابة صحيحة واربح {n#نقطة} إضافية', 'points': '{n#نقطة}', 'tasksDone': '{done} من {total#محطة}', 'earned': '+{n#نقطة}', 'stepsMeta': '{n#خطوة} · حوالي {m#دقيقة}', 'correct': 'صحيح!'})
 
 # ================= v3.2: Arabic app screens (20 Oct, Arabic employee + manager views) =================
 def P(x0, y0, x1, y1): return hs(round(x0 / 5.89, 1), round(y0 / 12.59, 1), round((x1 - x0) / 5.89, 1), round((y1 - y0) / 12.59, 1))
@@ -853,7 +853,29 @@ for k, t in TASKS.items():
         left = _re.sub(r'\([^)]*\)', '', o['ar'])
         assert not _re.search(r'[A-Za-z]', left), (k, o['ar'])
 
-data = {'version': '3.3', 'helpEmail': V22['meta']['helpEmail'], 'ui': UI, 'missions': MISSIONS, 'tasks': TASKS,
+# ================= v3.4: clean Arabic sentences (no mixed English), Arabic settings screen =================
+SET_AR = 'ar_settings'
+stepar('app-settings', 'settings-app-02', screen=SET_AR, hotspot=P(53,458,536,697), headline=H2('اختر', 'المظهر.'), text='اختر المظهر الذي يناسبك: تلقائي أو فاتح أو داكن.')
+stepar('app-settings', 'settings-app-03', screen=SET_AR, hotspot=P(53,331,536,429), headline=H2('اختر', 'اللغة.'), text='من خانة اللغة، اختر العربية ليطابق تطبيقك هذا الدليل.', helper='يتيح التطبيق أيضًا الإنجليزية والفرنسية.')
+stepar('signin-app', 'signin-app-o365', text='إذا كان لديك بريد إلكتروني للعمل، فاضغط زر أوفيس 365، ثم ادخل ببريد العمل وكلمة مروره.')
+stepar('signin-app', 'signin-app-02', text='أدخِل رقمك الوظيفي في الخانة الأولى، خانة اسم المستخدم.')
+stepar('signin-app', 'signin-app-03', text='أدخِل كلمة المرور في الخانة الثانية.')
+stepar('signin-app', 'signin-app-04', text='اضغط زر الدخول على يسار زر أوفيس 365.')
+stepar('forgot-password', 'forgot-app-01', text='في شاشة الدخول، اضغط رابط نسيت كلمة المرور أسفل الأزرار.')
+stepar('forgot-password', 'forgot-app-02', text='أدخِل اسم المستخدم في الخانة الأولى، وبريد الشركة الإلكتروني في الخانة الثانية.')
+stepar('forgot-password', 'forgot-app-03', text='اضغط زر الإرسال، ثم اتبع التعليمات التي تصلك.')
+TASKS['signin-app']['path_ar'] = 'شاشة الدخول'; TASKS['forgot-password']['path_ar'] = 'شاشة الدخول › نسيت كلمة المرور'; TASKS['app-settings']['path_ar'] = 'الإعدادات'
+for tp in TASKS['app-settings']['tips']: setar(tp['text'], 'اترك رقم الجهة كما هو، ولا تغيّره.')
+TASKS['app-settings']['check']['options'][2]['text']['ar'] = 'رقم الجهة'
+GL = {'وضع التطبيق (Application Mode)': 'وضع التطبيق', 'الدخول عبر Office 365': 'الدخول عبر أوفيس 365', 'مسار الاعتماد (Workflow)': 'مسار الاعتماد',
+      'Incomplete TK': 'القراءات غير المكتملة', 'Run No.': 'رقم دورة الرواتب'}
+for g in V22.get('glossary') or []:
+    if g['term']['ar'] in GL: g['term']['ar'] = GL[g['term']['ar']]
+    g['meaning']['ar'] = g['meaning']['ar'].replace('على HITS Web', 'على موقع HITS').replace('Office 365', 'أوفيس 365')
+for x in V22['pages']['help'].get('support', []): x['ar'] = x['ar'].replace('Office 365', 'أوفيس 365')
+UI['ar']['helpCardTitle'] = ['مشكلة في كلمة مرور', 'بريد الشركة؟']
+
+data = {'version': '3.4', 'helpEmail': V22['meta']['helpEmail'], 'ui': UI, 'missions': MISSIONS, 'tasks': TASKS,
         'glossary': V22.get('glossary'), 'help': V22['pages'].get('help')}
 # sanity: every check has exactly one correct option; every step has a screen
 for k, t in TASKS.items():
