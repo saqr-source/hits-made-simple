@@ -25,7 +25,17 @@
   function U(k) { return D.ui[S.lang][k]; }
   function tx(o) { return o == null ? '' : (typeof o === 'string' ? o : (o[S.lang] != null ? o[S.lang] : o.en)); }
   function num(n) { return S.lang === 'ar' ? new Intl.NumberFormat('ar-EG').format(n) : String(n); }
-  function fmt(s, m) { return s.replace(/\{(\w+)\}/g, function (_, k) { return typeof m[k] === 'number' ? num(m[k]) : m[k]; }); }
+  // Arabic counted nouns: 1 → singular, 2 → dual, 3–10 → plural, 11+ → singular
+  var AR_NOUN = { 'نقطة': ['نقطة', 'نقطتان', 'نقاط'], 'محطة': ['محطة', 'محطتان', 'محطات'], 'خطوة': ['خطوة', 'خطوتان', 'خطوات'], 'دقيقة': ['دقيقة', 'دقيقتان', 'دقائق'] };
+  function arCount(n, noun) {
+    var f = AR_NOUN[noun] || [noun, noun, noun];
+    if (n === 1) return noun === 'دقيقة' ? f[0] : num(1) + ' ' + f[0];
+    if (n === 2) return f[1];
+    if (n >= 3 && n <= 10) return num(n) + ' ' + f[2];
+    return num(n) + ' ' + f[0];
+  }
+  function fmt(s, m) { return s.replace(/\{(\w+)(?:#([^}]+))?\}/g, function (_, k, noun) { return noun ? arCount(m[k], noun) : (typeof m[k] === 'number' ? num(m[k]) : m[k]); }); }
+  function pct(n) { return S.lang === 'ar' ? new Intl.NumberFormat('ar-EG', { style: 'percent' }).format(n / 100) : n + '%'; }
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   // Isolate Latin runs (HITS labels) inside Arabic text so punctuation stays put.
   var LAT = /[A-Za-z][A-Za-z0-9 .,'’\/&+\-:()\[\]›…?]*[A-Za-z0-9)\]?.…]|[A-Za-z]/g;
@@ -72,7 +82,9 @@
     hourglass: '<path d="M7 3.5h10M7 20.5h10M8 3.5c0 4.5 8 5 8 8.5s-8 4-8 8.5M16 3.5c0 4.5-8 5-8 8.5s8 4 8 8.5"/>',
     'log-in': '<path d="M14 4h4a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-4M10 16l4-4-4-4M14 12H4"/>',
     lock: '<rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/>',
-    list: '<path d="M9 6h11M9 12h11M9 18h11M4.5 6h.01M4.5 12h.01M4.5 18h.01"/>'
+    list: '<path d="M9 6h11M9 12h11M9 18h11M4.5 6h.01M4.5 12h.01M4.5 18h.01"/>',
+    users: '<circle cx="9" cy="8.5" r="3.2"/><path d="M3.5 19.5c.6-3.2 2.8-5 5.5-5s4.9 1.8 5.5 5"/><circle cx="16.5" cy="9.5" r="2.6"/><path d="M15.5 14.6c2.6-.2 4.5 1.4 5 4.4"/>',
+    route: '<circle cx="6" cy="18" r="2.2"/><circle cx="18" cy="6" r="2.2"/><path d="M8.2 18H15a3 3 0 0 0 0-6H9a3 3 0 0 1 0-6h6.8"/>'
   };
   function ic(n) { return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" overflow="visible">' + (P[n] || P.info) + '</svg>'; }
 
@@ -95,11 +107,11 @@
   /* ---------- tracking (anonymous, Google Form) ---------- */
   function track(event, task, score) {
     try {
-      if (!TR.formAction || !TR.fields || !TR.fields.event) return;
+      if (!TR.mode || TR.mode === 'off' || !TR.formAction || !TR.fields || !TR.fields.event) return;
       var f = TR.fields, p = new URLSearchParams();
       var add = function (k, v) { if (f[k]) p.append(f[k], v == null ? '' : String(v)); };
       add('event', event); add('role', S.role); add('language', S.lang); add('task', task || '');
-      add('score', score == null ? '' : score); add('session', S.sid); add('department', S.dept || '');
+      add('score', score == null ? '' : score); add('session', S.sid); add('department', S.dept || ''); if (TR.mode === 'workid') add('workId', S.wid || '');
       fetch(TR.formAction, { method: 'POST', mode: 'no-cors', body: p, keepalive: true }).catch(function () {});
     } catch (e) {}
   }
@@ -112,7 +124,7 @@
   }
   function header() {
     return '<a class="skip" href="#main">' + esc(U('skipToContent')) + '</a>' +
-      '<header class="hdr" dir="ltr"><a class="brand" href="#/" aria-label="' + esc(U('appName')) + '"><span class="plate"><img src="' + A('assets/img/logo.webp') + '" alt="Al Safy Group"></span><b dir="auto">' + esc(U('appName')) + '</b></a>' +
+      '<header class="hdr" dir="ltr"><a class="brand" href="#/" aria-label="' + esc(U('appName')) + '"><span class="plate"><img src="' + A('assets/img/logo.webp') + '" alt="Al Safy Group"></span><b dir="' + (S.lang === 'ar' ? 'rtl' : 'ltr') + '">' + esc(U('appName')) + '</b></a>' +
       '<span class="chip-pts" id="pts" title="' + esc(U('pointsLabel')) + '">' + ic('star') + '<span>' + num(points()) + '</span></span>' +
       '<button class="ibtn" id="btnSearch" aria-label="' + esc(U('search')) + '">' + ic('search') + '</button>' +
       '<button class="lang" id="btnLang" data-to="' + (S.lang === 'ar' ? 'en' : 'ar') + '" aria-label="' + esc(U('langName')) + '">' + esc(U('langSwitch')) + '</button></header>' +
@@ -171,11 +183,11 @@
       html += '<article class="mcard' + (s.done === s.total ? ' complete' : '') + '">' +
         (s.done === s.total ? '<span class="badge-done">' + ic('trophy') + esc(U('done')) + '</span>' : '') +
         '<div class="mhead"><span class="micon">' + ic(m.icon) + '</span><div><span class="eyebrow">' + esc(U('mission')) + '</span><h2>' + h(tx(m.title)) + '</h2><p class="out">' + h(tx(m.outcome)) + '</p></div></div>' +
-        '<div class="pbar"><div class="lbl"><span>' + esc(fmt(U('tasksDone'), { done: s.done, total: s.total })) + '</span><span>' + num(s.pct) + '%</span></div><div class="track"><i data-w="' + s.pct + '"></i></div></div>' +
+        '<div class="pbar"><div class="lbl"><span>' + esc(fmt(U('tasksDone'), { done: s.done, total: s.total })) + '</span><span>' + pct(s.pct) + '</span></div><div class="track"><i data-w="' + s.pct + '"></i></div></div>' +
         '<ul class="tlist">' + m.tasks.map(function (t, i) { return taskRow(t, i + 1); }).join('') + '</ul>' +
         '<button class="btn btn-p" data-task="' + (nx || m.tasks[0]) + '" data-m="' + m.id + '"><span>' + esc(cta) + '</span>' + ic(S.lang === 'ar' ? 'back' : 'arrow') + '</button></article>';
     });
-    html += '</section><footer class="foot"><div class="row"><a class="tbtn" href="#/help">' + ic('help') + esc(U('help')) + '</a>' +
+    html += '</section><p class="coming">' + ic('route') + '<span>' + h(U('coming')) + '</span></p><footer class="foot"><div class="row"><a class="tbtn" href="#/help">' + ic('help') + esc(U('help')) + '</a>' +
       (points() ? '<button class="tbtn" id="reset">' + ic('refresh') + esc(U('resetProgress')) + '</button>' : '') + '</div>' +
       ((TR.departments || []).length ? '<label class="dept row">' + esc(U('department')) + ' <select id="dept"><option value="">' + esc(U('departmentNone')) + '</option>' + TR.departments.map(function (d) { return '<option' + (S.dept === d ? ' selected' : '') + '>' + esc(d) + '</option>'; }).join('') + '</select></label>' : '') +
       '<p>' + h(U('privacy')) + '</p></footer></div>';
@@ -245,16 +257,22 @@
   function renderPhase(first) {
     var desk = innerWidth >= 900, ph = $('#phase'), t = V.t;
     if (V.phase === 'intro') {
-      ph.innerHTML = '<div class="panel"><span class="eyebrow">' + esc(fmt(U('missionOf'), { n: V.m.tasks.indexOf(V.id) + 1, total: V.m.tasks.length })) + '</span>' +
-        '<div style="height:10px"></div>' + two(t.title, 'h1') + '<div class="rule"></div><p class="purpose">' + h(tx(t.purpose)) + '</p>' +
-        (t.outcome ? '<div class="outcome">' + ic('target') + '<div><b>' + esc(U('youWillBeAble')) + '</b>' + h(tx(t.outcome)) + '</div></div>' : '') +
-        (t.path ? '<div class="lbl2"><span class="eyebrow">' + esc(U('whereToGo')) + '</span><br><span class="pathchip">' + esc(t.path) + '</span></div>' : '') +
-        (t.goodToKnow && t.goodToKnow.length ? '<div class="gtk"><h3>' + ic('bulb') + esc(U('goodToKnow')) + '</h3>' + t.goodToKnow.map(function (g) { return '<div class="gcard">' + h(tx(g)) + '</div>'; }).join('') + '</div>' : '') +
+      var mins = Math.max(1, Math.round(t.steps.length * 12 / 60));
+      ph.innerHTML = '<div class="panel intro"><a class="tbtn back" href="#/">' + ic(S.lang === 'ar' ? 'arrow' : 'back') + esc(U('allMissions')) + '</a>' +
+        two(t.title, 'h1') + '<div class="rule"></div>' +
+        (t.outcome ? '<p class="purpose">' + h(tx(t.outcome)) + '</p>' : '') +
+        '<div class="meta">' + (t.path ? '<span class="pathchip">' + esc(t.path) + '</span>' : '') + '<span class="mchip">' + esc(fmt(U('stepsMeta'), { n: t.steps.length, m: mins })) + '</span></div>' +
+        '<button class="btn btn-p startbtn" id="startbtn"><span>' + esc(U('startTask')) + '</span>' + ic(S.lang === 'ar' ? 'back' : 'arrow') + '</button>' +
+        (desk ? '' : '<div class="preview" id="sbox">' + stageHtml() + '</div>') +
         (t.helpCard ? supportCard() : '') + '</div>';
-      setBar(U('missionsShort'), U('startTask'));
-      if (desk) showScreen(t.steps[0], null, true);
+      setBar(null, null);
+      $('#bar').hidden = true;
+      $('#startbtn').onclick = goNext;
+      if (!desk) { bindStage(); var pv = $('#sbox'), sg = $('#stage'); var w = Math.min(pv.clientWidth * .62, 230); sg.style.width = w + 'px'; sg.style.height = (w * 1200 / 820) + 'px'; }
+      showScreen(t.steps[0], null, true);
       if (!first) scrollTop();
     } else if (V.phase === 'steps') {
+      $('#bar').hidden = false;
       var st = t.steps[V.i], n = t.steps.length;
       if (!$('#copy')) {
         ph.innerHTML = '<div class="steprow" id="steprow"></div>' + (desk ? '' : '<div class="stagebox" id="sbox">' + stageHtml() + '</div>') + '<div class="copy" id="copy"></div>';
@@ -271,11 +289,13 @@
       showScreen(st, V.dir || 1, false);
       $('#live').textContent = fmt(U('stepOf'), { n: V.i + 1, total: n }) + '. ' + tx(st.text);
     } else if (V.phase === 'quiz') {
+      $('#bar').hidden = false;
       quizHtml(ph);
       setBar(U('back'), V.answered == null ? null : U('taskComplete'), 'check');
       if (desk) showScreen(t.steps[t.steps.length - 1], null, true);
       scrollTop();
     } else if (V.phase === 'result') {
+      $('#bar').hidden = false;
       resultHtml(ph);
       if (desk) showScreen(t.steps[t.steps.length - 1], null, true);
       scrollTop();
@@ -316,9 +336,11 @@
     var cur = slot.querySelector('img.scr.cur');
     var spot = $('#spot'), ring = $('#hring'), ptr = $('#ptr'), rip = $('#ripple');
     [spot, ring, ptr, rip].forEach(function (e) { e.getAnimations && e.getAnimations().forEach(function (a) { a.cancel(); }); e.style.opacity = 0; });
+    [].forEach.call(slot.querySelectorAll('.typ'), function (e) { e.remove(); }); clearTimeout(V.typT);
     slot.setAttribute('aria-label', tx(st.text));
     var changed = !cur || cur.getAttribute('src') !== src;
     var hot = still ? null : st.hotspot;
+    V.shown = { st: still ? { screen: st.screen, text: st.text } : st, hot: hot };
     var from = (!changed && V.prevHot) ? V.prevHot : null;
     if (changed) {
       var img = new Image(); img.className = 'scr cur'; img.alt = ''; img.src = src; img.decoding = 'async';
@@ -334,7 +356,7 @@
         }
       }
     }
-    var prevScreenSame = !changed;
+    var typeDelay = typing(slot, still ? null : st.type, changed);
     V.prevHot = hot;
     [].forEach.call(slot.querySelectorAll('img.scr'), function (im) { im.style.transform = ''; });
     if (!hot) {
@@ -353,6 +375,7 @@
     ptr.style.left = tx_ + '%'; ptr.style.top = ty + '%';
     var dxp = (sx - tx_) * slot.clientWidth / 100, dyp = (sy - ty) * slot.clientHeight / 100;
     var travel = Math.max(480, Math.min(780, Math.hypot(dxp, dyp) * 1.4));
+    if (V.typStart) V.typStart(delay + travel);
     ptr.animate([
       { transform: 'translate(' + dxp + 'px,' + dyp + 'px) scale(.9)', opacity: 0 },
       { transform: 'translate(' + dxp * .92 + 'px,' + dyp * .92 + 'px) scale(1.15)', opacity: 1, offset: .12 },
@@ -367,14 +390,51 @@
     };
   }
 
+  // Simulated input on the real screen: covers the masked value and types a dummy ID or dots
+  function typing(slot, list, changed) {
+    V.typStart = null;
+    if (!list || !list.length) return 0;
+    var fs = slot.clientWidth * 0.046, anims = [];
+    list.forEach(function (f) {
+      var d = document.createElement('div'); d.className = 'typ' + (f.dots ? ' dots' : '');
+      d.style.left = f.box.x + '%'; d.style.top = f.box.y + '%'; d.style.width = f.box.w + '%'; d.style.height = f.box.h + '%'; d.style.fontSize = fs + 'px';
+      var sp = document.createElement('span'); d.appendChild(sp); slot.appendChild(d);
+      if (f.anim && !RM) anims.push({ sp: sp, text: f.text }); else sp.textContent = f.text;
+    });
+    if (anims.length) V.typStart = function (ms) {
+      anims.forEach(function (a) {
+        var i = 0; a.sp.classList.add('caret');
+        var tick = function () { i++; a.sp.textContent = a.text.slice(0, i); if (i < a.text.length) V.typT = setTimeout(tick, 110); else setTimeout(function () { a.sp.classList.remove('caret'); }, 600); };
+        V.typT = setTimeout(tick, ms + 200);
+      });
+    };
+    return 0;
+  }
+  function askWorkId(done) {
+    var z = document.createElement('div'); z.className = 'tipsheet'; z.setAttribute('role', 'dialog'); z.setAttribute('aria-modal', 'true');
+    z.innerHTML = '<div class="tipcard"><span class="tipicon">' + ic('users') + '</span><h3 style="font-size:20px">' + esc(U('trackTitle')) + '</h3><p style="font-size:15px;color:var(--cream-72)">' + h(U('trackLine')) + '</p><input id="wid" inputmode="numeric" autocomplete="off" placeholder="' + esc(U('trackPh')) + '" style="width:100%;height:52px;border-radius:12px;border:1px solid var(--cream-24);background:var(--deep-80);color:var(--cream);font:inherit;padding:0 16px;margin-bottom:14px;direction:ltr"><button class="btn btn-p" id="widok"><span>' + esc(U('trackSave')) + '</span></button></div>';
+    document.body.appendChild(z); var inp = $('#wid', z); inp.focus();
+    $('#widok', z).onclick = function () { var v = inp.value.trim(); if (!v) { inp.focus(); return; } S.wid = v; save(); z.remove(); track('workid_set', '', null); done(); };
+  }
+  function tipFor(st) { return (V.t.tips || []).filter(function (x) { return x.after === st.id; })[0]; }
+  function showTip(tip, done) {
+    var z = document.createElement('div'); z.className = 'tipsheet'; z.setAttribute('role', 'dialog'); z.setAttribute('aria-modal', 'true');
+    z.innerHTML = '<div class="tipcard"><span class="tipicon">' + ic('bulb') + '</span><span class="eyebrow">' + esc(U('tip')) + '</span><p>' + h(tx(tip.text)) + '</p><button class="btn btn-p" id="tipok"><span>' + esc(U('gotIt')) + '</span>' + ic('check') + '</button></div>';
+    document.body.appendChild(z);
+    var ok = $('#tipok', z); ok.focus();
+    ok.onclick = function () { z.remove(); done(); };
+    $('#live').textContent = tx(tip.text);
+  }
   function openZoom() {
-    var st = V.t.steps[V.phase === 'steps' ? V.i : V.t.steps.length - 1], hot = V.phase === 'steps' ? st.hotspot : null;
+    var sh = V.shown || { st: V.t.steps[0], hot: null }, st = sh.st, hot = sh.hot;
     var z = document.createElement('div'); z.className = 'zoom'; z.setAttribute('role', 'dialog'); z.setAttribute('aria-modal', 'true');
     z.innerHTML = '<div class="zt"><button class="btn btn-g" id="zc">' + ic('x') + esc(U('closeImage')) + '</button></div><div class="zs"><div class="zi" id="zi"><img src="' + A('assets/screens/' + st.screen + '.webp') + '" alt="' + esc(tx(st.text)) + '">' +
       (hot ? '<div class="hring" style="left:' + hot.x + '%;top:' + hot.y + '%;width:' + hot.w + '%;height:' + hot.h + '%"></div>' : '') + '</div></div>';
     document.body.appendChild(z);
     var close = function () { z.remove(); document.removeEventListener('keydown', esc_); };
     var esc_ = function (e) { if (e.key === 'Escape') close(); };
+    var zi = $('#zi', z);
+    (st.type || []).forEach(function (f) { var d = document.createElement('div'); d.className = 'typ' + (f.dots ? ' dots' : ''); d.style.cssText = 'left:' + f.box.x + '%;top:' + f.box.y + '%;width:' + f.box.w + '%;height:' + f.box.h + '%;font-size:' + (zi.clientWidth * 0.046) + 'px'; d.innerHTML = '<span>' + esc(f.text) + '</span>'; zi.appendChild(d); });
     $('#zc', z).onclick = close; document.addEventListener('keydown', esc_);
     $('#zi', z).ondblclick = function () { this.classList.toggle('big'); };
     $('#zc', z).focus();
@@ -429,7 +489,7 @@
   function resultHtml(ph) {
     var m = V.m, s = mStats(m), nx = nextTask(m, V.id), e = V.earned;
     var html = '<div class="panel result"><div class="medal">' + ic(s.done === s.total ? 'trophy' : 'check') + '</div><h1 class="two"><span>' + h(U('taskComplete')) + '</span></h1><div class="rule"></div><p class="purpose">' + h(tx(V.t.outcome) || '') + '</p>' +
-      (e ? '<div class="earn"><div><span>' + esc(U('earnedTask')) + '</span><b>' + esc(fmt(U('earned'), { n: e.task })) + '</b></div><div class="' + (e.answer ? '' : 'no') + '"><span>' + esc(U('earnedAnswer')) + '</span><b>' + esc(fmt(U('earned'), { n: e.answer })) + '</b></div></div>' : '') +
+      (e ? '<div class="earn"><div><span>' + esc(U('earnedTask')) + '</span><b>' + esc(fmt(U('earned'), { n: e.task })) + '</b></div>' + (e.answer ? '<div><span>' + esc(U('earnedAnswer')) + '</span><b>' + esc(fmt(U('earned'), { n: e.answer })) + '</b></div>' : '') + '</div>' : '') +
       '<div class="pbar" style="max-width:460px;margin:20px auto 0"><div class="lbl"><span>' + h(tx(m.title)) + '</span><span>' + esc(fmt(U('tasksDone'), { done: s.done, total: s.total })) + '</span></div><div class="track"><i data-w="' + s.pct + '" style="width:' + Math.round(100 * Math.max(0, s.done - (e ? 1 : 0)) / s.total) + '%"></i></div></div>';
     if (nx) html += '<div class="nextcard"><span class="eyebrow">' + esc(U('nextTask')) + '</span><ul class="tlist" style="margin:0">' + taskRow(nx, m.tasks.indexOf(nx) + 1) + '</ul></div>';
     else html += '<div class="mdone"><span class="eyebrow">' + esc(U('badge')) + '</span><h2>' + esc(U('missionDone')) + '</h2><p>' + h(U('missionDoneLine')) + '</p></div>';
@@ -454,9 +514,13 @@
   function goNext() {
     if (!V) return;
     var n = V.t.steps.length;
+    if (V.phase === 'intro' && TR.mode === 'workid' && TR.formAction && !S.wid) { askWorkId(goNext); return; }
     if (V.phase === 'intro') { V.phase = 'steps'; V.i = 0; V.dir = 1; V.prevHot = null; taskView(); return; }
     if (V.phase === 'steps') {
       if (!S.swipe && V.i === 0) { S.swipe = 1; save(); }
+      var tp = tipFor(V.t.steps[V.i]); V.tipsSeen = V.tipsSeen || {};
+      if (tp && !V.tipsSeen[tp.after] && !document.querySelector('.tipsheet')) { V.tipsSeen[tp.after] = 1; showTip(tp, goNext); return; }
+      if (document.querySelector('.tipsheet')) return;
       if (V.i < n - 1) { V.i++; V.dir = 1; renderPhase(); }
       else { V.phase = 'quiz'; V.answered = null; V.order = reorder(V.t.check); taskView(); }
       return;
@@ -482,7 +546,7 @@
     return o;
   }
   document.addEventListener('keydown', function (e) {
-    if (!V || location.hash.indexOf('#/task/') !== 0 || document.querySelector('.zoom')) return;
+    if (!V || location.hash.indexOf('#/task/') !== 0 || document.querySelector('.zoom') || document.querySelector('.tipsheet')) return;
     if (/input|select|textarea/i.test((e.target.tagName || ''))) return;
     if (e.key === 'ArrowRight') goNext(); else if (e.key === 'ArrowLeft') goBack();
   });

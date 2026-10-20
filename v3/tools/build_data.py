@@ -388,7 +388,239 @@ UI = {
  }
 }
 
-data = {'version': '3.0', 'helpEmail': V22['meta']['helpEmail'], 'ui': UI, 'missions': MISSIONS, 'tasks': TASKS,
+# ================= v3.1 changes (feedback 20 Oct) =================
+def TIP(after, en, ar): return {'after': after, 'text': L(en, ar)}
+
+# --- Sign in: OFFICE 365 choice first, then Work ID with a dummy ID typed in ---
+UNAME_BOX = hs(8.5, 45.2, 76.5, 5.4); PASS_BOX = hs(8.5, 55.8, 68, 4.2)
+si = TASKS['signin-app']; st = {s['id']: s for s in si['steps']}
+si['steps'] = [
+    st['signin-app-01'],
+    S('signin-app-o365', 'login_empty', hs(51.2, 74.2, 44.2, 5.6), H('Have a work email?', 'Tap OFFICE 365.', 'لديك بريد عمل؟', 'اضغط OFFICE 365.'),
+      L('If you have a work email, tap OFFICE 365, then sign in with your work email and its password.',
+        'إذا كان لديك بريد إلكتروني للعمل، فاضغط OFFICE 365، ثم ادخل ببريد العمل وكلمة مروره.'),
+      L('No work email? Sign in with your Work ID — the next steps show you how.', 'ليس لديك بريد عمل؟ ادخل بالرقم الوظيفي، وتوضّح لك الخطوات التالية الطريقة.')),
+    dict(st['signin-app-02'], screen='login_filled', hotspot=hs(4.5, 43.4, 91, 8.4),
+         type=[{'box': UNAME_BOX, 'text': '12345', 'anim': True}, {'box': PASS_BOX, 'text': ''}],
+         helper=L('12345 is only an example. Your Work ID and password come from your direct manager.', '12345 مجرد مثال. يسلّمك مديرك المباشر الرقم الوظيفي وكلمة المرور.')),
+    dict(st['signin-app-03'], screen='login_filled', hotspot=hs(4.5, 54.4, 91, 7.4),
+         type=[{'box': UNAME_BOX, 'text': '12345'}, {'box': PASS_BOX, 'text': '••••••••', 'anim': True, 'dots': True}]),
+    dict(st['signin-app-04'], type=[{'box': UNAME_BOX, 'text': '12345'}, {'box': PASS_BOX, 'text': '••••••••', 'dots': True}], helper=None),
+    st['signin-app-05'],
+]
+si['tips'] = [
+    TIP('signin-app-01', 'Your app may look light instead of dark. The steps stay the same.', 'قد يظهر تطبيقك بلون فاتح بدلًا من الداكن. الخطوات لا تتغير.'),
+    TIP('signin-app-03', 'Never share your password, including in screenshots or support messages.', 'لا تشارك كلمة المرور مع أحد، ولا تُظهرها في لقطات الشاشة أو رسائل الدعم.'),
+    TIP('signin-app-04', 'The same Work ID and password work on HITS Web.', 'الرقم الوظيفي وكلمة المرور نفسهما يعملان على HITS Web.'),
+]
+TASKS['forgot-password']['tips'] = [TIP('forgot-app-02', 'Your direct manager provides your HITS username and password.', 'يسلّمك مديرك المباشر اسم المستخدم وكلمة المرور لـ HITS.')]
+TASKS['app-settings']['tips'] = [TIP('settings-app-02', 'Leave Tenant ID as it is.', 'اترك Tenant ID كما هو.')]
+
+# --- Leave balance: add Vacatin Days Count ---
+lb = TASKS['leave-balance']
+lb['steps'].append(S('balance-app-04', 'days_count', hs(2.8, 39.6, 94.2, 52.6), H('See your days', 'on a chart.', 'شاهِد أيامك', 'في رسم بياني.'),
+    L('Vacatin Days Count shows the days you have taken, by leave type, for the selected Period.',
+      'يعرض Vacatin Days Count الأيام التي أخذتها حسب نوع الإجازة خلال الفترة المحددة.')))
+lb['tips'] = []
+
+# --- New: balance from the Leaves Request menu (light screens) ---
+TASKS['leave-menu'] = {
+    'id': 'leave-menu', 'icon': 'calendar-days',
+    'name': L('Check your balance before you request', 'معرفة رصيدك قبل الطلب'),
+    'situation': L('Do I have enough days before I ask?', 'هل لديّ أيام كافية قبل أن أطلب؟'),
+    'title': H('Check your balance', 'before you request.', 'اعرف رصيدك', 'قبل أن تطلب.'),
+    'purpose': L('Opens your leave balance from the Leaves Request menu.', 'يفتح رصيد إجازاتك من قائمة Leaves Request.'),
+    'outcome': L('You can check your balance from Leaves Request in seconds.', 'تستطيع معرفة رصيدك من Leaves Request في ثوانٍ.'),
+    'path': 'Home › Leaves Request › ⋮ › Balance', 'goodToKnow': [], 'helpCard': False, 'tips': [],
+    'steps': [
+        S('lm-01', 'home_light', hs(5.6, 42.1, 19.4, 13.5), H('Tap', 'Leaves Request.', 'اضغط', 'Leaves Request.'),
+          L('On the home page, tap Leaves Request.', 'من الصفحة الرئيسية، اضغط Leaves Request.'),
+          L('These screens show the app in the Light theme.', 'تظهر الشاشات هنا بالمظهر الفاتح Light.')),
+        S('lm-02', 'leave_history_light', hs(82.0, 88.6, 11.0, 6.4), H('Open the', 'menu.', 'افتح', 'القائمة.'),
+          L('Tap ⋮ at the bottom of the screen.', 'اضغط ⋮ أسفل الشاشة.'), verify='confirm'),
+        S('lm-03', 'leave_menu', hs(61.0, 81.4, 32.4, 5.8), H('Tap', 'Balance.', 'اضغط', 'Balance.'),
+          L('The menu shows Filter, Balance and New. Tap Balance.', 'تعرض القائمة Filter وBalance وNew. اضغط Balance.')),
+        S('lm-04', 'balance_periods', hs(2.5, 14.6, 95, 21.4), H('Read your', 'balance.', 'اقرأ', 'رصيدك.'),
+          L('Each period shows your Annual, Holiday and Days Off, with what is due, taken and left in Balance.',
+            'تعرض كل فترة رصيدك من Annual وHoliday وDays Off، مع المستحق في Due والمستخدم في Taken والمتبقي في Balance.')),
+    ],
+    'check': Q(L('You are in Leaves Request and want to see your balance. What do you tap?', 'أنت في Leaves Request وتريد معرفة رصيدك. ماذا تضغط؟'), [
+        (L('⋮, then Balance', '⋮ ثم Balance'), True, L('Balance in the ⋮ menu shows your balance for each period.', 'يعرض Balance في قائمة ⋮ رصيدك لكل فترة.')),
+        (L('⋮, then Filter', '⋮ ثم Filter'), False, L('Filter narrows your list of requests.', 'يحصر Filter قائمة طلباتك.')),
+        (L('History', 'History'), False, L('History lists your past requests, not your balance.', 'تعرض History طلباتك السابقة، لا رصيدك.')),
+    ]),
+}
+
+# --- Leave request tips (one at a time) ---
+TASKS['leave-request']['tips'] = [
+    TIP('leave-app-01', 'If a list of names appears when you open Leaves Request, tap your own name first. It is at the top.', 'إذا ظهرت قائمة أسماء عند فتح Leaves Request، فاضغط اسمك أولًا. ستجده في الأعلى.'),
+    TIP('leave-app-04', 'Choosing Mission? You must fill in the mission destination, or the request will not send.', 'اخترت Mission؟ يجب كتابة جهة المأمورية، وإلا لن يُرسَل الطلب.'),
+]
+TASKS['leave-request']['goodToKnow'] = []
+
+# --- Permissions: sourced tips ---
+TASKS['my-permissions']['tips'] = [TIP('myperm-app-02', 'Personal late permission is capped at 2 hours a month. Above that, HITS blocks the request.', 'إذن التأخير الشخصي حدّه ساعتان في الشهر، وبعدها يرفض HITS الطلب.')]
+TASKS['permission-history']['tips'] = [TIP('ph-03', 'When you request a permission, enter times in 24-hour format — 13:00 means 1 PM.', 'عند طلب إذن، اكتب الوقت بنظام 24 ساعة؛ 13:00 تعني الواحدة ظهرًا.')]
+
+# --- GEO: add date filter ---
+TASKS['geo-attendance']['steps'].append(S('geo-05', 'geo_filter', hs(5.0, 53.4, 90, 5.0), H('Check', 'past days.', 'راجِع', 'الأيام السابقة.'),
+    L('In Time Keeping Filter, set Attend Date Between, then tap OK.', 'في Time Keeping Filter، حدِّد Attend Date Between، ثم اضغط OK.'), verify='confirm'))
+
+# --- Manager: approve permissions on the full dark flow, with the detail screen ---
+TASKS['approve-permissions']['steps'] = [
+    S('ap-01', 'home_dark', hs(76.1, 38.0, 20.8, 14.0), H('Tap', 'Permissions Approvals.', 'اضغط', 'Permissions Approvals.'),
+      L('On the home page, tap Permissions Approvals.', 'من الصفحة الرئيسية، اضغط Permissions Approvals.')),
+    S('ap-02', 'perm_current', hs(7.0, 11.4, 20.4, 4.4), H('Open', 'Current.', 'افتح', 'Current.'),
+      L('Current lists the requests waiting for your decision.', 'تعرض Current الطلبات التي تنتظر قرارك.')),
+    S('ap-03', 'perm_current', hs(3.6, 17.8, 92.6, 16.2), H('Check the', 'request.', 'راجِع', 'الطلب.'),
+      L('Each request shows the employee, the permission type, the From and To times, and the hours. Tap it for the details.',
+        'يعرض كل طلب الموظف، ونوع الإذن، ووقتَي From وTo، وعدد الساعات. اضغطه لعرض التفاصيل.')),
+    S('ap-04', 'perm_detail', hs(4.6, 28.8, 91.4, 27.0), H('Read the', 'details.', 'اقرأ', 'التفاصيل.'),
+      L('Permission Details, Shift Details and Attendance Details show the request next to the shift and the actual times.',
+        'تعرض Permission Details وShift Details وAttendance Details الطلب مع الوردية وأوقات الحضور الفعلية.')),
+    S('ap-05', 'perm_current', hs(64.4, 88.6, 14.4, 7.2), H('Approve or reject,', 'then save.', 'اعتمِد أو ارفض،', 'ثم احفظ.'),
+      L('Use the ✓ button at the bottom to approve or reject, then save your decision.', 'استخدم زر ✓ أسفل الشاشة للاعتماد أو الرفض، ثم احفظ قرارك.'),
+      L('Your decision only counts once you save it.', 'لا يُعتمد قرارك إلا بعد حفظه.'), verify='confirm'),
+]
+TASKS['approve-permissions']['tips'] = [TIP('ap-05', 'Approve All and Reject All mark every request at once — they still need saving.', 'يحدّد Approve All وReject All كل الطلبات مرة واحدة، لكنها تحتاج الحفظ أيضًا.')]
+
+TASKS['find-permissions'] = {
+    'id': 'find-permissions', 'icon': 'search',
+    'name': L('Find past permission requests', 'البحث في طلبات الاستئذان السابقة'),
+    'situation': L('What did I decide last month?', 'بماذا قررت الشهر الماضي؟'),
+    'title': H('Find past', 'permission requests.', 'ابحث في', 'طلبات الاستئذان السابقة.'),
+    'purpose': L('Filters the permission requests you have decided by date and type.', 'يصفّي طلبات الاستئذان التي قررت فيها حسب التاريخ والنوع.'),
+    'outcome': L("You can find any permission request you've decided.", 'تستطيع العثور على أي طلب استئذان اتخذت فيه قرارًا.'),
+    'path': 'Home › Permissions Approvals › History', 'goodToKnow': [], 'helpCard': False, 'tips': [],
+    'steps': [
+        S('fp-01', 'home_light', LIGHT['permissionsApprovals'], H('Tap', 'Permissions Approvals.', 'اضغط', 'Permissions Approvals.'),
+          L('On the home page, tap Permissions Approvals.', 'من الصفحة الرئيسية، اضغط Permissions Approvals.'),
+          L('These screens show the app in the Light theme.', 'تظهر الشاشات هنا بالمظهر الفاتح Light.')),
+        S('fp-02', 'perm_history_light', hs(72.4, 13.4, 21.8, 4.6), H('Open', 'History.', 'افتح', 'History.'),
+          L('History lists the requests you have already decided.', 'تعرض History الطلبات التي اتخذت فيها قرارًا.')),
+        S('fp-03', 'perm_history_light', hs(80.6, 86.9, 14.2, 6.4), H('Tap the', 'filter.', 'اضغط', 'زر التصفية.'),
+          L('Tap the filter button at the bottom of the screen.', 'اضغط زر التصفية أسفل الشاشة.')),
+        S('fp-04', 'perm_filter', hs(4.6, 47.2, 92.4, 14.6), H('Set dates', 'and type.', 'حدِّد التواريخ', 'والنوع.'),
+          L('In Permissions Filter, set Start Date Between and, if you need, the Permission type.', 'في Permissions Filter، حدِّد Start Date Between، ونوع الإذن في Permission عند الحاجة.')),
+        S('fp-05', 'perm_filter', hs(55.0, 62.6, 11.6, 6.4), H('Tap', 'OK.', 'اضغط', 'OK.'),
+          L('Tap OK to show only the matching requests.', 'اضغط OK لعرض الطلبات المطابقة فقط.')),
+    ],
+    'check': Q(L('You want only last month’s requests in History. What do you change?', 'تريد طلبات الشهر الماضي فقط في History. ماذا تغيّر؟'), [
+        (L('Start Date Between, in the filter', 'Start Date Between في الفلتر'), True, L('The dates in the filter decide which requests you see.', 'تواريخ الفلتر تحدّد الطلبات التي تظهر.')),
+        (L('The Current tab', 'تبويب Current'), False, L('Current shows requests still waiting for you.', 'تعرض Current الطلبات التي ما زالت تنتظرك.')),
+        (L('Cancel', 'Cancel'), False, L('Cancel closes the filter without changes.', 'يغلق Cancel الفلتر دون تغيير.')),
+    ]),
+}
+
+TASKS['team-records'] = {
+    'id': 'team-records', 'icon': 'users',
+    'name': L("Open a team member's record", 'فتح سجلّ أحد أفراد فريقك'),
+    'situation': L("How many days does my team member have?", 'كم يومًا لدى أحد أفراد فريقي؟'),
+    'title': H("Open a team", "member's record.", 'افتح سجلّ', 'أحد أفراد فريقك.'),
+    'purpose': L("Shows how managers pick a person from the list in My Leaves and similar pages.", 'يوضّح كيف يختار المدير شخصًا من القائمة في My Leaves والصفحات المشابهة.'),
+    'outcome': L("You can open your own or a team member's record.", 'تستطيع فتح سجلّك أو سجلّ أحد أفراد فريقك.'),
+    'path': 'Home › My Leaves', 'goodToKnow': [], 'helpCard': False,
+    'tips': [TIP('tr-03', 'The same list appears in My Attendance, My Permissions and Permissions Request.', 'تظهر القائمة نفسها في My Attendance وMy Permissions وPermissions Request.')],
+    'steps': [
+        S('tr-01', 'home_light', hs(74.7, 27.0, 19.8, 13.1), H('Tap', 'My Leaves.', 'اضغط', 'My Leaves.'),
+          L('On the home page, tap My Leaves.', 'من الصفحة الرئيسية، اضغط My Leaves.'),
+          L('These screens show the app in the Light theme.', 'تظهر الشاشات هنا بالمظهر الفاتح Light.')),
+        S('tr-02', 'team_list', hs(4.6, 15.8, 90.8, 10.2), H("You're", 'at the top.', 'اسمك', 'في الأعلى.'),
+          L('Managers see a list of people. Your own name is first — tap it for your own record.', 'يرى المدير قائمة أشخاص، واسمك هو الأول. اضغطه لفتح سجلّك.')),
+        S('tr-03', 'team_list', hs(4.6, 26.6, 90.8, 10.0), H('Tap a team', "member's name.", 'اضغط اسم', 'أحد أفراد فريقك.'),
+          L("Tap a team member's name to open their leave record.", 'اضغط اسم أحد أفراد فريقك لفتح سجلّ إجازاته.'), verify='confirm'),
+        S('tr-04', 'team_list', hs(76.4, 7.8, 8.6, 4.0), H('Search', 'by name.', 'ابحث', 'بالاسم.'),
+          L('Tap the search icon at the top to find someone quickly.', 'اضغط أيقونة البحث في الأعلى للعثور على أي شخص بسرعة.')),
+    ],
+    'check': Q(L('You open My Leaves and see a list of names. Where is your own record?', 'فتحت My Leaves فظهرت قائمة أسماء. أين سجلّك أنت؟'), [
+        (L('The first name at the top', 'الاسم الأول في الأعلى'), True, L('Your own name always comes first.', 'اسمك يأتي دائمًا أولًا.')),
+        (L('The last name in the list', 'آخر اسم في القائمة'), False, L('Your name is at the top, not the bottom.', 'اسمك في الأعلى، لا في الأسفل.')),
+        (L('In Leaves Approvals', 'في Leaves Approvals'), False, L('Leaves Approvals is for deciding on requests.', 'Leaves Approvals لاتخاذ القرار في الطلبات.')),
+    ]),
+}
+
+for t in TASKS.values():
+    t.setdefault('tips', [])
+    t['goodToKnow'] = []  # replaced by one-at-a-time tips
+
+MISSIONS[:] = [
+    {'id': 'start', 'roles': ['employee', 'manager'], 'icon': 'rocket', 'title': L('Get started', 'ابدأ هنا'),
+     'outcome': L('Sign in, recover your password and set up the app.', 'سجّل الدخول، واسترجع كلمة المرور، واضبط التطبيق.'),
+     'tasks': ['signin-app', 'forgot-password', 'app-settings']},
+    {'id': 'timeoff', 'roles': ['employee'], 'icon': 'calendar', 'title': L('My time off', 'إجازاتي'),
+     'outcome': L('Check your balance, request leave and follow it up.', 'اعرف رصيدك، وقدّم طلب إجازة، وتابِعه.'),
+     'tasks': ['leave-balance', 'leave-menu', 'leave-request', 'leave-history']},
+    {'id': 'mytime', 'roles': ['employee'], 'icon': 'clock', 'title': L('My time & attendance', 'وقتي وحضوري'),
+     'outcome': L('Check your permission hours and attendance, and clock in by location.', 'اعرف ساعات استئذانك وحضورك، وسجّل حضورك بالموقع.'),
+     'tasks': ['my-permissions', 'permission-history', 'my-attendance', 'geo-attendance']},
+    {'id': 'approvals', 'roles': ['manager'], 'icon': 'check-badge', 'title': L("Approve your team's requests", 'اعتمِد طلبات فريقك'),
+     'outcome': L('See what is waiting for you and decide on it.', 'اعرف ما ينتظر قرارك، واتخذ القرار.'),
+     'tasks': ['notifications', 'approve-permissions', 'leave-approvals', 'tk-approvals']},
+    {'id': 'team', 'roles': ['manager'], 'icon': 'users', 'title': L('Keep an eye on your team', 'تابِع فريقك'),
+     'outcome': L("Find past decisions and open your team's records.", 'اعثر على قراراتك السابقة، وافتح سجلّات فريقك.'),
+     'tasks': ['find-permissions', 'team-records']},
+]
+COMING = L('More stops coming soon: My Payslip, My Profile, Changes Request, new permission and missing-time requests, Attendance Tracking.',
+           'محطات قادمة قريبًا: My Payslip وMy Profile وChanges Request، وطلبات الاستئذان واستكمال الوقت الجديدة، وAttendance Tracking.')
+
+UI['en'].update({
+  'heroSub': 'Pick a route. Each stop shows you the real app, step by step.',
+  'mission': 'Route', 'missionOf': 'Stop {n} of {total}', 'tasksDone': '{done} of {total} stops',
+  'startMission': 'Start route', 'continueMission': 'Continue', 'reviewMission': 'Ride again',
+  'missionDone': 'Route complete', 'missionDoneLine': 'You finished every stop on this route.',
+  'allMissions': 'All routes', 'missionsShort': 'Routes', 'backToMissions': 'Back to routes',
+  'youWillBeAble': 'After this stop', 'taskComplete': 'Stop complete', 'earnedTask': 'Stop finished',
+  'nextTask': 'Next stop', 'tip': 'Good to know', 'gotIt': 'Got it', 'stepsMeta': '{n} steps · about {m} min',
+  'coming': COMING['en'], 'badge': 'Route badge earned', 'toQuestion': 'Final question',
+  'trackTitle': 'Enter your Work ID', 'trackLine': 'People & Culture uses your Work ID only to see who has completed the guide.', 'trackSave': 'Continue', 'trackPh': 'Work ID',
+})
+UI['ar'].update({
+  'heroSub': 'اختر مشوارك. كل محطة تعرض لك التطبيق الحقيقي خطوة بخطوة.',
+  'mission': 'مشوار', 'missionOf': 'المحطة {n} من {total}', 'tasksDone': '{done} من {total} محطات',
+  'startMission': 'ابدأ المشوار', 'continueMission': 'تابِع', 'reviewMission': 'كرّر المشوار',
+  'missionDone': 'أكملت المشوار', 'missionDoneLine': 'أنهيت كل محطات هذا المشوار.',
+  'allMissions': 'كل المشاوير', 'missionsShort': 'المشاوير', 'backToMissions': 'العودة إلى المشاوير',
+  'youWillBeAble': 'بعد هذه المحطة', 'taskComplete': 'أنهيت المحطة', 'earnedTask': 'إنهاء المحطة',
+  'nextTask': 'المحطة التالية', 'tip': 'من المفيد أن تعرف', 'gotIt': 'فهمت', 'stepsMeta': '{n} خطوات · حوالي {m} دقيقة',
+  'coming': COMING['ar'], 'badge': 'حصلت على وسام المشوار', 'toQuestion': 'السؤال الأخير',
+  'trackTitle': 'أدخِل رقمك الوظيفي', 'trackLine': 'تستخدم إدارة الأفراد والثقافة رقمك الوظيفي فقط لمعرفة من أكمل الدليل.', 'trackSave': 'متابعة', 'trackPh': 'الرقم الوظيفي',
+})
+# every tip must point at a real step
+for k, t in TASKS.items():
+    ids = {s['id'] for s in t['steps']}
+    for tp in t['tips']: assert tp['after'] in ids, (k, tp['after'])
+
+
+# ================= v3.1 audit fixes =================
+TASKS['approve-permissions']['steps'][3]['helper'] = L('This example is already approved. Requests waiting for you show the same details.', 'هذا المثال لطلب معتمَد بالفعل، والطلبات التي تنتظرك تعرض التفاصيل نفسها.')
+la = TASKS['leave-approvals']; lst = {x['id']: x for x in la['steps']}
+la['steps'] = [lst['la-01'],
+  S('la-02', 'leave_approvals', hs(5.0, 13.4, 89.4, 4.6), H('Know the', 'three tabs.', 'اعرف', 'التبويبات الثلاثة.'),
+    L('Current: waiting for your decision. Monitoring: still with an earlier approver. History: requests you have decided.',
+      'Current: تنتظر قرارك. Monitoring: ما زالت لدى معتمِد قبلك. History: طلبات اتخذت فيها قرارًا.'),
+    L('In Current, approve or reject each request, then save.', 'في Current، اعتمِد كل طلب أو ارفضه، ثم احفظ.'), verify='confirm'),
+  S('la-03', 'leave_approvals', hs(4.6, 19.2, 91, 9.8), H('Read a', 'request.', 'اقرأ', 'الطلب.'),
+    L('Each request shows the employee, the leave type, the From and To dates, and the days. This example is in History.',
+      'يعرض كل طلب الموظف، ونوع الإجازة، وتاريخَي From وTo، وعدد الأيام. هذا المثال من History.')),
+  lst['la-05']]
+TASKS['geo-attendance']['steps'][-1]['text'] = L('To check past days, tap the filter button, set Attend Date Between in Time Keeping Filter, then tap OK.',
+  'لمراجعة الأيام السابقة، اضغط زر التصفية، وحدِّد Attend Date Between في Time Keeping Filter، ثم اضغط OK.')
+TASKS['my-permissions']['steps'][1]['helper'] = L('This screen shows the app in the Light theme.', 'تظهر هذه الشاشة بالمظهر الفاتح Light.')
+TASKS['my-permissions']['steps'][1]['hotspot'] = hs(1, 7.5, 98, 82)
+TASKS['my-permissions']['tips'][0]['text'] = L('Personal late permission is capped at 2 hours a month (HITS App User Guide). Above that, HITS blocks the request.',
+  'إذن التأخير الشخصي حدّه ساعتان في الشهر (دليل استخدام تطبيق HITS)، وبعدها يرفض HITS الطلب.')
+for st in TASKS['signin-app']['steps']:
+    for f in st.get('type') or []:
+        if f['box'] is UNAME_BOX or f['box'] == UNAME_BOX: f['box'] = hs(8.5, 45.2, 80.5, 5.4)
+UI['en'].update({'searchPlaceholder': 'Search stops', 'noResults': 'No stops match your search.',
+  'privacy': 'Your progress is saved on this device only. If tracking is switched on, we count visits and completed stops to improve the guide.',
+  'replay': 'Do it again', 'reviewMission': 'Review route', 'praise': ['Well done!', 'Spot on!', 'Great job!']})
+UI['ar'].update({'searchPlaceholder': 'ابحث عن محطة', 'noResults': 'لا توجد محطات تطابق بحثك.',
+  'privacy': 'يُحفظ تقدّمك على هذا الجهاز فقط. إذا فُعِّلت المتابعة، نحصي الزيارات والمحطات المكتملة لتحسين الدليل.',
+  'replay': 'أعِد المحطة', 'reviewMission': 'راجِع المشوار', 'praise': ['أحسنت!', 'في محلّها!', 'عمل رائع!'],
+  'points': '{n#نقطة}', 'tasksDone': '{done} من {total#محطة}', 'earned': '+{n#نقطة}', 'stepsMeta': '{n#خطوة} · حوالي {m#دقيقة}', 'correct': 'صحيح!'})
+
+data = {'version': '3.1', 'helpEmail': V22['meta']['helpEmail'], 'ui': UI, 'missions': MISSIONS, 'tasks': TASKS,
         'glossary': V22.get('glossary'), 'help': V22['pages'].get('help')}
 # sanity: every check has exactly one correct option; every step has a screen
 for k, t in TASKS.items():
