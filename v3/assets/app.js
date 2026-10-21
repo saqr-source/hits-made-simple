@@ -26,7 +26,7 @@
   function tx(o) { return o == null ? '' : (typeof o === 'string' ? o : (o[S.lang] != null ? o[S.lang] : o.en)); }
   function num(n) { return S.lang === 'ar' ? new Intl.NumberFormat('ar-EG').format(n) : String(n); }
   // Arabic counted nouns: 1 → singular, 2 → dual, 3–10 → plural, 11+ → singular
-  var AR_NOUN = { 'نقطة': ['نقطة', 'نقطتان', 'نقاط'], 'محطة': ['محطة', 'محطتان', 'محطات'], 'خطوة': ['خطوة', 'خطوتان', 'خطوات'], 'دقيقة': ['دقيقة', 'دقيقتان', 'دقائق'] };
+  var AR_NOUN = { 'نقطة': ['نقطة', 'نقطتان', 'نقاط'], 'محطة': ['محطة', 'محطتين', 'محطات'], 'خطوة': ['خطوة', 'خطوتان', 'خطوات'], 'دقيقة': ['دقيقة', 'دقيقتان', 'دقائق'] };
   function arCount(n, noun) {
     var f = AR_NOUN[noun] || [noun, noun, noun];
     if (n === 1) return noun === 'دقيقة' ? f[0] : num(1) + ' ' + f[0];
@@ -464,7 +464,7 @@
     var c = V.t.check, first = !isDone(V.id);
     var keys = S.lang === 'ar' ? ['أ', 'ب', 'ج', 'د'] : ['A', 'B', 'C', 'D'];
     var html = '<div class="panel"><span class="eyebrow">' + esc(U('finalQuestion')) + '</span><div class="qcard"><p class="q">' + h(tx(c.q)) + '</p>' +
-      (first ? '<span class="worth">' + ic('star') + esc(fmt(U('questionWorth'), { n: PTS_ANSWER })) + '</span>' : '') + '<div class="opts">';
+      (first && V.answered == null ? '<span class="worth">' + ic('star') + esc(fmt(U('questionWorth'), { n: PTS_ANSWER })) + '</span>' : '') + '<div class="opts">';
     V.order.forEach(function (oi, k) {
       var o = c.options[oi], cls = '', mark = keys[k];
       if (V.answered != null) {
@@ -559,9 +559,10 @@
   }
   // shuffle and make sure the right answer moves between attempts
   function reorder(c) {
-    var o, ci = c.options.map(function (x) { return x.correct; }).indexOf(true), tries = 0, last = S.lastPos;
+    if (typeof S.lastPos !== 'object' || !S.lastPos) S.lastPos = {};
+    var o, ci = c.options.map(function (x) { return x.correct; }).indexOf(true), tries = 0, last = S.lastPos[V.id];
     do { o = shuffle(c.options.length); tries++; } while (tries < 8 && o.indexOf(ci) === last);
-    S.lastPos = o.indexOf(ci); save();
+    S.lastPos[V.id] = o.indexOf(ci); save();
     return o;
   }
   document.addEventListener('keydown', function (e) {

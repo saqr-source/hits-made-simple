@@ -84,23 +84,23 @@ task('signin', 'log-in', L('Sign in to HITS', 'تسجيل الدخول إلى HI
   S('si-3', V('en_login', hs(4.5, 55, 90, 6.6), 'Enter your', 'Work ID.', 'Type your Work ID in the Username field.',
               '12345 is only an example. Your Work ID and password come from your direct manager.', [{'box': UN_EN, 'text': '12345', 'anim': True}]),
             V('ar_emp_30', hs(5, 59, 93.5, 7), 'أدخِل', 'رقمك الوظيفي.', 'اكتب رقمك الوظيفي في خانة اسم المستخدم.',
-              '١٢٣٤٥ مجرد مثال. يسلّمك مديرك المباشر الرقم الوظيفي وكلمة المرور.', [{'box': UN_AR, 'text': '12345', 'anim': True, 'align': 'right'}])),
+              '12345 مجرد مثال. يسلّمك مديرك المباشر الرقم الوظيفي وكلمة السر.', [{'box': UN_AR, 'text': '12345', 'anim': True, 'align': 'right'}])),
   S('si-4', V('en_login', hs(4.5, 64.4, 90, 6.6), 'Then your', 'password.', 'Type your password in the Password field.', None,
               [{'box': UN_EN, 'text': '12345'}, {'box': PW_EN, 'text': '••••••••', 'anim': True, 'dots': True}]),
-            V('ar_emp_30', hs(5, 68.6, 93.5, 7), 'ثم', 'كلمة السر.', 'اكتب كلمة المرور في خانة كلمة السر.', None,
+            V('ar_emp_30', hs(5, 68.6, 93.5, 7), 'ثم', 'كلمة السر.', 'اكتب كلمة السر في خانتها.', None,
               [{'box': UN_AR, 'text': '12345', 'align': 'right'}, {'box': PW_AR, 'text': '••••••••', 'anim': True, 'dots': True, 'align': 'right'}])),
   S('si-5', V('en_login', hs(4.5, 73.2, 43.5, 5.2), 'Tap', 'LOGIN.', 'Tap LOGIN.', None,
               [{'box': UN_EN, 'text': '12345'}, {'box': PW_EN, 'text': '••••••••', 'dots': True}]),
             V('ar_emp_30', hs(51, 78.4, 43.5, 5.8), 'اضغط', 'دخول.', 'اضغط زر دخول.', None,
               [{'box': UN_AR, 'text': '12345', 'align': 'right'}, {'box': PW_AR, 'text': '••••••••', 'dots': True, 'align': 'right'}])),
   S('si-6', V(EN_EMP_HOME, None, "You're", 'in.', 'Your HITS services are on the home page.'),
-            V(AR_EMP_HOME, None, 'تمّ', 'الدخول.', 'ستجد خدماتك كلها في الصفحة الرئيسية.')),
+            V(AR_EMP_HOME, None, 'تمّ', 'الدخول.', 'ستجد خدماتك كلها في الصفحة الرئيسية.', 'تظهر الصفحة الرئيسية هنا بالمظهر الفاتح.')),
  ], Q(('A new colleague has no work email. How does she sign in?', 'زميلة جديدة ليس لديها بريد عمل. كيف تسجّل الدخول؟'), [
-  ('Work ID in Username, her password, then LOGIN', 'رقمها الوظيفي في اسم المستخدم، ثم كلمة السر، ثم دخول', True, 'Without a work email, you sign in with your Work ID.', 'من ليس لديه بريد عمل يدخل برقمه الوظيفي.'),
+  ('Work ID, password, then LOGIN', 'الرقم الوظيفي وكلمة السر، ثم دخول', True, 'Without a work email, you sign in with your Work ID.', 'من ليس لديه بريد عمل يدخل برقمه الوظيفي.'),
   ('Tap OFFICE 365 and type her Work ID', 'تضغط أوفيس 365 وتكتب رقمها الوظيفي', False, 'OFFICE 365 needs a work email and its password.', 'أوفيس 365 يحتاج بريد عمل وكلمة مروره.'),
-  ('Tap Register/Reactivate User every time', 'تضغط تسجيل / إعادة تفعيل المستخدم كل مرة', False, 'That link is not for everyday sign-in.', 'هذا الرابط ليس للدخول اليومي.'),
-  ('Ask IT for an Office 365 password', 'تطلب من الدعم الفني كلمة مرور أوفيس 365', False, 'She has no work email, so she uses her Work ID.', 'ليس لديها بريد عمل، فتستخدم رقمها الوظيفي.')]),
- tips=[TIP('si-4', 'Never share your password, including in screenshots or support messages.', 'لا تشارك كلمة المرور مع أحد، ولا تُظهرها في لقطات الشاشة أو رسائل الدعم.')], helpCard=True)
+  ('Register/Reactivate User', 'تسجيل / إعادة تفعيل المستخدم', False, 'That link is not for everyday sign-in.', 'هذا الرابط ليس للدخول اليومي.'),
+  ('Ask IT for an Office 365 password', 'تطلب كلمة مرور أوفيس 365', False, 'She has no work email, so she uses her Work ID.', 'ليس لديها بريد عمل، فتستخدم رقمها الوظيفي.')]),
+ tips=[TIP('si-4', 'Never share your password, including in screenshots or support messages.', 'لا تشارك كلمة السر مع أحد، ولا تُظهرها في لقطات الشاشة أو رسائل الدعم.')], helpCard=True)
 
 task('forgot', 'lock', L('Forgot your password?', 'نسيت كلمة السر؟'), L('I forgot my password', 'نسيت كلمة السر'),
      L(['Forgot your', 'password?'], ['نسيت', 'كلمة السر؟']),
@@ -108,7 +108,7 @@ task('forgot', 'lock', L('Forgot your password?', 'نسيت كلمة السر؟'
      L('You can start recovering your HITS password.', 'تستطيع بدء استرجاع كلمة سر HITS.'), L('Login screen', 'شاشة الدخول'), [
   S('fp-1', V('en_login', hs(62, 79.3, 33, 2.8), 'Tap', 'Forgot my password?', 'On the login screen, tap Forgot my password?',
               'Next, the app asks for your Username and Company Email, then you tap SEND.', verify='screen'),
-            V('ar_emp_30', hs(5, 85, 30.5, 2.8), 'اضغط', 'هل نسيت كلمة السر؟', 'في شاشة الدخول، اضغط رابط هل نسيت كلمة السر؟')),
+            V('ar_emp_30', hs(5, 85, 30.5, 2.8), 'اضغط', 'هل نسيت كلمة السر؟', 'في شاشة الدخول، اضغط رابط هل نسيت كلمة السر؟', 'تظهر الشاشة هنا بالمظهر الداكن، والخطوات نفسها في المظهر الفاتح.')),
   S('fp-2', None, V('ar_emp_33', hs(8.5, 43, 85, 19.5), 'أدخِل', 'بياناتك.', 'اكتب اسم المستخدم، ثم البريد الإلكتروني للشركة.')),
   S('fp-3', None, V('ar_emp_33', hs(8.5, 66, 85, 6.4), 'اضغط', 'ارسال.', 'اضغط ارسال، ثم اتبع التعليمات التي تصلك.',
                     'تدخل ببريد الشركة؟ لكلمة مرور البريد، تواصل مع الدعم الفني.')),
@@ -124,7 +124,7 @@ task('settings', 'info', L('Change the theme or language', 'تغيير المظ�
      L('Changes how the app looks (light or dark) and its language.', 'يغيّر شكل التطبيق (فاتح أو داكن) ولغته.'),
      L('You can set the app to match this guide.', 'تستطيع ضبط التطبيق ليطابق هذا الدليل.'), L('Login screen › ⚙', 'شاشة الدخول › ⚙'), [
   S('st-1', V('en_login', hs(86, 0.5, 9, 5.5), 'Tap the', 'gear icon.', 'On the login screen, tap the gear icon at the top.'),
-            V('ar_emp_30', hs(4.5, 5.5, 9, 6), 'اضغط', 'أيقونة الترس.', 'في شاشة الدخول، اضغط أيقونة الترس في الأعلى.')),
+            V('ar_emp_30', hs(4.5, 5.5, 9, 6), 'اضغط', 'أيقونة الترس.', 'في شاشة الدخول، اضغط أيقونة الترس في الأعلى.', 'تظهر الشاشة هنا بالمظهر الداكن.')),
   S('st-2', V('en_emp_01', hs(7.5, 34, 85, 18.5), 'Choose a', 'Theme.', 'Under Theme, choose Auto, Light or Dark.', 'This guide mostly shows the Light theme.'),
             V('ar_mgr_20', hs(8, 36, 84, 19.5), 'اختر', 'المظهر.', 'في قسم المظهر، اختر تلقائي أو فاتح أو داكن.', 'يعرض هذا الدليل غالبًا المظهر الفاتح.')),
   S('st-3', V('en_emp_01', hs(7.5, 25, 85, 8), 'Choose a', 'Language.', 'Under Language, choose English to match this guide.'),
@@ -143,7 +143,7 @@ task('leave-balance', 'calendar-days', L('Check your leave balance', 'معرفة
   S('lb-1', V(EN_EMP_HOME, ee('myLeaves'), 'Tap', 'My Leaves.', 'On the home page, tap My Leaves.'),
             V(AR_EMP_HOME, ae('myLeaves'), 'اضغط', 'تفاصيل الإجازات.', 'من الصفحة الرئيسية، اضغط تفاصيل الإجازات.')),
   S('lb-2', V('en_emp_09', hs(2, 15, 96, 38.5), 'Read your', 'balance.', 'Leaves Balance shows Annual, Holiday and Day Off, with what is left and what you have taken.', 'Period shows the time range — here, Current Year.'),
-            V('ar_emp_07', hs(2, 15, 96, 39), 'اقرأ', 'رصيدك.', 'يعرض رصيد الأجازات رصيدك من سنوي وأعياد وعطلات، وما أخذته منها.', 'تحدّد الفترة المدة المعروضة، وهي هنا السنة الحالية.')),
+            V('ar_emp_07', hs(2, 15, 96, 39), 'اقرأ', 'رصيدك.', 'يعرض قسم رصيد الأجازات ما تبقّى لك من السنوي والأعياد والعطلات، وما أخذته منها.', 'تحدّد الفترة المدة المعروضة، وهي هنا السنة الحالية.')),
   S('lb-3', V('en_emp_09', hs(2, 55, 96, 17.5), 'See the days', 'you have taken.', 'No. of Days Taken lists the days used for each leave type this year (YTD).'),
             V('ar_emp_07', hs(2, 55, 96, 18.5), 'اعرف الأيام', 'التي أخذتها.', 'يعرض عدد الأيام المأخوذة ما استخدمته من كل نوع إجازة منذ بداية السنة.')),
   S('lb-4', V('en_emp_10', hs(2, 49, 96, 44), 'See your days', 'on a chart.', 'Vacatin Days Count shows the same days as a chart, by leave type.'),
@@ -163,8 +163,8 @@ task('leave-menu', 'calendar-days', L('Check your balance before you apply', 'م
             V('ar_emp_09', AR_DOTS, 'افتح', 'القائمة.', 'اضغط ⋮ أسفل الشاشة.')),
   S('lm-3', V('en_emp_13', EN_MENU_BAL, 'Tap', 'Balance.', 'The menu shows Filter, Balance and New. Tap Balance.'),
             V('ar_emp_13', hs(6, 80, 40, 6.5), 'اضغط', 'رصيد الاجازات.', 'تعرض القائمة تصفية ورصيد الاجازات وجديد. اضغط رصيد الاجازات.')),
-  S('lm-4', V('en_emp_14', hs(2, 13.5, 96, 26), 'Read your', 'balance.', 'Each period shows Prev.Bal, Due, Taken and Balance for Annual, Holiday and Days Off.'),
-            V('ar_emp_14', hs(2, 13.5, 96, 26), 'اقرأ', 'رصيدك.', 'تعرض كل فترة الرصيد السابق والمستحق والمأخوذ والرصيد لسنوي وعطلات وأسبوعية.')),
+  S('lm-4', V('en_emp_14', hs(2, 13.5, 96, 23.5), 'Read your', 'balance.', 'Each period shows Prev.Bal, Due, Taken and Balance for Annual, Holiday and Days Off.'),
+            V('ar_emp_14', hs(2, 13.5, 96, 26), 'اقرأ', 'رصيدك.', 'تعرض كل فترة الرصيد السابق والمستحق والمأخوذ والرصيد لكلٍّ من السنوي والعطلات والأسبوعية.')),
  ], Q(("You're in Leaves Request, about to apply. How do you check your balance first?", 'أنت في طلب الإجازات وستقدّم طلبًا. كيف تعرف رصيدك أولًا؟'), [
   ('Tap ⋮, then Balance', 'تضغط ⋮ ثم رصيد الاجازات', True, 'Balance in the ⋮ menu shows your balance for each period.', 'رصيد الاجازات في قائمة ⋮ يعرض رصيدك لكل فترة.'),
   ('Tap +, then Leave', 'تضغط + ثم الأجازة', False, '+ starts a new request; it does not show your balance.', '+ يبدأ طلبًا جديدًا، ولا يعرض الرصيد.'),
@@ -184,8 +184,8 @@ task('leave-request', 'calendar-days', L('Submit a leave request', 'تقديم �
             V('ar_emp_11', hs(40, 8.6, 57, 5), 'اختر', 'نوع الإجازة.', 'اختر النوع المناسب، مثل 1/2 يوم سنوي أو اجازة سنوي.')),
   S('lr-5', V('en_emp_15', hs(2, 22.3, 64, 8.8), 'Set your', 'dates.', 'Set the From and To dates.'),
             V('ar_emp_10', hs(14, 22.3, 84, 9), 'حدِّد', 'التواريخ.', 'حدِّد تاريخ البداية في من وتاريخ النهاية في إلى.')),
-  S('lr-6', V('en_emp_15', hs(2, 34.5, 96, 40), 'Add your', 'contact details.', 'Under Other Information, add how to reach you while you are away.'),
-            V('ar_emp_10', hs(2, 35, 96, 40), 'أضِف', 'بيانات التواصل.', 'في معلومات أخرى، أضِف طريقة التواصل معك أثناء غيابك.')),
+  S('lr-6', V('en_emp_15', hs(2, 34.5, 96, 43), 'Add your', 'contact details.', 'Under Other Information, add how to reach you while you are away.'),
+            V('ar_emp_10', hs(2, 35, 96, 42.5), 'أضِف', 'بيانات التواصل.', 'في معلومات أخرى، أضِف طريقة التواصل معك أثناء غيابك.')),
   S('lr-7', V('en_emp_15', EN_SEND, 'Tap', 'send.', 'Tap the send button to submit your request for approval.'),
             V('ar_emp_12', hs(6, 87.5, 32, 7), 'اضغط', 'ارسال.', 'اضغط زر الإرسال، أو افتح ⋮ واختر ارسال، لتقديم الطلب للاعتماد.', 'الدورة المستندية تعرض من سيعتمد طلبك.')),
   S('lr-8', V('en_emp_23', hs(2, 13.5, 96, 14), 'See who', 'approves.', 'The workflow shows who approves your request — here, your 1st Line Manager.'), None),
@@ -235,13 +235,13 @@ task('perm-request', 'clock', L('Request a time permission', 'طلب إذن'), L
             V('ar_emp_19', AR_PLUS, 'ابدأ', 'طلبًا جديدًا.', 'اضغط + أسفل الشاشة.')),
   S('pr-3', V('en_emp_30', hs(31, 30.8, 66, 4.6), 'Open the', 'Permission list.', 'Tap the Permission field.'),
             V('ar_emp_20', hs(14, 30.8, 84, 4.6), 'افتح قائمة', 'الإذن.', 'اضغط خانة الإذن.')),
-  S('pr-4', V('en_emp_33', hs(1, 85, 98, 6), 'Choose the', 'permission type.', 'Choose the type — for example Personal Permission Short [Late In] — then tap ✓.'),
+  S('pr-4', V('en_emp_33', hs(1, 85, 98, 6), 'Choose the', 'permission type.', 'Choose the type — for example Personal Permission Short [Late In] — then tap ✓ to close the list.'),
             V('ar_emp_21', hs(40, 15, 57, 5), 'اختر', 'نوع الإذن.', 'اختر الإذن المناسب، مثل اذن شخصي - حضور متأخر.')),
   S('pr-5', V('en_emp_31', hs(2, 53, 96, 8), 'Mission?', 'Add the location.', 'A mission permission adds Mission Location under My Form. It is required.', 'Without the mission location, the request will not send.'),
             V('ar_mgr_04', hs(2, 56, 96, 6.5), 'مأمورية؟', 'اكتب الجهة.', 'عند اختيار اذن مأمورية تظهر خانة جهة المأمورية، وهي إلزامية.', 'دون جهة المأمورية لن يُرسَل الطلب.')),
-  S('pr-6', V('en_emp_30', hs(2, 35.8, 96, 9.6), 'Set the', 'time.', 'Set the date and time in From and To.', 'Use 24-hour time: 13:00 means 1 PM.'),
+  S('pr-6', V('en_emp_30', hs(2, 35.8, 96, 9.6), 'Set the', 'time.', 'Set the date and time in From and To, then tap send at the bottom of the form.', 'Use 24-hour time: 13:00 means 1 PM.'),
             V('ar_emp_20', hs(14, 35.8, 84, 9.4), 'حدِّد', 'الوقت.', 'حدِّد التاريخ والوقت في من وإلى.', 'اكتب الوقت بنظام ٢٤ ساعة؛ 13:00 تعني الواحدة ظهرًا.')),
-  S('pr-7', V('en_emp_30', hs(83.5, 69.5, 13, 6.5), 'Confirm,', 'then send.', 'Tap ✓ to confirm your choice, then tap the send button at the bottom to submit the request.', verify='screen'),
+  S('pr-7', None,
             V('ar_mgr_02', hs(6, 88, 32, 7), 'اضغط', 'ارسال.', 'اضغط زر الإرسال، أو افتح ⋮ واختر ارسال.', 'الدورة المستندية تعرض من سيعتمد طلبك.')),
  ], Q(('You chose a mission permission. What must you fill in before sending?', 'اخترت إذن مأمورية. ما الخانة التي يجب ملؤها قبل الإرسال؟'), [
   ('Mission Location', 'جهة المأمورية', True, 'The mission location is required for mission permissions.', 'جهة المأمورية إلزامية في طلبات المأمورية.'),
@@ -273,12 +273,12 @@ task('tk-request', 'hourglass', L('Fix a missing clock-in or out', 'استكما
             V('ar_emp_24', AR_PLUS, 'ابدأ', 'طلبًا جديدًا.', 'اضغط + أسفل الشاشة.', verify='screen')),
   S('tr-3', V('en_emp_40', hs(3, 16.5, 94, 5.5), 'Choose the', 'Entry Date.', 'Tap Entry Date.'), None),
   S('tr-4', V('en_emp_41', hs(1, 84, 98, 12), 'Pick the day', 'with a missing time.', 'Choose All, or the day with the missing reading, then tap ✓.'), None),
-  S('tr-5', V('en_emp_40', EN_SEND, 'Add the time,', 'then send.', 'Add the missing time in 24-hour format, then tap send.', 'Attach a supporting document if you have one.', verify='confirm'), None),
+  S('tr-5', V('en_emp_40', EN_SEND, 'Add the time,', 'then send.', 'After you pick the day, the form shows your shift and the missing reading. Type the time in 24-hour format, then tap send.', 'Attach a supporting document if you have one.', verify='screen'), None),
  ], Q(('You forgot to clock out at 6 PM. How do you enter the time?', 'نسيت تسجيل انصرافك الساعة ٦ مساءً. كيف تكتب الوقت؟'), [
   ('18:00', '18:00', True, 'HITS uses 24-hour time.', 'يستخدم التطبيق نظام ٢٤ ساعة.'),
   ('06:00', '06:00', False, '06:00 means 6 in the morning.', '06:00 تعني السادسة صباحًا.'),
   ('6 PM', '6 مساءً', False, 'Type the time in 24-hour format.', 'اكتب الوقت بنظام ٢٤ ساعة.'),
-  ('Leave it empty', 'تتركه فارغًا', False, 'The missing time is what you are requesting.', 'الوقت الناقص هو ما تطلبه.')]))
+  ('06:00 PM', '06:00 م', False, 'Type the time in 24-hour format, without AM/PM.', 'اكتب الوقت بنظام ٢٤ ساعة دون صباحًا أو مساءً.')]))
 
 task('my-attendance', 'clock', L('Check your attendance', 'مراجعة حضورك'), L('Am I over or short on hours?', 'هل ساعاتي زائدة أم ناقصة؟'),
      L(['Check your', 'attendance.'], ['راجِع', 'حضورك.']), L('Shows your over and short hours and your attendance for a period.', 'يعرض ساعاتك الزائدة والناقصة وحضورك خلال فترة.'),
@@ -295,15 +295,15 @@ task('my-attendance', 'clock', L('Check your attendance', 'مراجعة حضور
   ('Open My Attendance and change the Period', 'تفتح تفاصيل الحضور والإنصراف وتغيّر الفترة', True, 'Over/Short Hours shows the gap for the Period you choose.', 'يعرض القسم الفرق للفترة التي تختارها.'),
   ('Open GEO Attendance', 'تفتح تسجيل الحضور والإنصراف', False, 'That records arrival and departure; it does not total your hours.', 'هذه الشاشة لتسجيل الدخول والخروج، لا لحساب الساعات.'),
   ('Open My Permissions', 'تفتح بيانات الإذونات', False, 'That shows permission hours only.', 'تعرض ساعات الإذن فقط.'),
-  ('Change the Theme', 'تغيّر المظهر', False, 'Theme only changes colours.', 'المظهر يغيّر الألوان فقط.')]))
+  ('Open Attendance Tracking', 'تفتح متابعة الحضور والإنصراف', False, 'That lists each clock-in and out; it does not total your hours.', 'تعرض كل تسجيل دخول وخروج، ولا تحسب إجمالي الساعات.')]))
 
 task('att-tracking', 'pin', L('Check your clock-in records', 'متابعة الحضور والانصراف'), L('When did I clock in and out?', 'متى سجّلت دخولي وخروجي؟'),
      L(['Check your', 'clock-in records.'], ['تابِع', 'حضورك وانصرافك.']), L('Lists every clock-in and clock-out with its time.', 'يعرض كل تسجيل دخول وخروج مع وقته.'),
      L('You can review your clock-in and clock-out records.', 'تستطيع مراجعة تسجيلات حضورك وانصرافك.'), L('Home › Attendance Tracking', 'الرئيسية › متابعة الحضور والإنصراف'), [
   S('at-1', V(EN_EMP_HOME, ee('attTracking'), 'Tap', 'Attendance Tracking.', 'On the home page, tap Attendance Tracking.'),
             V(AR_EMP_HOME, ae('attTracking'), 'اضغط', 'متابعة الحضور والإنصراف.', 'من الصفحة الرئيسية، اضغط متابعة الحضور والإنصراف.')),
-  S('at-2', V('en_emp_48', hs(2, 19.3, 96, 10.5), 'Read your', 'records.', 'Each line shows IN or Out, the date and time, and the location.', 'Green marks IN, red marks Out.'),
-            V('ar_emp_28', hs(2, 19.3, 96, 10.5), 'اقرأ', 'سجلّك.', 'يعرض كل سطر دخول أو خروج مع التاريخ والوقت والموقع.', 'العلامة الخضراء للدخول، والحمراء للخروج.')),
+  S('at-2', V('en_emp_48', hs(2, 19, 96, 12.2), 'Read your', 'records.', 'Each line shows IN or Out, the date and time, and the location.', 'Green marks IN, red marks Out.'),
+            V('ar_emp_28', hs(2, 19, 96, 12.2), 'اقرأ', 'سجلّك.', 'يعرض كل سطر دخول أو خروج مع التاريخ والوقت والموقع.', 'العلامة الخضراء للدخول، والحمراء للخروج.')),
   S('at-3', V('en_emp_49', EN_FILTER, 'Older days?', 'Use the filter.', 'Open History and tap the filter button.'),
             V('ar_emp_28', AR_TAB_HIS2, 'للأيام الأقدم،', 'افتح السابقة.', 'تعرض الحالية أحدث تسجيلاتك، وتعرض السابقة الأيام الأقدم.')),
   S('at-4', V('en_emp_50', hs(3, 53.3, 94, 6.5), 'Set the dates,', 'then OK.', 'Set Attend Date Between, then tap OK.'), None),
@@ -343,9 +343,9 @@ task('changes-request', 'list', L('Request a change to your data', 'طلب تغ�
             V('ar_emp_04', hs(14, 18.3, 84, 4.6), 'اختر', 'حركه التغيير.', 'اضغط خانة حركه التغيير.')),
   S('cr-4', V('en_emp_07', hs(1, 85, 98, 6), 'Choose', 'the change.', 'Choose the change you need, such as Employees Kids Birth Certificates, then tap ✓.'),
             V('ar_emp_05', hs(1, 84, 98, 7), 'اختر', 'نوع التغيير.', 'اختر التغيير المطلوب، مثل شهادات ميلاد ابناء العاملين، ثم اضغط ✓.')),
-  S('cr-5', V('en_emp_08', hs(2, 48.5, 96, 26), 'Complete', 'the details.', 'Fields for that change appear under My Form. Fill them in.', verify='confirm'),
+  S('cr-5', V('en_emp_08', hs(2, 60.5, 96, 14), 'Complete', 'the details.', 'Fields for that change appear under My Form. Fill them in.', verify='confirm'),
             V('ar_emp_06', hs(2, 60.5, 96, 30), 'أكمِل', 'البيانات.', 'تظهر خانات هذا التغيير في نموذجي الخاص. أكمِلها.', verify='confirm')),
-  S('cr-6', V('en_emp_06', hs(65, 87.5, 11, 7), 'Tap', 'send.', 'Tap the send button to submit the request for approval.'),
+  S('cr-6', V('en_emp_06', hs(65, 87.5, 11, 7), 'Tap', 'send.', 'After you fill in the form, tap the send button to submit it for approval.'),
             V('ar_emp_06', AR_SEND, 'اضغط', 'زر الإرسال.', 'اضغط زر الإرسال لتقديم الطلب للاعتماد.')),
  ], Q(('You chose the change type. Where do you type its details?', 'اخترت نوع التغيير. أين تكتب بياناته؟'), [
   ('Under My Form', 'في نموذجي الخاص', True, 'The fields for that change appear there.', 'تظهر فيه خانات هذا التغيير.'),
@@ -378,7 +378,7 @@ task('approve-perms', 'check-badge', L("Approve your team's permissions", 'اع�
   S('ap-4', V('en_mgr_22', hs(2, 31.5, 96, 24.5), 'Read the', 'details.', 'Permission, Shift and Attendance Details show the request next to the shift and the actual times.'), None),
   S('ap-5', V('en_mgr_23', hs(65, 88.5, 11, 8), 'Approve or reject,', 'then save.', 'Use the ✓ button at the bottom to approve or reject, then confirm.', 'Your decision only counts once you save it.', verify='confirm'),
             V('ar_emp_22', AR_FILTER, 'صفِّ', 'القائمة.', 'اضغط زر التصفية لعرض الطلبات في تواريخ محددة.')),
-  S('ap-6', None, V('ar_emp_23', hs(3, 50, 94, 6.5), 'حدِّد التواريخ،', 'ثم موافق.', 'حدِّد التاريخ بين، ونوع الإذن عند الحاجة، ثم اضغط موافق.',
+  S('ap-6', None, V('ar_emp_23', hs(3, 49.2, 94, 4.6), 'حدِّد التواريخ،', 'ثم موافق.', 'حدِّد التاريخ بين، ونوع الإذن عند الحاجة، ثم اضغط موافق.',
                     'عند ظهور الطلبات، اعتمِد أو ارفض ثم احفظ؛ لا يُعتمد قرارك قبل الحفظ.', verify='screen')),
  ], Q(('You marked three permission requests as approved, then closed the page without saving. What happens?', 'حدّدت الموافقة على ثلاثة طلبات إذن ثم أغلقت الصفحة دون حفظ. ماذا يحدث؟'), [
   ('The requests stay waiting', 'تبقى الطلبات منتظِرة', True, 'Nothing is applied until you save.', 'لا يُطبَّق أي قرار قبل الحفظ.'),
@@ -392,14 +392,15 @@ task('leave-approvals', 'calendar-check', L("Approve your team's leave", 'اعت
   S('la-1', V(EN_MGR_HOME, em('leavesApprovals'), 'Tap', 'Leaves Approvals.', 'On the home page, tap Leaves Approvals.'),
             V(AR_MGR_HOME, am('leavesApprovals'), 'اضغط', 'موافقة الإجازات.', 'من الصفحة الرئيسية، اضغط موافقة الإجازات.')),
   S('la-2', V('en_emp_24', TABS3, 'Know the', 'three tabs.', 'Current: waiting for you. Monitoring: still with an earlier approver. History: requests you have decided.', verify='confirm'),
-            V('ar_mgr_11', TABS3, 'اعرف', 'التبويبات الثلاثة.', 'الحالية: تنتظر قرارك. القادمة: ما زالت لدى معتمِد قبلك. السابقة: طلبات اتخذت فيها قرارًا.', verify='confirm')),
+            V('ar_mgr_11', hs(4, 13.2, 92, 5), 'اعرف', 'التبويبات الثلاثة.', 'الحالية: تنتظر قرارك. القادمة: ما زالت لدى معتمِد قبلك. السابقة: طلبات اتخذت فيها قرارًا.', verify='confirm')),
   S('la-3', V('en_mgr_13', FIRST_ROW, 'Read a', 'request.', 'Each request shows the employee, the leave type, the dates and the days. This example is from History.'),
             V('ar_mgr_11', FIRST_ROW, 'اقرأ', 'الطلب.', 'يعرض كل طلب الموظف، ونوع الإجازة، وتاريخَي من وإلى، وعدد الأيام.')),
-  S('la-4', None, V('ar_mgr_11', hs(7, 86, 10, 8), 'افتح', 'القائمة.', 'لاتخاذ القرار في كل الطلبات معًا، اضغط ⋮ أسفل الشاشة.')),
+  S('la-4', V('en_emp_24', hs(4, 11.5, 26, 5), 'Decide in', 'Current.', 'When requests are waiting in Current, open ⋮ at the bottom and choose Approve All or Reject All, then confirm with OK.', 'Your decision only counts once you confirm it.', verify='screen'),
+            V('ar_mgr_11', hs(7, 86, 10, 8), 'افتح', 'القائمة.', 'لاتخاذ القرار في كل الطلبات معًا، اضغط ⋮ أسفل الشاشة.')),
   S('la-5', None, V('ar_mgr_07', hs(6, 86.5, 36, 7.5), 'اختر', 'موافقة الكل.', 'تعرض القائمة تصفية ورفض الكل وموافقة الكل. اضغط موافقة الكل.', 'رفض الكل يعمل بالطريقة نفسها.')),
-  S('la-6', None, V('ar_mgr_08', hs(34.5, 61, 12, 7.5), 'أكّد', 'بموافق.', 'يطلب التطبيق التأكيد. اكتب السبب إن احتجت، ثم اضغط موافق.')),
+  S('la-6', None, V('ar_mgr_08', hs(33.5, 60.5, 13.5, 8), 'أكّد', 'بموافق.', 'يطلب التطبيق التأكيد. اكتب السبب إن احتجت، ثم اضغط موافق.')),
   S('la-7', V('en_mgr_13', hs(80, 85.5, 13, 8.5), 'Filter', 'the list.', 'Tap the filter button to show requests from specific dates.'),
-            V('ar_mgr_10', hs(3, 50.5, 94, 6.5), 'صفِّ', 'القائمة.', 'من زر التصفية، حدِّد تاريخ الاجازه بين، ثم اضغط موافق.')),
+            V('ar_mgr_10', hs(3, 49.3, 94, 5), 'صفِّ', 'القائمة.', 'من زر التصفية، حدِّد تاريخ الاجازه بين، ثم اضغط موافق.')),
  ], Q(("A team member's request is still with their first approver. Which tab shows it?", 'طلب أحد أفراد فريقك ما زال لدى معتمِده الأول. في أي تبويب يظهر؟'), [
   ('Monitoring', 'القادمة', True, 'It shows requests waiting for an earlier approver.', 'يعرض الطلبات التي تنتظر معتمِدًا قبلك.'),
   ('Current', 'الحالية', False, 'Current shows requests waiting for you.', 'تعرض الحالية ما ينتظرك أنت.'),
@@ -428,7 +429,7 @@ task('find-perms', 'search', L('Find past permission decisions', 'البحث ف�
      L("You can find any permission request you've decided.", 'تستطيع العثور على أي طلب إذن حسمته.'), L('Home › Permissions Approvals › History', 'الرئيسية › موافقة الإذونات › السابقة'), [
   S('fd-1', V(EN_MGR_HOME, em('permissionsApprovals'), 'Tap', 'Permissions Approvals.', 'On the home page, tap Permissions Approvals.'),
             V(AR_MGR_HOME, am('permissionsApprovals'), 'اضغط', 'موافقة الإذونات.', 'من الصفحة الرئيسية، اضغط موافقة الإذونات.')),
-  S('fd-2', V('en_mgr_09', EN_TAB_HIS3, 'Open', 'History.', 'History lists the requests you have already decided.'),
+  S('fd-2', V('en_mgr_09', hs(71, 13.2, 25, 5), 'Open', 'History.', 'History lists the requests you have already decided.'),
             V('ar_emp_22', AR_TAB_HIS3, 'افتح', 'السابقة.', 'تعرض السابقة الطلبات التي اتخذت فيها قرارًا.')),
   S('fd-3', V('en_mgr_09', hs(80, 85.5, 13, 8.5), 'Tap the', 'filter.', 'Tap the filter button at the bottom.'),
             V('ar_emp_22', AR_FILTER, 'اضغط', 'زر التصفية.', 'اضغط زر التصفية أسفل الشاشة.')),
@@ -446,7 +447,7 @@ task('changes-approvals', 'check-badge', L('Approve data change requests', 'اع
      L(['Approve', 'change requests.'], ['اعتمِد', 'طلبات التغيير.']), L("Finds your team's data change requests.", 'يعرض طلبات تغيير البيانات من فريقك.'),
      L("You can find your team's change requests.", 'تستطيع العثور على طلبات التغيير لفريقك.'), L('Home › Changes Approvals', 'الرئيسية › موافقة تغيرات الحالة'), [
   S('ca-1', None, V(AR_MGR_HOME, am('changesApprovals'), 'اضغط', 'موافقة تغيرات الحالة.', 'من الصفحة الرئيسية، اضغط موافقة تغيرات الحالة.')),
-  S('ca-2', None, V('ar_mgr_16', TABS3, 'اعرف', 'التبويبات.', 'الحالية: تنتظر قرارك. القادمة: ما زالت لدى معتمِد قبلك. السابقة: ما اتخذت فيه قرارًا.', verify='confirm')),
+  S('ca-2', None, V('ar_mgr_16', hs(4, 13.2, 92, 5), 'اعرف', 'التبويبات.', 'الحالية: تنتظر قرارك. القادمة: ما زالت لدى معتمِد قبلك. السابقة: ما اتخذت فيه قرارًا.', verify='confirm')),
   S('ca-3', None, V('ar_mgr_16', hs(5.5, 85.5, 13, 8.5), 'اضغط', 'زر التصفية.', 'اضغط زر التصفية لحصر الطلبات.')),
   S('ca-4', None, V('ar_mgr_17', hs(3, 50, 94, 12), 'حدِّد', 'ما تبحث عنه.', 'حدِّد التاريخ بين، واختر حركه التغيير عند الحاجة، ثم اضغط موافق.')),
  ], Q(('You only want birth-certificate requests. What do you set in the filter?', 'تريد طلبات شهادات الميلاد فقط. ماذا تحدّد في التصفية؟'), [
@@ -466,8 +467,20 @@ task('team-records', 'users', L("Open a team member's record", 'فتح سجلّ 
   ('Open My Leaves and tap their name', 'تفتح تفاصيل الإجازات وتضغط اسمه', True, 'Managers see their team in the list; your own name is first.', 'يرى المدير فريقه في القائمة، واسمه هو الأول.'),
   ('Open Leaves Approvals › History', 'تفتح موافقة الإجازات › السابقة', False, 'That only lists decided requests.', 'تعرض الطلبات المحسومة فقط.'),
   ('Open Leaves Request', 'تفتح طلب الإجازات', False, 'That is for your own leave.', 'هذه لإجازاتك أنت.'),
-  ('Ask IT for access', 'تطلب صلاحية من الدعم الفني', False, 'Managers already see their team.', 'المدير يرى فريقه بالفعل.')]),
+  ('Open My Leaves › Leaves Balance', 'تفتح تفاصيل الإجازات › رصيد الأجازات مباشرة', False, 'That opens your own balance first; pick their name from the list.', 'هذا يفتح رصيدك أنت؛ اختر اسمه من القائمة أولًا.')]),
  tips=[TIP('tm-3', 'The same list appears in My Attendance, My Permissions and Permissions Request.', 'تظهر القائمة نفسها في تفاصيل الحضور وبيانات الإذونات وطلب إذونات.')])
+
+task('my-profile', 'users', L('Open your profile', 'فتح ملفك الشخصي'), L('Where are my details?', 'أين بياناتي؟'),
+     L(['Open your', 'profile.'], ['افتح', 'ملفك الشخصي.']), L('Shows your name, Work ID, department and job title.', 'يعرض اسمك ورقمك الوظيفي وإدارتك ومسماك الوظيفي.'),
+     L('You can find your own profile details.', 'تستطيع العثور على بيانات ملفك.'), L('Home › My Profile', 'الرئيسية › تغيير البيانات'), [
+  S('pf-1', V(EN_MGR_HOME, em('myProfile'), 'Tap', 'My Profile.', 'On the home page, tap My Profile.'), None),
+  S('pf-2', V('en_mgr_16', hs(2, 15, 96, 10.8), 'Your details', 'are first.', 'Your name, Work ID, department and job title are at the top. Managers also see their team below.'), None),
+  S('pf-3', V('en_mgr_16', hs(77.5, 7.5, 7.5, 5.5), 'Search', 'by name.', 'Tap the search icon to find someone in the list.'), None),
+ ], Q(('Where do you see your own department and job title?', 'أين ترى إدارتك ومسماك الوظيفي؟'), [
+  ('My Profile, at the top of the list', 'ملفي، أعلى القائمة', True, 'Your own card is first.', 'بطاقتك أنت هي الأولى.'),
+  ('Notifications', 'الإشعارات', False, 'Notifications show requests waiting for you.', 'الإشعارات تعرض ما ينتظرك.'),
+  ('Changes Request', 'طلب تغيرات الحالة', False, 'That sends a change; it does not show your profile.', 'هذا لإرسال تغيير، لا لعرض ملفك.'),
+  ('Settings', 'الإعدادات', False, 'Settings hold theme and language only.', 'الإعدادات للمظهر واللغة فقط.')]))
 
 MISSIONS = [
  {'id': 'start', 'roles': ['employee', 'manager'], 'icon': 'rocket', 'title': L('Get started', 'ابدأ هنا'),
@@ -475,15 +488,22 @@ MISSIONS = [
  {'id': 'timeoff', 'roles': ['employee'], 'icon': 'calendar', 'title': L('My time off', 'إجازاتي'),
   'outcome': L('Check your balance, request leave and follow it up.', 'اعرف رصيدك، وقدّم طلب إجازة، وتابِعه.'), 'tasks': ['leave-balance', 'leave-menu', 'leave-request', 'leave-history']},
  {'id': 'mytime', 'roles': ['employee'], 'icon': 'clock', 'title': L('My time & attendance', 'وقتي وحضوري'),
-  'outcome': L('Permissions, missing times, attendance and clock-in.', 'الإذونات والقراءات الناقصة والحضور والتسجيل.'),
+  'outcome': L('Permissions, missing times, attendance and clock-in.', 'الأذونات والقراءات الناقصة والحضور والتسجيل.'),
   'tasks': ['my-permissions', 'perm-request', 'perm-history', 'tk-request', 'my-attendance', 'att-tracking', 'geo']},
  {'id': 'mydata', 'roles': ['employee'], 'icon': 'list', 'title': L('My data', 'بياناتي'),
   'outcome': L('Request a change to your records.', 'اطلب تغييرًا في بياناتك.'), 'tasks': ['changes-request']},
  {'id': 'approvals', 'roles': ['manager'], 'icon': 'check-badge', 'title': L("Approve your team's requests", 'اعتمِد طلبات فريقك'),
   'outcome': L('See what is waiting for you and decide on it.', 'اعرف ما ينتظر قرارك، واتخذ القرار.'), 'tasks': ['notifications', 'approve-perms', 'leave-approvals', 'tk-approvals']},
  {'id': 'team', 'roles': ['manager'], 'icon': 'users', 'title': L('Keep an eye on your team', 'تابِع فريقك'),
-  'outcome': L("Past decisions, change requests and your team's records.", 'القرارات السابقة وطلبات التغيير وسجلّات فريقك.'), 'tasks': ['find-perms', 'changes-approvals', 'team-records']},
+  'outcome': L("Past decisions, change requests and your team's records.", 'القرارات السابقة وطلبات التغيير وسجلّات فريقك.'), 'tasks': ['my-profile', 'find-perms', 'changes-approvals', 'team-records']},
 ]
+
+for t in T.values():
+    for s_ in t['steps']:
+        v = s_.get('en')
+        if v and v['screen'] == 'en_login':
+            if v.get('hot'): v['hot'] = dict(v['hot'], y=round(v['hot']['y'] + 5.96, 2))
+            for f in v.get('type') or []: f['box'] = dict(f['box'], y=round(f['box']['y'] + 5.96, 2))
 
 # stops whose screens exist only in part of one language: keep or drop explicitly
 LANGS = {'forgot': ['en', 'ar'], 'tk-request': ['en']}
@@ -517,6 +537,7 @@ for t in T.values():
         left = re.sub(r'(HITS|OFFICE 365|\d+[:/]\d+|\d+)', '', a_)
         assert not re.search(r'[A-Za-z]', left), (t['id'], a_)
 
+BASE['glossary'] = [g for g in BASE['glossary'] if g.get('id') not in ('run-no', 'delegation') and 'Run No' not in g['term']['en'] and 'elegation' not in g['term']['en']]
 UI = BASE['ui']
 UI['en'].update({'home': 'Home', 'coming': 'Coming soon: My Payslip.', 'shownIn': 'Shown in: {lang}'})
 UI['ar'].update({'home': 'الرئيسية', 'coming': 'قريبًا: كشف الراتب.', 'shownIn': 'متاح في: {lang}'})
