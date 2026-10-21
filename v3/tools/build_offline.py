@@ -9,7 +9,7 @@ css = re.sub(r'url\((fonts/[^)]+|img/[^)]+)\)', lambda m: 'url(%s)' % b64('asset
 js = open(os.path.join(R, 'assets/app.js')).read()
 # map every asset path the script requests to a data URI
 assets = {}
-for d in ['assets/screens', 'assets/img']:
+for d in ['assets/screens_v4', 'assets/img']:
     for f in sorted(os.listdir(os.path.join(R, d))):
         assets[d + '/' + f] = b64(d + '/' + f, MIME[os.path.splitext(f)[1]])
 shim = 'window.HITS_ASSETS=' + __import__('json').dumps(assets) + ';'

@@ -303,3 +303,9 @@ html[lang=ar] .tipcard p{line-height:1.8}
 
 .opt.dim{display:none}
 @media(max-width:420px){.brand b{white-space:normal;font-size:12.5px;line-height:1.15;max-width:76px;overflow:visible}}
+
+/* v4: Home button — always in the same place, both languages */
+.homebtn{display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 12px;border-radius:999px;background:var(--tan);color:var(--deep);font-family:var(--fh);font-weight:700;font-size:14px;text-decoration:none;flex:none}
+.homebtn svg{width:18px;height:18px}
+html[lang=ar] .homebtn{font-family:'Noto Kufi Arabic',var(--fh)}
+@media(max-width:400px){.homebtn span{display:none}.homebtn{width:40px;padding:0;justify-content:center}.brand b{display:none}}

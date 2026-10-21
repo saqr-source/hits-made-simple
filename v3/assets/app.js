@@ -82,6 +82,7 @@
     hourglass: '<path d="M7 3.5h10M7 20.5h10M8 3.5c0 4.5 8 5 8 8.5s-8 4-8 8.5M16 3.5c0 4.5-8 5-8 8.5s8 4 8 8.5"/>',
     'log-in': '<path d="M14 4h4a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-4M10 16l4-4-4-4M14 12H4"/>',
     lock: '<rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/>',
+    home: '<path d="M4 11.5L12 4.5l8 7M6.5 10v9.5h4.5v-5h2v5h4.5V10"/>',
     list: '<path d="M9 6h11M9 12h11M9 18h11M4.5 6h.01M4.5 12h.01M4.5 18h.01"/>',
     users: '<circle cx="9" cy="8.5" r="3.2"/><path d="M3.5 19.5c.6-3.2 2.8-5 5.5-5s4.9 1.8 5.5 5"/><circle cx="16.5" cy="9.5" r="2.6"/><path d="M15.5 14.6c2.6-.2 4.5 1.4 5 4.4"/>',
     route: '<circle cx="6" cy="18" r="2.2"/><circle cx="18" cy="6" r="2.2"/><path d="M8.2 18H15a3 3 0 0 0 0-6H9a3 3 0 0 1 0-6h6.8"/>'
@@ -90,26 +91,23 @@
 
   /* ---------- progress & points ---------- */
   // Language view: Arabic uses the Arabic app screens where they exist; Arabic-only stops are hidden in English
-  function avail(id) { var t = D.tasks[id]; return !!t && (!t.only || t.only === S.lang); }
+  // v4: every step carries its own English and Arabic screen; a stop shows only in languages it has screens for
+  function avail(id) { var t = D.tasks[id]; return !!t && t.langs.indexOf(S.lang) > -1; }
   function ML() { return D.missions.map(function (m) { var c = {}; for (var k in m) c[k] = m[k]; c.tasks = m.tasks.filter(avail); return c; }).filter(function (m) { return m.tasks.length; }); }
+  function both(v) { var o = {}; o.en = v; o.ar = v; return o; }
   function loc(t) {
     var c = {}; for (var k in t) c[k] = t[k];
-    c.steps = t.steps.filter(function (s) { return !s.only || s.only === S.lang; }).map(function (s) {
-      if (S.lang !== 'ar' || !s.ar) return s;
-      var a = s.ar, o = {}; for (var k in s) o[k] = s[k];
-      if ('screen' in a) { o.screen = a.screen; o.type = null; }
-      if ('hotspot' in a) o.hotspot = a.hotspot;
-      if (a.headline) o.headline = { en: s.headline.en, ar: a.headline };
-      if (a.text) o.text = { en: s.text.en, ar: a.text };
-      if ('helper' in a) o.helper = a.helper ? { en: '', ar: a.helper } : null;
-      return o;
+    c.steps = t.steps.filter(function (s) { return s[S.lang]; }).map(function (s) {
+      var v = s[S.lang];
+      return { id: s.id, screen: v.screen, hotspot: v.hot || null, headline: both(v.headline), text: both(v.text),
+               helper: v.helper ? both(v.helper) : null, type: v.type || null, verify: v.verify || null };
     });
-    if (S.lang === 'ar' && t.path_ar) c.path = t.path_ar;
+    c.path = t.path ? t.path[S.lang] : null;
     return c;
   }
   function points() { var n = 0; for (var k in S.prog) n += S.prog[k].pts || 0; return n; }
   function isDone(id) { return !!(S.prog[id] && S.prog[id].done); }
-  function missionsFor(role) { return ML().filter(function (m) { return m.roles.indexOf(role) > -1; }).sort(function (a, b) { return role === 'manager' ? (a.id === 'approvals' ? -1 : b.id === 'approvals' ? 1 : 0) : 0; }); }
+  function missionsFor(role) { return ML().filter(function (m) { return m.roles.indexOf(role) > -1; }); }  // Get started is always first
   function mStats(m) { var d = m.tasks.filter(isDone).length; return { done: d, total: m.tasks.length, pct: Math.round(100 * d / m.tasks.length) }; }
   function missionOf(tid) {
     var ms = missionsFor(S.role).concat(ML());
@@ -143,6 +141,7 @@
   function header() {
     return '<a class="skip" href="#main">' + esc(U('skipToContent')) + '</a>' +
       '<header class="hdr" dir="ltr"><a class="brand" href="#/" aria-label="' + esc(U('appName')) + '"><span class="plate"><img src="' + A('assets/img/logo.webp') + '" alt="Al Safy Group"></span><b dir="' + (S.lang === 'ar' ? 'rtl' : 'ltr') + '">' + esc(U('appName')) + '</b></a>' +
+      ((location.hash || '#/') === '#/' ? '' : '<a class="homebtn" href="#/" id="btnHome" aria-label="' + esc(U('home')) + '">' + ic('home') + '<span>' + esc(U('home')) + '</span></a>') +
       '<span class="chip-pts" id="pts" title="' + esc(U('pointsLabel')) + '">' + ic('star') + '<span>' + num(points()) + '</span></span>' +
       '<button class="ibtn" id="btnSearch" aria-label="' + esc(U('search')) + '">' + ic('search') + '</button>' +
       '<button class="lang" id="btnLang" data-to="' + (S.lang === 'ar' ? 'en' : 'ar') + '" aria-label="' + esc(U('langName')) + '">' + esc(U('langSwitch')) + '</button></header>' +
@@ -351,7 +350,7 @@
   function showScreen(st, dir, still) {
     var slot = $('#slot'); if (!slot) return;
     if (innerWidth >= 900) deskLayout();
-    var src = A('assets/screens/' + st.screen + '.webp');
+    var src = A('assets/screens_v4/' + st.screen + '.webp');
     var cur = slot.querySelector('img.scr.cur');
     var spot = $('#spot'), ring = $('#hring'), ptr = $('#ptr'), rip = $('#ripple');
     [spot, ring, ptr, rip].forEach(function (e) { e.getAnimations && e.getAnimations().forEach(function (a) { a.cancel(); }); e.style.opacity = 0; });
@@ -417,6 +416,7 @@
     list.forEach(function (f) {
       var d = document.createElement('div'); d.className = 'typ' + (f.dots ? ' dots' : '');
       d.style.left = f.box.x + '%'; d.style.top = f.box.y + '%'; d.style.width = f.box.w + '%'; d.style.height = f.box.h + '%'; d.style.fontSize = fs + 'px';
+      if (f.bg) { d.style.background = f.bg; d.style.color = f.fg; } if (f.align === 'right') d.style.justifyContent = 'flex-end';
       var sp = document.createElement('span'); d.appendChild(sp); slot.appendChild(d);
       if (f.anim && !RM) anims.push({ sp: sp, text: f.text }); else sp.textContent = f.text;
     });
@@ -447,13 +447,13 @@
   function openZoom() {
     var sh = V.shown || { st: V.t.steps[0], hot: null }, st = sh.st, hot = sh.hot;
     var z = document.createElement('div'); z.className = 'zoom'; z.setAttribute('role', 'dialog'); z.setAttribute('aria-modal', 'true');
-    z.innerHTML = '<div class="zt"><button class="btn btn-g" id="zc">' + ic('x') + esc(U('closeImage')) + '</button></div><div class="zs"><div class="zi" id="zi"><img src="' + A('assets/screens/' + st.screen + '.webp') + '" alt="' + esc(tx(st.text)) + '">' +
+    z.innerHTML = '<div class="zt"><button class="btn btn-g" id="zc">' + ic('x') + esc(U('closeImage')) + '</button></div><div class="zs"><div class="zi" id="zi"><img src="' + A('assets/screens_v4/' + st.screen + '.webp') + '" alt="' + esc(tx(st.text)) + '">' +
       (hot ? '<div class="hring" style="left:' + hot.x + '%;top:' + hot.y + '%;width:' + hot.w + '%;height:' + hot.h + '%"></div>' : '') + '</div></div>';
     document.body.appendChild(z);
     var close = function () { z.remove(); document.removeEventListener('keydown', esc_); };
     var esc_ = function (e) { if (e.key === 'Escape') close(); };
     var zi = $('#zi', z);
-    (st.type || []).forEach(function (f) { var d = document.createElement('div'); d.className = 'typ' + (f.dots ? ' dots' : ''); d.style.cssText = 'left:' + f.box.x + '%;top:' + f.box.y + '%;width:' + f.box.w + '%;height:' + f.box.h + '%;font-size:' + (zi.clientWidth * 0.046) + 'px'; d.innerHTML = '<span>' + esc(f.text) + '</span>'; zi.appendChild(d); });
+    (st.type || []).forEach(function (f) { var d = document.createElement('div'); d.className = 'typ' + (f.dots ? ' dots' : ''); d.style.cssText = 'left:' + f.box.x + '%;top:' + f.box.y + '%;width:' + f.box.w + '%;height:' + f.box.h + '%;font-size:' + (zi.clientWidth * 0.046) + 'px' + (f.bg ? ';background:' + f.bg + ';color:' + f.fg : '') + (f.align === 'right' ? ';justify-content:flex-end' : ''); d.innerHTML = '<span>' + esc(f.text) + '</span>'; zi.appendChild(d); });
     $('#zc', z).onclick = close; document.addEventListener('keydown', esc_);
     $('#zi', z).ondblclick = function () { this.classList.toggle('big'); };
     $('#zc', z).focus();
