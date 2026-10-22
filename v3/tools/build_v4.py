@@ -373,7 +373,7 @@ task('approve-perms', 'check-badge', L("Approve your team's permissions", 'اع�
   S('ap-1', V(EN_DARK_HOME, ed('permissionsApprovals'), 'Tap', 'Permissions Approvals.', 'On the home page, tap Permissions Approvals.', 'These screens show the app in the Dark theme.'),
             V(AR_MGR_HOME, am('permissionsApprovals'), 'اضغط', 'موافقة الإذونات.', 'من الصفحة الرئيسية، اضغط موافقة الإذونات.')),
   S('ap-2', V('en_mgr_23', hs(4, 11.5, 26, 5), 'Open', 'Current.', 'Current lists the requests waiting for your decision.'),
-            V('ar_emp_22', TABS3, 'اعرف', 'التبويبات.', 'الحالية: تنتظر قرارك. القادمة: ما زالت لدى معتمِد قبلك. السابقة: ما اتخذت فيه قرارًا.')),
+            V('ar_emp_22', TABS3, 'اعرف', 'التبويبات.', 'الحالية: طلبات تنتظر قرارك. السابقة: طلبات اتخذت فيها قرارًا.')),
   S('ap-3', V('en_mgr_23', hs(2, 19.3, 96, 15), 'Check the', 'request.', 'Each request shows the employee, the permission type, the times and the hours. Tap it for details.'), None),
   S('ap-4', V('en_mgr_22', hs(2, 31.5, 96, 24.5), 'Read the', 'details.', 'Permission, Shift and Attendance Details show the request next to the shift and the actual times.'), None),
   S('ap-5', V('en_mgr_23', hs(65, 88.5, 11, 8), 'Approve or reject,', 'then save.', 'Use the ✓ button at the bottom to approve or reject, then confirm.', 'Your decision only counts once you save it.', verify='confirm'),
@@ -447,7 +447,7 @@ task('changes-approvals', 'check-badge', L('Approve data change requests', 'اع
      L(['Approve', 'change requests.'], ['اعتمِد', 'طلبات التغيير.']), L("Finds your team's data change requests.", 'يعرض طلبات تغيير البيانات من فريقك.'),
      L("You can find your team's change requests.", 'تستطيع العثور على طلبات التغيير لفريقك.'), L('Home › Changes Approvals', 'الرئيسية › موافقة تغيرات الحالة'), [
   S('ca-1', None, V(AR_MGR_HOME, am('changesApprovals'), 'اضغط', 'موافقة تغيرات الحالة.', 'من الصفحة الرئيسية، اضغط موافقة تغيرات الحالة.')),
-  S('ca-2', None, V('ar_mgr_16', hs(4, 13.2, 92, 5), 'اعرف', 'التبويبات.', 'الحالية: تنتظر قرارك. القادمة: ما زالت لدى معتمِد قبلك. السابقة: ما اتخذت فيه قرارًا.', verify='confirm')),
+  S('ca-2', None, V('ar_mgr_16', hs(4, 13.2, 92, 5), 'اعرف', 'التبويبات.', 'الحالية: طلبات تنتظر قرارك. السابقة: طلبات اتخذت فيها قرارًا.', verify='confirm')),
   S('ca-3', None, V('ar_mgr_16', hs(5.5, 85.5, 13, 8.5), 'اضغط', 'زر التصفية.', 'اضغط زر التصفية لحصر الطلبات.')),
   S('ca-4', None, V('ar_mgr_17', hs(3, 50, 94, 12), 'حدِّد', 'ما تبحث عنه.', 'حدِّد التاريخ بين، واختر حركه التغيير عند الحاجة، ثم اضغط موافق.')),
  ], Q(('You only want birth-certificate requests. What do you set in the filter?', 'تريد طلبات شهادات الميلاد فقط. ماذا تحدّد في التصفية؟'), [
@@ -504,6 +504,27 @@ for t in T.values():
         if v and v['screen'] == 'en_login':
             if v.get('hot'): v['hot'] = dict(v['hot'], y=round(v['hot']['y'] + 5.96, 2))
             for f in v.get('type') or []: f['box'] = dict(f['box'], y=round(f['box']['y'] + 5.96, 2))
+
+# ---------- 22 Oct: Arabic permission approvals now on real screens with requests ----------
+def setstep(tid, sid, lang, v):
+    for st in T[tid]['steps']:
+        if st['id'] == sid: st[lang] = v; return
+    T[tid]['steps'].append({'id': sid, 'en': None, 'ar': None}); T[tid]['steps'][-1][lang] = v
+setstep('approve-perms', 'ap-2', 'ar', V('ar_mgr_29', hs(4, 12.4, 92, 4.8), 'اعرف', 'التبويبات.', 'الحالية: طلبات تنتظر قرارك. السابقة: طلبات اتخذت فيها قرارًا.'))
+setstep('approve-perms', 'ap-3', 'ar', V('ar_mgr_29', hs(2, 18.6, 96, 16.4), 'راجِع', 'الطلب.', 'يعرض كل طلب الموظف، ونوع الإذن، ووقتَي من وإلى، وعدد الساعات.'))
+setstep('approve-perms', 'ap-4', 'ar', V('ar_mgr_30', hs(4, 88.5, 92, 6), 'اقرأ', 'التفاصيل.', 'اضغط الطلب لتظهر قائمة صغيرة، ثم اضغط بيانات لقراءة تفاصيله، أو ملحقات لفتح المرفقات.'))
+setstep('approve-perms', 'ap-5', 'ar', V('ar_mgr_29', hs(8, 90, 11, 6.5), 'افتح', 'القائمة.', 'لاتخاذ القرار في الطلبات معًا، اضغط ⋮ أسفل الشاشة.'))
+setstep('approve-perms', 'ap-6', 'ar', V('ar_mgr_27', hs(6, 90, 48, 7), 'اختر', 'موافقة الكل.', 'تعرض القائمة تصفية ورفض الكل وموافقة الكل. اضغط موافقة الكل.', 'رفض الكل يعمل بالطريقة نفسها.'))
+setstep('approve-perms', 'ap-7', 'ar', V('ar_mgr_28', hs(32, 64.3, 14, 6.4), 'أكّد', 'بموافق.', 'يسألك التطبيق إن كنت متأكدًا. اكتب السبب إن احتجت، ثم اضغط موافق.', 'لا يُعتمد قرارك إلا بعد الضغط على موافق.'))
+setstep('approve-perms', 'ap-8', 'ar', V('ar_mgr_26', hs(6, 12.4, 20, 4.8), 'راجِع', 'السابقة.', 'بعد القرار، ينتقل الطلب إلى السابقة.'))
+for st in T['find-perms']['steps']:
+    if st['id'] == 'fd-2': st['ar'] = V('ar_mgr_26', hs(6, 12.4, 20, 4.8), 'افتح', 'السابقة.', 'تعرض السابقة الطلبات التي اتخذت فيها قرارًا.')
+    if st['id'] == 'fd-3': st['ar'] = V('ar_mgr_26', hs(6, 90, 15, 7), 'اضغط', 'زر التصفية.', 'اضغط زر التصفية أسفل الشاشة.')
+    if st['id'] == 'fd-4': st['ar'] = V('ar_mgr_25', hs(3, 45.5, 94, 19), 'حدِّد التواريخ', 'والنوع.', 'حدِّد التاريخ بين، ونوع الإذن في الاذونات عند الحاجة.')
+    if st['id'] == 'fd-5': st['ar'] = V('ar_mgr_25', hs(33, 67, 15, 6), 'اضغط', 'موافق.', 'اضغط موافق لعرض الطلبات المطابقة فقط.')
+T['approve-perms']['check']['q']['ar'] = 'اخترت موافقة الكل ثم أغلقت النافذة بإلغاء. ماذا يحدث للطلبات؟'
+for o, w in zip(T['approve-perms']['check']['options'], ['لا يُعتمد أي قرار قبل الضغط على موافق.', 'دون الضغط على موافق لا يُعتمد شيء.', 'لا تُعتمد ولا تُرفض.', 'لا يُعتمد أي طلب دون الضغط على موافق.']):
+    o['why']['ar'] = w
 
 # stops whose screens exist only in part of one language: keep or drop explicitly
 LANGS = {'forgot': ['en', 'ar'], 'tk-request': ['en']}

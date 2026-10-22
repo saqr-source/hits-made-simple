@@ -34,6 +34,7 @@ NOTIF_AR_OLD = [((410,232,482,262), ['Sample'], 'right'), ((95,256,242,286), ['E
             ((45,459,202,491), ['Hassan Ahmed']), ((320,616,482,649), ['Sara Nabil'], 'right'), ((45,639,112,672), ['Fouad']),
             ((410,797,482,829), ['Sample'], 'right'), ((95,820,242,852), ['Employee']), ((345,1001,482,1034), ['Mona'], 'right'),
             ((50,1024,262,1056), ['Samir Aziz Kamal']), ((345,1182,482,1214), ['Karim'], 'right')]
+def R6(ys): return [((120, y, 515, y + 38), [(str(10001 + k), AR[k % len(AR)])], 'right') for k, y in enumerate(ys)]
 def sc(b, f): return tuple(round(v * f) for v in b)
 # AR employee boxes were measured on 589-wide scaled images -> convert to raw 740
 k740 = 740 / 589
@@ -71,6 +72,12 @@ SPEC = {
  'ar_mgr_09': rows_ar([263, 386, 510, 633, 757, 880, 1004, 1128], 100),
  'ar_mgr_10': rows_ar([263, 386, 1004, 1128], 100), 'ar_mgr_11': rows_ar([263, 386, 510]),
  **{f'ar_mgr_{n:02d}': [] for n in [12, 13, 14, 15, 16, 17, 20, 21, 22, 23, 24]},
+ # ---------- added 22 Oct: Arabic permissions approvals with requests, English leaves history ----------
+ 'ar_mgr_25': R6([300]), 'ar_mgr_26': R6([300]),
+ 'ar_mgr_27': R6([300, 550, 800, 1050]) + [((335, 1300, 515, 1338), [('10005', 'موظف')], 'right')],
+ 'ar_mgr_28': R6([300, 550, 1300]), 'ar_mgr_29': R6([300, 550, 800, 1050, 1300]),
+ 'ar_mgr_30': R6([300]) + [((120, 1147, 515, 1185), [('10001', AR[0])], 'right')],
+ 'en_mgr_33': [((205, y - 2, 600 if y < 1400 else 560, y + 25), [(str(10001 + k), EN[k % len(EN)])]) for k, y in enumerate([309, 491, 673, 855, 1037, 1219, 1401])],
 }
 PATCH = {'en_mgr_13': [((38, 377, 139, 476), (38, 253))], 'ar_mgr_09': [((448, 377, 552, 479), (448, 252))], 'ar_mgr_10': [((448, 377, 552, 479), (448, 252))]}
 
